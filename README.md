@@ -26,14 +26,39 @@
 |name|string|null: false|
 |price|string|null: false|
 |user_id|integer|null: false, foreign_key: true|
-|category_id|integer|null: false, foreign_key: true|
-|brand_id|integer|null: false, foreign_key: true|
+|large_category_id|integer|null: false, foreign_key: true|
+|middle_category_id|integer|null: false, foreign_key: true|
+|small_category_id|integer|null: false, foreign_key: true|
+|brand_id|integer|foreign_key: true|
+|status|string|null: false|
+|shipping_charges|string|null: false|
+|delivery_method|string|null: false|
+|area|string|null: false|
+|estimated_shipping_date|string|null: false|
 ### Association
 - belongs_to :user
-- belongs_to :category
+- belongs_to :large_category
+- belongs_to :middle_category
+- belongs_to :small_category
 - belongs_to :brand
 
-## categoriesテーブル
+## large_categoriesテーブル
+|Column|Type|Options|
+|------|----|-------|
+|name|string|null: false|
+|product_id|integer|null: false, foreign_key: true|
+### Association
+- has_many :products
+
+## middle_categoriesテーブル
+|Column|Type|Options|
+|------|----|-------|
+|name|string|null: false|
+|product_id|integer|null: false, foreign_key: true|
+### Association
+- has_many :products
+
+## small_categoriesテーブル
 |Column|Type|Options|
 |------|----|-------|
 |name|string|null: false|
