@@ -19,3 +19,16 @@
 ### Association
 - has_many :products
 - has_many :comments
+
+## productsテーブル
+|Column|Type|Options|
+|------|----|-------|
+|name|string|null: false|
+|price|string|null: false|
+|user_id|integer|null: false, foreign_key: true|
+|category_id|integer|null: false, foreign_key: true|
+|brand_id|integer|null: false, foreign_key: true|
+### Association
+- belongs_to :user
+- belongs_to :category
+- belongs_to :brand
