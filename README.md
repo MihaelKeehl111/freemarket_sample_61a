@@ -24,6 +24,7 @@
 |Column|Type|Options|
 |------|----|-------|
 |name|string|null: false|
+|image|text|null: false|
 |price|string|null: false|
 |user_id|integer|null: false, foreign_key: true|
 |large_category_id|integer|null: false, foreign_key: true|
