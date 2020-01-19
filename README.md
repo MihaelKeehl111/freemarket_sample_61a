@@ -25,12 +25,14 @@
 |------|----|-------|
 |name|string|null: false|
 |image|text|null: false|
+|text|text|null: false|
 |price|string|null: false|
 |user_id|integer|null: false, foreign_key: true|
 |large_category_id|integer|null: false, foreign_key: true|
 |middle_category_id|integer|null: false, foreign_key: true|
 |small_category_id|integer|null: false, foreign_key: true|
 |brand_id|integer|foreign_key: true|
+|size|string|null: false|
 |status|string|null: false|
 |shipping_charges|string|null: false|
 |delivery_method|string|null: false|
