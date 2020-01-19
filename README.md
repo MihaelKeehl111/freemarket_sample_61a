@@ -32,3 +32,11 @@
 - belongs_to :user
 - belongs_to :category
 - belongs_to :brand
+
+## categoriesテーブル
+|Column|Type|Options|
+|------|----|-------|
+|name|string|null: false|
+|product_id|integer|null: false, foreign_key: true|
+### Association
+- has_many :products
