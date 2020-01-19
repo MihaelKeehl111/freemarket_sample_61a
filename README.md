@@ -48,3 +48,11 @@
 |product_id|integer|null: false, foreign_key: true|
 ### Association
 - has_many :products
+
+## commentsテーブル
+|Column|Type|Options|
+|------|----|-------|
+|text|text|null: false|
+|user_id|integer|null: false, foreign_key: true|
+### Association
+- belongs_to :user
