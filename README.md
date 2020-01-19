@@ -40,3 +40,11 @@
 |product_id|integer|null: false, foreign_key: true|
 ### Association
 - has_many :products
+
+## brandsテーブル
+|Column|Type|Options|
+|------|----|-------|
+|name|string|null: false|
+|product_id|integer|null: false, foreign_key: true|
+### Association
+- has_many :products
