@@ -12,10 +12,6 @@
 |birthday|string|null: false|
 |cellphone-number|string|null: false|
 |phone-number|integer||
-|cardnumber|integer|null: false|
-|expiration-month|integer|null: false|
-|expiration-year|integer|null: false|
-|securitycord|integer|null: false|
 |profile|text||
 |profile-image|text||
 ### association
@@ -24,6 +20,7 @@
 - has_many :users_rates
 - has_many :likes
 - belongs_to :streetadress
+- belongs_to :card
 
 
 ## products
@@ -97,3 +94,12 @@
 |product|refarence|null: false, foreign_key: true|
 ### association
 - belongs_to :product
+
+## cards
+|cardnumber|integer|null: false|
+|expiration-month|integer|null: false|
+|expiration-year|integer|null: false|
+|securitycord|integer|null: false|
+|user|refarence|null: false, foreign_key: true|
+### association
+- belongs_to :user
