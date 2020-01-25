@@ -1,7 +1,7 @@
 # メルカリデータベース設計
 ## users
-|column|type|options|
-|-------------------|
+|Column|Type|Options|
+|------|----|-------|
 |nickname|string|null: false, unique: true|
 |email|string|null: false,unique: true|
 |password|string|null: false, unique: true|
@@ -24,8 +24,8 @@
 
 
 ## products
-|column|type|options|
-|-------------------|
+|Column|Type|Options|
+|------|----|-------|
 |name|string|null: false|
 |size|string|null: false|
 |description|text|null: false|
@@ -47,6 +47,8 @@
 - has_many :images
 
 ## likes
+|Column|Type|Options|
+|------|----|-------|
 |user|reference||null: false, foreign_key: true|
 |product|reference|null: false, foreign_key: true|
 ### assosiation 
@@ -54,8 +56,8 @@
 - belongs_to :product
 
 ## categories
-|column|type|options|
-|-------------------|
+|Column|Type|Options|
+|------|----|-------|
 |name|string|null: false|
 ### association
 - has_many :products
@@ -63,15 +65,15 @@
 
 
 ## brands
-|column|type|options|
-|-------------------|
+|Column|Type|Options|
+|------|----|-------|
 |name|string|null: false|
 ### association
 - has_many :products
 
 ## comments
-|column|type|options|
-|-------------------|
+|Column|Type|Options|
+|------|----|-------|
 |comment|text|null: false|
 |user|reference|null: false, foreign_key: true|
 |product|reference|null: false, foreign_key: true|
@@ -80,6 +82,8 @@
 - belongs_to :product
 
 ## streetaddresses
+|Column|Type|Options|
+|------|----|-------|
 |postcode|integer|null: false|
 |prefecture|string|null: false|
 |Municipalities|string|null: false|
@@ -90,12 +94,16 @@
 - belongs_to :user
 
 ## images
+|Column|Type|Options|
+|------|----|-------|
 |image|text|null: false|
 |product|refarence|null: false, foreign_key: true|
 ### association
 - belongs_to :product
 
 ## cards
+|Column|Type|Options|
+|------|----|-------|
 |cardnumber|integer|null: false|
 |expiration-month|integer|null: false|
 |expiration-year|integer|null: false|
