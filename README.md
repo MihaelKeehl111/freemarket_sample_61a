@@ -19,8 +19,8 @@
 - has_many :comments
 - has_many :users_rates
 - has_many :likes
-- belongs_to :streetadress
-- belongs_to :card
+- has_one :streetaddress
+- has_one :card
 
 
 ## products
@@ -79,7 +79,7 @@
 - belongs_to :user
 - belongs_to :product
 
-## streetadresies
+## streetaddresses
 |postcode|integer|null: false|
 |prefecture|string|null: false|
 |Municipalities|string|null: false|
