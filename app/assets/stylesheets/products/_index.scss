@@ -92,8 +92,21 @@ body {
     height: 188px;
     position: relative;
     &--price {
-      position: absolute;
+      align-items: center;
+      background: rgba(0,0,0,.4);
+      border-radius: 0 14px 14px 0;
       bottom: 8px;
+      box-sizing: border-box;
+      color: #fff;
+      display: inline-flex;
+      font-size: 17px;
+      height: 28px;
+      letter-spacing: .02em;
+      margin: 0;
+      padding: 0 12px;
+      position: absolute;
+      z-index: 2;
+      left: 0;
     }
   }
   &__item-name {
