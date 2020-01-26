@@ -1,3 +1,5 @@
+// 共通部分
+
 ul {
   list-style: none;
 }
@@ -17,130 +19,22 @@ body {
   background-color: rgb(245, 245, 245);
 }
 
-.header {
-  height: 100px;
-  position: relative;
-  background-color: white;
-  &--top {
-    width: 1020px;
-    height: 40px;
-    padding: 8px 0 0;
-    margin: 0 auto;
-    display: flex;
-    &__logo {
-      display: block;
-    }
-    &--search {
-      position: relative;
-      width: calc(100% - 45px);
-      margin-left: 45px;
-      input {
-        position: absolute;
-        background: #f5f5f5;
-        border-radius: 4px;
-        padding: 0 42px 0 10px;
-        width: calc(100% - 50px);
-        height: 40px;
-        border: 1px solid #ccc;
-        font-size: 16px;
-        outline: 0;
-        &:focus {
-          border: 1px solid #0099e8;
-          transition: all ease-out .3s;
-        } 
-      }
-      &__icon {
-        position: absolute;
-        float: right;
-        padding: 0 10px;
-        right: 0;
-        top: 0;
-        background: none;
-        border: none;
-        height: 40px;
-        width: 40px;
-        font-size: 15px;
-        :hover {
-          cursor: pointer;
-        }
-      }
-    }
-  }
-  &--bottom {
-    width: 1020px;
-    margin: 8px auto 0;
-    &--left {
-      float: left;
-      &--lists {
-        padding-right: 11px;
-        display: inline;
-        &__icon {
-          color: #ea352d;
-          margin-right: 4px;
-        }
-        h2 {
-          font-size: 14px;
-          color: #333;
-          font-weight: bold;
-          line-height: 32px;
-          display: inline-block;
-          position: relative;
-          &:hover {
-            color: #0099e8;
-          }
-        }
-      }
-    }
-    &--right {
-      float: right;
-      &--lists {
-        padding-left: 11px;
-        display: inline;
-        &__icon {
-          margin-right: 4px;
-          font-size: 20px;
-          color: #ccc;
-          vertical-align: middle;
-        }
-        h2 {
-          font-size: 14px;
-          font-weight: 400;
-          line-height: 32px;
-          display: inline-block;
-          position: relative;
-          &:hover .header--bottom--right--lists__icon {
-            color: #0099e8;
-          }
-          &:hover {
-            color: #0099e8;
-          }
-          img {
-            width: 28px;
-            height: 28px;
-            border-radius: 50%;
-            margin-right: 4px;
-            vertical-align: middle;
-          }
-        }
-      }
-    }
-  }
-}
+// マイページの中身記述 nav： メルカリ＞マイページ の部分
 
 .nav {
   position: relative;
   background-color: white;
   border-top: solid 1px #eee;
   box-shadow: 0 3px 3px 0 rgba(0,0,0,0.16);
-  &--lists {
+  &__lists {
     width: 1020px;
     margin: 0 auto;
     padding: 15px 0;
-    &--list {
+    &__list {
       font-size: 14px;
       line-height: 1.2;
       display: inline;
-      &__mypage {
+      &--mypage {
         font-weight: bold;
       }
       a {
@@ -148,7 +42,7 @@ body {
         position: relative;
         color: #333;
       }
-      &__icon {
+      &--icon {
         margin: 0 8px;
         font-size: 9px;
         color: #888;
@@ -161,18 +55,18 @@ body {
   margin: 40px auto 0;
   padding: 0 0 40px;
   width: 1020px;
-  &--right {
+  &__right {
     float: right;
     width: 700px;
-    &--top--content--lists__right {
+    &__top__content__lists--right {
       display: none;
     }
   }
-  &--side {
+  &__side {
     float: left;
     width: 280px;
     margin: 0 40px 0 0;
-    &--lists {
+    &__lists {
       position: relative;
       display: block;
       padding: 16px;
@@ -187,157 +81,9 @@ body {
       margin: 40px 0 0;
       font-size: 16px;
     }
-    &--lists__middle {
+    &__lists--middle {
       padding: 8px 0 0;
     }
   }
 }
 
-.appbanner {
-  margin-top: auto;
-  background: no-repeat url("appbanner_background.jpg");
-  background-position: center;
-  background-size: cover;
-  &--content {
-    height: 260px;
-    margin: 0 auto;
-    width: 750px;
-    display: flex;
-    justify-content: space-between;
-    &--text {
-      color: white;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      h2 {
-        font-size: 24px;
-        line-height: 1.4;
-        margin-top: 40px;
-        margin-bottom: 15px;
-      }
-      p {
-        font-size: 35px;
-        margin-bottom: 20px;
-      }
-      &__icon {
-
-        &__app {
-          position: relative;
-          background-color: white;
-          float: left;
-          width: 68px;
-          height: 68px;
-          margin-right: 25px;
-          border-radius: 15px;
-          img {
-            position: absolute;
-            width: 50px;
-            height: 50px;
-            top: 8px;
-            left: 9px;
-          }
-        }
-        ul {
-          .banner {
-            float: left;
-            img {
-              width: 130px;
-              margin-top: 20px;
-              margin-right: 20px;
-            }
-          }
-          .google {
-            img {
-              width: 130px;
-              margin-top: 20px;
-              margin-right: 20px;
-            }
-          }
-        }
-      }
-    }
-    &--figure {
-      display: block;
-      img {
-        height: 260px;
-        width: 230px;
-        vertical-align: middle;
-      }
-    }
-  }
-}
-
-.footer {
-  background-color: rgb(33, 33, 33);
-  padding: 0 20px 10px 20px;
-  &--navi {
-    width: 1020px;
-    margin: 0 auto;
-    &--cell {
-      margin-top: 18px;
-      display: block;
-      float: left;
-      h2 {
-        font-size: 14px;
-        line-height: 1.4;
-        color: #fff;
-      }
-      li {
-        margin: 16px 0 0;
-        display: block;
-        a {
-          opacity: .7;
-          color: #fff;
-          font-size: 11px;
-          line-height: 1.5em;
-        }
-      }
-      &__about {
-        width: 20%;
-        &__icon {
-          padding: 5px 10px 0 0;
-          color: white;
-        }
-      }
-      &__help {
-        width: 23%;
-      }
-      &__privacy {
-        width: 42%;
-        &--right {
-          width: 50%;
-          float: right;
-          margin-top: 0;
-        }
-        &--left {
-          width: 50%;
-          float: left;
-          margin-top: 0;
-        }
-      }
-      &__country {
-        width: auto;
-      }
-    }
-  }
-  &--bottom {
-    margin: 0px auto 30px;
-    width: 1020px;
-    a {
-    display: inline-block;
-    margin-right: 10px;
-    width: auto;
-    background-color: white;
-    border-radius: 5px;
-    }
-    span {
-      color: white;
-      font-size: 12px;
-      width: 745px;
-      display: inline-block;
-      margin: 8px 0 0;
-      text-align: center;
-      vertical-align: sub;
-    }
-  }
-}
