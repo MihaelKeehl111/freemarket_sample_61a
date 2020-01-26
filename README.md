@@ -1,128 +1,103 @@
-# README
-
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-# free marker_sample 61a  DB設計
-
-## usersテーブル
+# メルカリデータベース設計
+## users
 |Column|Type|Options|
 |------|----|-------|
-|nickname|string|null: false|
-|email|string|null: false|
-|family_name|string|null: false|
-|first_name|string|null: false|
-|family_name_kana|string|null: false|
-|first_name_kana|string|null: false|
-|birth_year|integer|null: false|
-|birth_month|integer|null: false|
-|birth_day|integer|null: false|
-|zip_code|integer|null: false|
-|prefecture|string|null: false|
-|commune|string|null: false|
-|house_number|string|null: false|
-|building_name|string|null: false|
-|phone_number|integer|null: false|
-### Association
-- has_many :comments
+|nickname|string|null: false, unique: true|
+|email|string|null: false,unique: true|
+|password|string|null: false, unique: true|
+|familyname|string|null: false|
+|familyname(kana)|string|null: false|
+|firstname|string|null: false|
+|firstname(kana)|string|null: false|
+|birthday|string|null: false|
+|cellphone-number|string|null: false|
+|phone-number|integer||
+|profile|text||
+|profile-image|text||
+### association
 - has_many :products
+- has_many :comments
+- has_many :users_rates
 - has_many :likes
+- has_one :streetaddress
+- has_one :card
 
-## productテーブル
+
+## products
 |Column|Type|Options|
 |------|----|-------|
 |name|string|null: false|
-|price|integer|null: false|
-|detail|text|null: false|
 |size|string|null: false|
+|description|text|null: false|
 |state|string|null: false|
-### Association
+|price|string|null: false|
+|delivery-charge|string|null: false|
+|delivery-method|string|null: false|
+|delivery-area|string|null: false|
+|delivery-date|string|null: false|
+|category|reference|null: false, foreign_key: true|
+|user|reference|null: false, foreign_key: true|
+|brand|reference|null: false, foreign_key: true|
+### association
 - belongs_to :user
-- has_many :comments
-- belongs_to :category1
-- belongs_to :category2
-- belongs_to :category3
+- belongs_to :category
 - belongs_to :brand
+- has_many :comments
+- has_many :likes
 - has_many :images
 
-
-## category1テーブル
+## likes
 |Column|Type|Options|
 |------|----|-------|
-|name|string|null: false|
-### Association
-- has_many :products
-- has_many :category2s
-
-## category2テーブル
-|Column|Type|Options|
-|------|----|-------|
-|name|string|null: false|
-### Association
-- has_many :products
-- belongs_to :category1
-- has_many :category3s
-
-
-## category3テーブル
-|Column|Type|Options|
-|------|----|-------|
-|name|string|null: false|
-### Association
-- has_many :products
-- belongs_to :category2 
-
-
-## brandテーブル
-|Column|Type|Options|
-|------|----|-------|
-|name|string|null: false|
-### Association
-- has_many :products
-
-
-## imageテーブル
-|Column|Type|Options|
-|------|----|-------|
-|image|string|null: false|
-### Association
-- belongs_to :product
-
-
-## commentsテーブル
-|Column|Type|Options|
-|------|----|-------|
-|text|text|null: false|
-|user_id|integer|null: false, foreign_key: true|
-|product_id|integer|null: false, foreign_key: true|
-### Association
+|user|reference||null: false, foreign_key: true|
+|product|reference|null: false, foreign_key: true|
+### assosiation 
 - belongs_to :user
 - belongs_to :product
 
-
-## likeテーブル
+## categories
 |Column|Type|Options|
 |------|----|-------|
-|user_id|integer|null: false, foreign_key: true|
-### Association
+|name|string|null: false|
+### association
+- has_many :products
+- has_ancestry
+
+
+## brands
+|Column|Type|Options|
+|------|----|-------|
+|name|string|null: false|
+### association
+- has_many :products
+
+## comments
+|Column|Type|Options|
+|------|----|-------|
+|comment|text|null: false|
+|user|reference|null: false, foreign_key: true|
+|product|reference|null: false, foreign_key: true|
+### association
+- belongs_to :user
+- belongs_to :product
+
+## streetaddresses
+|Column|Type|Options|
+|------|----|-------|
+|postcode|integer|null: false|
+|prefecture|string|null: false|
+|Municipalities|string|null: false|
+|adress|string|null: false|
+|building|string||
+|user|refarence|null: false, foreign_key: true|
+### association
+- belongs_to :user
+
+## images
+|Column|Type|Options|
+|------|----|-------|
+|image|text|null: false|
+|product|refarence|null: false, foreign_key: true|
+### association
+- belongs_to :product
 - belongs_to :user
