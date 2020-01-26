@@ -54,8 +54,52 @@ body {
     flex-direction: column;
     margin: auto;
   }
-  &__more-item {
+
+  &__item-more {
     color: #0095ee;
+    font-size: 14px;
+    float: right;
+    text-decoration: none;
+    padding: 5px 16px 5px 5px;
+    font-weight: 900;
+  }
+  &__text {
+    font-size: 24px;
+    font-family: Arial, 游ゴシック体, YuGothic, メイリオ, Meiryo, sans-serif;
+    float: center;
+    box-sizing: border-box;
+    width: 1020px;
+    height: 33px;
+    text-align: left;
+    font-weight: 900;
+  }
+  &__item {
+    height: 573px;
+    width: 1020px;
+  }
+  &__contents {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  &__content {
+    width: 188px;
+    height: 252px;
+    background-color: white;
+    margin: 8px;
+  }
+  &__image {
+    width: 188px;
+    height: 188px;
+    position: relative;
+    &--price {
+      position: absolute;
+      bottom: 8px;
+    }
+  }
+  &__item-name {
+    width: 188px;
+    height: 64px;
+    padding: 12px;
   }
 }
 
