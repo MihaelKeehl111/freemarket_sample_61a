@@ -1,0 +1,326 @@
+.header
+  .header--top
+    %h1.header--top__logo
+      %a{href: ""}
+        = image_tag "fmarket_logo_red.svg", alt: "mercari", width: 134, height: 36
+    %form.header--top--search
+      %input{placeholder: "何かお探しですか？"}
+      %button{type: 'submit', class: 'header--top--search__icon'}
+        = icon 'fas', 'search'
+  .header--bottom.clearfix
+    %ul.header--bottom--left
+      %li.header--bottom--left--lists
+        %h2.header--bottom--left--lists
+          %a
+            = icon 'fas', 'list-ul', class: 'header--bottom--left--lists__icon'
+            %span カテゴリーから探す
+      %li.header--bottom--left--lists
+        %h2.header--bottom--left--lists
+          %a
+            = icon 'fas', 'tag', class: 'header--bottom--left--lists__icon'
+            %span ブランドから探す
+    %ul.header--bottom--right
+      %li.header--bottom--right--lists
+        %h2.header--bottom--right--lists
+          %a
+            = icon 'far', 'heart', class: 'header--bottom--right--lists__icon'
+            %span いいね！一覧
+      %li.header--bottom--right--lists
+        %h2.header--bottom--right--lists
+          %a
+            = icon 'far', 'bell', class: 'header--bottom--right--lists__icon'
+            %span お知らせ
+      %li.header--bottom--right--lists
+        %h2.header--bottom--right--lists
+          %a
+            = icon 'fas', 'check', class: 'header--bottom--right--lists__icon'
+            %span やることリスト
+      %li.header--bottom--right--lists
+        %h2.header--bottom--right--lists
+          %a
+            = image_tag 'human.svg', class: 'header--bottom--right--lists__profile'
+            %span マイページ
+.nav
+  %ul.nav--lists
+    %li.nav--lists--list
+      %a{href: ""}
+        %span メルカリ
+      = icon 'fas', 'chevron-right', class: 'nav--lists--list__icon'
+    %li.nav--lists--list.nav--lists--list__mypage
+      %span マイページ
+
+.main.clearfix
+  .main--right
+    .main--right--top
+      .main--right--top--header
+        .main--right--top--header--profile
+          = image_tag "", alt: "prof-image"
+          %h2 user-nickname
+          .main--right--top--header--profile--about
+            %span 評価 10
+            %span 出品 10
+      .main--right--top--content
+        .main--right--top--content--tabs
+          %ul
+            %li.main--right--content--top--content--tabs__left
+              %h3
+                %a お知らせ
+            %li.main--right--content--top--content--tabs__right
+              %h3
+                %a やることリスト
+        .main--right--top--content--lists
+          %ul.main--right--top--content--lists__left
+            %li
+              %a{href: ""}
+                = image_tag "logo_red.svg", width: 48, height: 48
+                .main---right-top--content--lists__left__body
+                  %span 《もう参加した？》今なら2,020名様に1万円が当たるチャンス！詳しくはこちらから♪
+                  .time
+                    %img.icon
+                    %span ４日前
+                .icon__right
+            %li
+              %a{href: ""}
+                %img{src: "SVC/logo_red.svg", width: 48, height: 48}
+                .main--right--top--content--lists__left__body
+                  %span 事務局から個別メッセージ「ログイン通知」
+                  .time
+                    %img.icon
+                    %span ５日前
+                .icon__right
+            %li
+              %a.mypage__lists{href: ""} 一覧をみる
+          %ul.main--right--top--content--lists__right
+            %li 
+              = image_tag "logo_white.svg", width: 70, height: 70
+              %span 現在、やることリストはありません
+
+    .main--right--bottom
+      %h2.main--right--bottom--header
+        購入した商品
+        .main--right--bottom--content
+          .main--right--bottom--content--tabs
+            %ul
+              %li.main--right--bottom--content--tabs__left
+                %a
+                  %h3 取引中
+              %li.main--right--bottom--content--tabs__right
+                %a
+                  %h3 過去の取引
+          .main--right--bottom--content--lists
+            %ul.main--right--bottom--content--lists__left
+              %li 
+                = image_tag "logo_white.svg", width: 70, height: 70
+                %span 取引中の商品がありません
+              
+            %ul.main--right--bottom--content--lists__right
+              %li
+                %a{href: ""}
+                  = image_tag "logo_red.svg", width: 48, height: 48
+                  .main--right--bottom--content--lists__right__body
+                    %span 「〇〇」を購入しました。取引が完了しました
+                    %span.main--right--bottom--content--lists__right__body__bold 取引完了
+                  .icon__right
+              %li
+                %a{href: ""}
+                  = image_tag "logo_red.svg", width: 48, height: 48
+                  .main--right--bottom--content--lists__right__body
+                    %span 「△△」を購入しました。取引が完了しました
+                    %span.main--right--bottom--content--lists__right__body__bold 取引完了
+                  .icon__right
+              %li
+                %a.mypage__lists{href: ""} 一覧をみる
+
+  .main--side
+    %ul
+      %li.main--side--lists
+        %a{href: ""}
+          マイページ
+          .icon__right
+      %li.main--side--lists
+        %a{href: ""}
+          お知らせ
+          .icon__right
+      %li.main--side--lists
+        %a{href: ""}
+          やることリスト
+          .icon__right
+      %li.main--side--lists
+        %a{href: ""}
+          いいね！一覧
+          .icon__right
+      %li.main--side--lists
+        %a{href: ""}
+          出品する
+          .icon__right
+      %li.main--side--lists
+        %a{href: ""}
+          出品した商品 - 出品中
+          .icon__right
+      %li.main--side--lists
+        %a{href: ""}
+          出品した商品 - 取引中
+          .icon__right
+      %li.main--side--lists
+        %a{href: ""}
+          出品した商品 - 売却済み
+          .icon__right
+      %li.main--side--lists
+        %a{href: ""}
+          出品した商品 - 取引中
+          .icon__right
+      %li.main--side--lists
+        %a{href: ""}
+          出品した商品 - 過去の取引
+          .icon__right
+      %li.main--side--lists
+        %a{href: ""}
+          ニュース一覧
+          .icon__right
+      %li.main--side--lists
+        %a{href: ""}
+          評価一覧
+          .icon__right
+      %li.main--side--lists
+        %a{href: ""}
+          ガイド
+          .icon__right
+      %li.main--side--lists
+        %a{href: ""}
+          お問い合わせ
+          .icon__right
+    %h3 メルペイ
+    %ul.main--side--lists__middle
+      %li.main--side--lists
+        %a{href: ""}
+          売上・振込申請
+          .icon__right
+      %li.main--side--lists
+        %a{href: ""}
+          ポイント
+          .icon__right
+    %h3 設定
+    %ul.main--side--lists__middle
+      %li.main--side--lists
+        %a{href: ""}
+          プロフィール
+          .icon__right
+      %li.main--side--lists
+        %a{href: ""}
+          発送元・お届け先住所変更
+          .icon__right
+      %li.main--side--lists
+        %a{href: ""}
+          支払い方法
+          .icon__right
+      %li.main--side--lists
+        %a{href: ""}
+          メール/パスワード
+          .icon__right
+      %li.main--side--lists
+        %a{href: ""}
+          本人情報
+          .icon__right
+      %li.main--side--lists
+        %a{href: ""}
+          電話番号の確認
+          .icon__right
+      %li.main--side--lists
+        %a{href: ""}
+          ログアウト
+          .icon__right
+
+.appbanner.clearfix
+  .appbanner--content
+    .appbanner--content--text
+      %h2 スマホでかんたんフリマアプリ
+      %p 今すぐ無料ダウンロード！
+      .appbanner--content--text__icon.clearfix
+        .appbanner--content--text__icon__app
+          = image_tag "logo_red.svg", width: 68, alt: "app-img"
+        %ul
+          %li.banner
+            %a{href: "https://itunes.apple.com"}
+              = image_tag "app-store.svg", alt: "appstore-logo"
+          %li.banner.google
+            %a{href: "https://play.google.com"}
+              = image_tag "google-play.svg", alt: "googleplay-logo"
+    .appbanner--content--figure
+      = image_tag "appbanner_figure.jpg", height: 300
+
+.footer
+  .footer--navi.clearfix
+    .footer--navi--cell.footer--navi--cell__about
+      %h2
+        メルカリについて
+      %ul
+        %li
+          %a{href: ""} 会社概要（運営会社）
+        %li
+          %a{href: ""} 採用情報
+        %li
+          %a{href: ""} プレリリース
+        %li
+          %a{href: ""} 公式ブログ
+        %li
+          %a{href: ""} メルカリロゴ仕様ガイドライン
+        %li.footer--navi--cell.footer--navi--cell__about__icon
+          %a{href: ""}
+          = icon 'fab', 'twitter', class: 'footer--navi--cell__about__icon fa-2x'
+        %li.footer--navi--cell.footer--navi--cell__about__icon
+          %a{href: ""}
+          = icon 'fab', 'facebook-square', class: 'footer--navi--cell__about__icon fa-2x'
+    .footer--navi--cell.footer--navi--cell__help
+      %h2
+        ヘルプ＆ガイド
+      %ul
+        %li
+          %a{href: ""} メルカリガイド
+        %li
+          %a{href: ""} らくらくメルカリ便
+        %li
+          %a{href: ""} ゆうゆうメルカリ便
+        %li
+          %a{href: ""} 大型メルカリ便
+        %li
+          %a{href: ""} 車体取引ガイド
+        %li
+          %a{href: ""} メルカリあんしん・あんぜん宣言！
+        %li
+          %a{href: ""} 偽ブランド品撲滅への取り組み
+        %li
+          %a{href: ""} メルカリボックス
+    .footer--navi--cell.footer--navi--cell__privacy
+      %h2
+        プライバシーと利用規約
+      %ul.footer--navi--cell.footer--navi--cell__privacy--left
+        %li
+          %a{href: ""} プライバシーポリシー
+        %li
+          %a{href: ""} メルカリ利用規約
+        %li
+          %a{href: ""} あんしんスマホサポート制度に関<br>する利用規約
+        %li
+          %a{href: ""} コンプライアンスポリシー
+      %ul.footer--navi--cell.footer--navi--cell__privacy--right
+        %li
+          %a{href: ""} 個人データの安全管理に係る基本<br>方針
+        %li
+          %a{href: ""} 特定商取引に関する表記
+        %li
+          %a{href: ""} 資金決済法に基づく表示
+        %li
+          %a{href: ""} 法令遵守と犯罪抑止のために
+          
+    .footer--navi--cell.footer--navi--cell__country
+      %h2
+        国
+      %ul
+        %li
+          %a{href: ""} 日本
+        %li
+          %a{href: ""} United States
+  .footer--bottom
+    %a.footer--bottom__logo
+      = image_tag "fmarket_logo_white.svg", width: 124, height: 31, alt: "mercari"
+    %span ©️ Mercari, Inc.
