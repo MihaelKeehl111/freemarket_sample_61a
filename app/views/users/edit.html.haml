@@ -1,0 +1,138 @@
+= render "header"
+
+//プロフィール編集
+.main
+  .main--profile_contents
+    .main--profile_contents__title
+      %h1 プロフィール
+    .main--profile_contents__user_name
+      = image_tag 'noimage_icon.png', alt: '', class: 'user_img'
+      %input.user_name{value: "user name" }
+    .main--profile_contents__user_message
+      %textarea#profile_message{name: "profile_message", placeholder: "例）こんにちは☆ ご覧いただきありがとうございます！かわいいものやきれいめオフィスカジュアル中心に出品しています。服のサイズは主に9号です。気持ちよくお取引できるよう心がけていますので、商品や発送方法などご質問がありましたらお気軽にどうぞ♪"}
+      %button{type: 'submit'}変更する
+
+  .main--side
+    %ul
+      %li.main--side--lists
+        %a{href: ""}
+          マイページ
+          .icon__right
+      %li.main--side--lists
+        %a{href: ""}
+          お知らせ
+          .icon__right
+      %li.main--side--lists
+        %a{href: ""}
+          やることリスト
+          .icon__right
+      %li.main--side--lists
+        %a{href: ""}
+          いいね！一覧
+          .icon__right
+      %li.main--side--lists
+        %a{href: ""}
+          出品する
+          .icon__right
+      %li.main--side--lists
+        %a{href: ""}
+          出品した商品 - 出品中
+          .icon__right
+      %li.main--side--lists
+        %a{href: ""}
+          出品した商品 - 取引中
+          .icon__right
+      %li.main--side--lists
+        %a{href: ""}
+          出品した商品 - 売却済み
+          .icon__right
+      %li.main--side--lists
+        %a{href: ""}
+          出品した商品 - 取引中
+          .icon__right
+      %li.main--side--lists
+        %a{href: ""}
+          出品した商品 - 過去の取引
+          .icon__right
+      %li.main--side--lists
+        %a{href: ""}
+          ニュース一覧
+          .icon__right
+      %li.main--side--lists
+        %a{href: ""}
+          評価一覧
+          .icon__right
+      %li.main--side--lists
+        %a{href: ""}
+          ガイド
+          .icon__right
+      %li.main--side--lists
+        %a{href: ""}
+          お問い合わせ
+          .icon__right
+    %h3 メルペイ
+    %ul.main--side--lists__middle
+      %li.main--side--lists
+        %a{href: ""}
+          売上・振込申請
+          .icon__right
+      %li.main--side--lists
+        %a{href: ""}
+          ポイント
+          .icon__right
+    %h3 設定
+    %ul.main--side--lists__middle
+      %li.main--side--lists
+        %a{href: ""}
+          プロフィール
+          .icon__right
+      %li.main--side--lists
+        %a{href: ""}
+          発送元・お届け先住所変更
+          .icon__right
+      %li.main--side--lists
+        %a{href: ""}
+          支払い方法
+          .icon__right
+      %li.main--side--lists
+        %a{href: ""}
+          メール/パスワード
+          .icon__right
+      %li.main--side--lists
+        %a{href: ""}
+          本人情報
+          .icon__right
+      %li.main--side--lists
+        %a{href: ""}
+          電話番号の確認
+          .icon__right
+      %li.main--side--lists
+        %a{href: ""}
+          ログアウト
+          .icon__right
+
+.banner
+  .banner--inner
+    .banner--inner--left
+      .banner--inner--left__text
+        %h2 スマホでかんたんフリマアプリ
+        %p 今すぐ無料ダウンロード！
+      .banner--inner--left__icon
+        = image_tag 'mercari_icon.png', alt: '', height: '', width: '', class: 'mercari_ic'
+        %ul.banner_ic
+          %li.banner_appstore
+            %a{href: "#"}
+              = image_tag 'app-store.svg', alt: '', height: '', width: '', class: ''
+          %li.banner_googleplay
+            %a{href: "#"}
+              = image_tag 'google-play.svg', alt: '', height: '', width: '', class: ''
+    .banner--inner--right
+      = image_tag 'content_pc.png', alt: '', height: '', width: '', class: 'content_pc'
+
+= render "footer"
+
+//出品ボタン
+%a{href:"#"}
+  .sell-btn{id: "sell-btn"} 
+    .sell-btn--text 出品
+    = icon 'fas', 'camera'

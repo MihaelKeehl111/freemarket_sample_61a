@@ -1,0 +1,437 @@
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 100%;
+}
+
+body {
+  font-family: 'Source Sans Pro', Helvetica , Arial, '游ゴシック体', 'YuGothic', 'メイリオ', 'Meiryo', sans-serif;
+  color: #333;
+}
+
+a {
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+}
+
+
+.sell-btn {
+  position: fixed;
+  bottom: 32px;
+  right: 32px;
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  background: #ea352d;
+  color: #fff;
+  text-align: center;
+  font-size: 22px;
+  &--text {
+    margin-top: 32px;
+  }
+  i {
+    font-size: 60px;
+    margin-top: 4px;
+  }
+}
+
+
+/* プロフィール編集画面 */
+.main {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: center;
+  margin: 40px auto 0;
+  padding: 0 0 40px;
+  &--profile_contents {
+    background-color: #fff;
+    width: 700px;
+    height: 100%;
+    &__title {
+      padding: 8px 24px;
+      h1 {
+        text-align: center;
+        color: #333333;
+        font-size: 24px;
+        line-height: 1.4;
+      }
+    }
+    &__user_name {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 72px 16px 24px;
+      background: url("user-bg.jpg");
+      background-repeat: no-repeat;
+      background-size: cover;
+      text-align: center;
+      font-size: 0;
+      img {
+        width: 60px;
+        border-radius: 50%;
+      }
+      input {
+        height: 48px;
+        width: 220px;
+        padding: 10px 16px 8px;
+        border-radius: 4px;
+        border: 1px solid #ccc;
+        background: #ffffff;
+        font-size: 16px;
+        margin: 0 0 0 8px;
+        &:focus {
+          border: 1px solid #0099e8;
+          outline: 0;
+        }
+        }
+    }
+    &__user_message {
+      padding: 40px 16px;
+      textarea {
+        display: block;
+        width: 100%;
+        max-width: 100%;
+        height: 216px;
+        min-height: 104px;
+        padding: 10px;
+        border: 1px solid #ccc;
+        background: #ffffff;
+        font-size: 16px;
+        line-height: 1.5;
+        border-radius: 0;
+        &:focus {
+          border: 1px solid #0099e8;
+          outline: 0;
+        }
+      }
+      button {
+        background: #ea352d;
+        border: 1px solid #ea352d;
+        color: #ffffff;
+        width: 100%;
+        line-height: 48px;
+        text-align: center;
+        margin: 16px 0 0;
+        display: block;
+        font-size: 14px;
+      }
+    }
+  }
+  &--side {
+    float: left;
+    width: 280px;
+    margin: 0 40px 0 0;
+    &--lists {
+      position: relative;
+      display: block;
+      padding: 16px;
+      font-size: 14px;
+      background-color: white;
+      border-top: 1px solid #eee;
+      a {
+        color: #333;
+      }
+    }
+    h3 {
+      margin: 40px 0 0;
+      font-size: 16px;
+    }
+    &--lists__middle {
+      padding: 8px 0 0;
+    }
+  }
+}
+
+.banner {
+  background-image: url(bg_pc.jpg);
+  background-size: cover;
+  height: 260px;
+  &--inner {
+    width: 750px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: 0 auto;
+    &--left {
+      
+      &__text {
+        color: #fff;
+        text-shadow: 0 0 5px rgba(0,0,0,0.4);
+        h2 {
+          font-size: 24px;
+        }
+        p {
+          font-size: 35px;
+          margin: 10px 0 0;
+        }
+      }
+      &__icon {
+        margin: 20px 0 0 ;
+        display: flex;
+        img {
+          width: 68px;
+        }
+        .banner_ic {
+          display: flex;
+          align-items: center;
+          justify-content: space-around;
+          margin: 0 0 0 24px;
+          img {
+            width: 133px;
+            margin: 0 20px 0 0 ;
+          }
+        }
+      }
+    }
+    &--right {
+      img {
+        width: 300px;
+        height: 260px;
+      }
+    }
+  }
+}
+
+
+
+// 以下 共通部のヘッダーフッターのコード
+
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.clearfix:after {
+  content: '';
+  display: block;
+  clear: both;
+}
+
+body {
+  background-color: rgb(245, 245, 245);
+}
+
+.header {
+  height: 100px;
+  position: relative;
+  background-color: white;
+  &--top {
+    width: 1020px;
+    height: 40px;
+    padding: 8px 0 0;
+    margin: 0 auto;
+    display: flex;
+    &__logo {
+      display: block;
+    }
+    &--search {
+      position: relative;
+      width: calc(100% - 45px);
+      margin-left: 45px;
+      input {
+        position: absolute;
+        background: #f5f5f5;
+        border-radius: 4px;
+        padding: 0 42px 0 10px;
+        width: calc(100% - 50px);
+        height: 40px;
+        border: 1px solid #ccc;
+        font-size: 16px;
+        outline: 0;
+        &:focus {
+          border: 1px solid #0099e8;
+          transition: all ease-out .3s;
+        } 
+      }
+      &__icon {
+        position: absolute;
+        float: right;
+        padding: 0 10px;
+        right: 0;
+        top: 0;
+        background: none;
+        border: none;
+        height: 40px;
+        width: 40px;
+        font-size: 15px;
+        :hover {
+          cursor: pointer;
+        }
+      }
+    }
+  }
+  &--bottom {
+    width: 1020px;
+    margin: 8px auto 0;
+    &--left {
+      float: left;
+      &--lists {
+        padding-right: 11px;
+        display: inline;
+        &__icon {
+          color: #ea352d;
+          margin-right: 4px;
+        }
+        h2 {
+          font-size: 14px;
+          color: #333;
+          font-weight: bold;
+          line-height: 32px;
+          display: inline-block;
+          position: relative;
+          &:hover {
+            color: #0099e8;
+          }
+        }
+      }
+    }
+    &--right {
+      float: right;
+      &--lists {
+        padding-left: 11px;
+        display: inline;
+        &__icon {
+          margin-right: 4px;
+          font-size: 20px;
+          color: #ccc;
+          vertical-align: middle;
+        }
+        h2 {
+          font-size: 14px;
+          font-weight: 400;
+          line-height: 32px;
+          display: inline-block;
+          position: relative;
+          &:hover .header--bottom--right--lists__icon {
+            color: #0099e8;
+          }
+          &:hover {
+            color: #0099e8;
+          }
+          img {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            margin-right: 4px;
+            vertical-align: middle;
+          }
+        }
+      }
+    }
+  }
+}
+
+.nav {
+  position: relative;
+  background-color: white;
+  border-top: solid 1px #eee;
+  box-shadow: 0 3px 3px 0 rgba(0,0,0,0.16);
+  &--lists {
+    width: 1020px;
+    margin: 0 auto;
+    padding: 15px 0;
+    &--list {
+      font-size: 14px;
+      line-height: 1.2;
+      display: inline;
+      &__mypage {
+        font-weight: bold;
+      }
+      a {
+        display: inline-block;
+        position: relative;
+        color: #333;
+      }
+      &__icon {
+        margin: 0 8px;
+        font-size: 9px;
+        color: #888;
+      }
+    }
+  }
+}
+
+
+.footer {
+  background-color: rgb(33, 33, 33);
+  padding: 0 20px 10px 20px;
+  &--navi {
+    width: 1020px;
+    margin: 0 auto;
+    &--cell {
+      margin-top: 18px;
+      display: block;
+      float: left;
+      h2 {
+        font-size: 14px;
+        line-height: 1.4;
+        color: #fff;
+      }
+      li {
+        margin: 16px 0 0;
+        display: block;
+        a {
+          opacity: .7;
+          color: #fff;
+          font-size: 11px;
+          line-height: 1.5em;
+        }
+      }
+      &__about {
+        width: 20%;
+        &__icon {
+          padding: 5px 10px 0 0;
+          color: white;
+        }
+      }
+      &__help {
+        width: 23%;
+      }
+      &__privacy {
+        width: 42%;
+        &--right {
+          width: 50%;
+          float: right;
+          margin-top: 0;
+        }
+        &--left {
+          width: 50%;
+          float: left;
+          margin-top: 0;
+        }
+      }
+      &__country {
+        width: auto;
+      }
+    }
+  }
+  &--bottom {
+    margin: 0px auto 30px;
+    width: 1020px;
+    a {
+    display: inline-block;
+    margin-right: 10px;
+    width: auto;
+    background-color: white;
+    border-radius: 5px;
+    }
+    span {
+      color: white;
+      font-size: 12px;
+      width: 745px;
+      display: inline-block;
+      margin: 8px 0 0;
+      text-align: center;
+      vertical-align: sub;
+    }
+  }
+}

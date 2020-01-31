@@ -1,0 +1,50 @@
+.header
+  .header--top
+    %h1.header--top__logo
+      %a{href: ""}
+        = image_tag "fmarket_logo_red.svg", alt: "mercari", width: 134, height: 36
+    %form.header--top--search
+      %input{placeholder: "何かお探しですか？"}
+      %button{type: 'submit', class: 'header--top--search__icon'}
+        = icon 'fas', 'search'
+  .header--bottom.clearfix
+    %ul.header--bottom--left
+      %li.header--bottom--left--lists
+        %h2.header--bottom--left--lists
+          %a
+            = icon 'fas', 'list-ul', class: 'header--bottom--left--lists__icon'
+            %span カテゴリーから探す
+      %li.header--bottom--left--lists
+        %h2.header--bottom--left--lists
+          %a
+            = icon 'fas', 'tag', class: 'header--bottom--left--lists__icon'
+            %span ブランドから探す
+    %ul.header--bottom--right
+      %li.header--bottom--right--lists
+        %h2.header--bottom--right--lists
+          %a
+            = icon 'far', 'heart', class: 'header--bottom--right--lists__icon'
+            %span いいね！一覧
+      %li.header--bottom--right--lists
+        %h2.header--bottom--right--lists
+          %a
+            = icon 'far', 'bell', class: 'header--bottom--right--lists__icon'
+            %span お知らせ
+      %li.header--bottom--right--lists
+        %h2.header--bottom--right--lists
+          %a
+            = icon 'fas', 'check', class: 'header--bottom--right--lists__icon'
+            %span やることリスト
+      %li.header--bottom--right--lists
+        %h2.header--bottom--right--lists
+          %a
+            = image_tag 'human.svg', class: 'header--bottom--right--lists__profile'
+            %span マイページ
+.nav
+  %ul.nav--lists
+    %li.nav--lists--list
+      %a{href: ""}
+        %span メルカリ
+      = icon 'fas', 'chevron-right', class: 'nav--lists--list__icon'
+    %li.nav--lists--list.nav--lists--list__mypage
+      %span マイページ
