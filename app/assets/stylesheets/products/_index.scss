@@ -1,6 +1,20 @@
 *, ::before, ::after{
   box-sizing: border-box;
 }
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.clearfix:after {
+  content: '';
+  display: block;
+  clear: both;
+}
 body {
   position: relative;
   min-height: 100%;
@@ -8,11 +22,6 @@ body {
   background-color: rgb(245, 245, 245);
   font-family: Arial, 游ゴシック体, YuGothic, メイリオ, Meiryo, sans-serif;
   font-size: 14px;
-}
-
-.header {
-  width: 100%;
-  height: 100px;
 }
 
 .toppage-slider {
@@ -113,26 +122,5 @@ body {
     width: 188px;
     height: 64px;
     padding: 12px;
-  }
-}
-
-.aside {
-  width: 1440px;
-  height: 260px;
-  background-color: lightcoral;
-}
-
-.footer {
-  width: 1440px;
-  height: 389px;
-  background-color: black;
-  color: white;
-  font-size: 12px;
-  padding: 0 20px 10px;
-  .nav {
-    width: 1020px;
-    height: 298px;
-    margin: 0 auto;
-    display: flex;
   }
 }
