@@ -66,7 +66,7 @@ img {
       justify-content: center;
       align-items: center;
       padding: 72px 16px 24px;
-      background: url("user-bg.jpg");
+      background: url("bg_pc.png");
       background-repeat: no-repeat;
       background-size: cover;
       text-align: center;
@@ -126,6 +126,9 @@ img {
     float: left;
     width: 280px;
     margin: 0 40px 0 0;
+    a {
+      color: #333;
+    }
     &--lists {
       position: relative;
       display: block;
@@ -133,10 +136,21 @@ img {
       font-size: 14px;
       background-color: white;
       border-top: 1px solid #eee;
-      a {
+      &:hover {
+        background-color: #f8f8f8;
+      }
+      &:hover i {
         color: #333;
+        transition: 0.4s ;
+        transform: translate(4px,0px);
+      }
+      i {
+        float: right;
+        color:rgb(204, 204, 204);
+        font-size: 16px;
       }
     }
+    
     h3 {
       margin: 40px 0 0;
       font-size: 16px;
@@ -148,7 +162,7 @@ img {
 }
 
 .banner {
-  background-image: url(bg_pc.jpg);
+  background-image: url(bg_pc.png);
   background-size: cover;
   height: 260px;
   &--inner {

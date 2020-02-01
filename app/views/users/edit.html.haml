@@ -6,7 +6,7 @@
     .main--profile_contents__title
       %h1 プロフィール
     .main--profile_contents__user_name
-      = image_tag 'noimage_icon.png', alt: '', class: 'user_img'
+      = image_tag 'human.svg', alt: '', class: 'user_img'
       %input.user_name{value: "user name" }
     .main--profile_contents__user_message
       %textarea#profile_message{name: "profile_message", placeholder: "例）こんにちは☆ ご覧いただきありがとうございます！かわいいものやきれいめオフィスカジュアル中心に出品しています。服のサイズは主に9号です。気持ちよくお取引できるよう心がけていますので、商品や発送方法などご質問がありましたらお気軽にどうぞ♪"}
@@ -14,102 +14,102 @@
 
   .main--side
     %ul
-      %li.main--side--lists
-        %a{href: ""}
+      = link_to('', {}) do
+        %li.main--side--lists
           マイページ
-          .icon__right
-      %li.main--side--lists
-        %a{href: ""}
+          = icon 'fas', 'chevron-right'
+      = link_to('', {}) do
+        %li.main--side--lists
           お知らせ
-          .icon__right
-      %li.main--side--lists
-        %a{href: ""}
+          = icon 'fas', 'chevron-right'
+      = link_to('', {}) do
+        %li.main--side--lists
           やることリスト
-          .icon__right
-      %li.main--side--lists
-        %a{href: ""}
+          = icon 'fas', 'chevron-right'
+      = link_to('', {}) do
+        %li.main--side--lists
           いいね！一覧
-          .icon__right
-      %li.main--side--lists
-        %a{href: ""}
+          = icon 'fas', 'chevron-right'
+      = link_to('', {}) do
+        %li.main--side--lists
           出品する
-          .icon__right
-      %li.main--side--lists
-        %a{href: ""}
+          = icon 'fas', 'chevron-right'
+      = link_to('', {}) do
+        %li.main--side--lists
           出品した商品 - 出品中
-          .icon__right
-      %li.main--side--lists
-        %a{href: ""}
+          = icon 'fas', 'chevron-right'
+      = link_to('', {}) do
+        %li.main--side--lists
           出品した商品 - 取引中
-          .icon__right
-      %li.main--side--lists
-        %a{href: ""}
+          = icon 'fas', 'chevron-right'
+      = link_to('', {}) do
+        %li.main--side--lists
           出品した商品 - 売却済み
-          .icon__right
-      %li.main--side--lists
-        %a{href: ""}
+          = icon 'fas', 'chevron-right'
+      = link_to('', {}) do
+        %li.main--side--lists
           出品した商品 - 取引中
-          .icon__right
-      %li.main--side--lists
-        %a{href: ""}
+          = icon 'fas', 'chevron-right'
+      = link_to('', {}) do
+        %li.main--side--lists
           出品した商品 - 過去の取引
-          .icon__right
-      %li.main--side--lists
-        %a{href: ""}
+          = icon 'fas', 'chevron-right'
+      = link_to('', {}) do
+        %li.main--side--lists
           ニュース一覧
-          .icon__right
-      %li.main--side--lists
-        %a{href: ""}
+          = icon 'fas', 'chevron-right'
+      = link_to('', {}) do
+        %li.main--side--lists
           評価一覧
-          .icon__right
-      %li.main--side--lists
-        %a{href: ""}
+          = icon 'fas', 'chevron-right'
+      = link_to('', {}) do
+        %li.main--side--lists
           ガイド
-          .icon__right
-      %li.main--side--lists
-        %a{href: ""}
+          = icon 'fas', 'chevron-right'
+      = link_to('', {}) do
+        %li.main--side--lists
           お問い合わせ
-          .icon__right
+          = icon 'fas', 'chevron-right'
     %h3 メルペイ
     %ul.main--side--lists__middle
-      %li.main--side--lists
-        %a{href: ""}
+      = link_to('', {}) do
+        %li.main--side--lists
           売上・振込申請
-          .icon__right
-      %li.main--side--lists
-        %a{href: ""}
+          = icon 'fas', 'chevron-right'
+      = link_to('', {}) do
+        %li.main--side--lists
           ポイント
-          .icon__right
+          = icon 'fas', 'chevron-right'
     %h3 設定
     %ul.main--side--lists__middle
-      %li.main--side--lists
-        %a{href: ""}
+      = link_to('', {}) do
+        %li.main--side--lists
           プロフィール
-          .icon__right
-      %li.main--side--lists
-        %a{href: ""}
+          = icon 'fas', 'chevron-right'
+      = link_to('', {}) do
+        %li.main--side--lists
           発送元・お届け先住所変更
-          .icon__right
-      %li.main--side--lists
-        %a{href: ""}
+          = icon 'fas', 'chevron-right'
+      = link_to('', {}) do
+        %li.main--side--lists
           支払い方法
-          .icon__right
-      %li.main--side--lists
-        %a{href: ""}
+          = icon 'fas', 'chevron-right'
+      = link_to('', {}) do
+        %li.main--side--lists
           メール/パスワード
-          .icon__right
-      %li.main--side--lists
-        %a{href: ""}
+          = icon 'fas', 'chevron-right'
+      = link_to('', {}) do
+        %li.main--side--lists
           本人情報
-          .icon__right
-      %li.main--side--lists
-        %a{href: ""}
+          = icon 'fas', 'chevron-right'
+      = link_to('', {}) do
+        %li.main--side--lists
           電話番号の確認
-          .icon__right
-      %li.main--side--lists
-        %a{href: ""}
+          = icon 'fas', 'chevron-right'
+      = link_to('', {}) do
+        %li.main--side--lists
           ログアウト
-          .icon__right
+          = icon 'fas', 'chevron-right'
 
 .banner
   .banner--inner
@@ -118,7 +118,7 @@
         %h2 スマホでかんたんフリマアプリ
         %p 今すぐ無料ダウンロード！
       .banner--inner--left__icon
-        = image_tag 'mercari_icon.png', alt: '', height: '', width: '', class: 'mercari_ic'
+        = image_tag 'box_icon.svg', alt: '', height: '', width: '', class: 'mercari_ic'
         %ul.banner_ic
           %li.banner_appstore
             %a{href: "#"}
@@ -127,7 +127,7 @@
             %a{href: "#"}
               = image_tag 'google-play.svg', alt: '', height: '', width: '', class: ''
     .banner--inner--right
-      = image_tag 'content_pc.png', alt: '', height: '', width: '', class: 'content_pc'
+      = image_tag 'phone_icon.svg', alt: '', height: '', width: '', class: 'content_pc'
 
 = render "footer"
 
