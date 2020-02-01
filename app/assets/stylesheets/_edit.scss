@@ -145,9 +145,9 @@ img {
         transform: translate(4px,0px);
       }
       i {
-        float: right;
-        color:rgb(204, 204, 204);
-        font-size: 16px;
+        position: absolute;
+        right: 16px;
+        color: #ccc;
       }
     }
     
