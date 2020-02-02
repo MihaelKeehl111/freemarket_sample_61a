@@ -23,3 +23,12 @@
   background: #eee;
   font-weight: bold;
 }
+
+.nav__lists__list {
+  &--mypage {
+    font-weight: 100;
+  }
+  &--logout {
+  font-weight: bold;
+  }
+}
