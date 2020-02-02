@@ -43,8 +43,11 @@
 .nav
   %ul.nav--lists
     %li.nav--lists--list
-      %a{href: ""}
-        %span メルカリ
+      %span メルカリ
       = icon 'fas', 'chevron-right', class: 'nav--lists--list__icon'
     %li.nav--lists--list.nav--lists--list__mypage
       %span マイページ
+      = icon 'fas', 'chevron-right', class: 'nav--lists--list__icon'
+    %li.nav--lists--list.nav--lists--list__plofile
+      %a{href: ""}
+        %span プロフィール

@@ -10,7 +10,8 @@
       %input.user_name{value: "user name" }
     .main--profile_contents__user_message
       %textarea#profile_message{name: "profile_message", placeholder: "例）こんにちは☆ ご覧いただきありがとうございます！かわいいものやきれいめオフィスカジュアル中心に出品しています。服のサイズは主に9号です。気持ちよくお取引できるよう心がけていますので、商品や発送方法などご質問がありましたらお気軽にどうぞ♪"}
-      %button{type: 'submit'}変更する
+      = link_to '', {class: 'button'} do
+        変更する
 
   .main--side
     %ul

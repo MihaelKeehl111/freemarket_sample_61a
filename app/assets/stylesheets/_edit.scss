@@ -109,7 +109,7 @@ img {
           outline: 0;
         }
       }
-      button {
+      .button {
         background: #ea352d;
         border: 1px solid #ea352d;
         color: #ffffff;
@@ -357,7 +357,7 @@ body {
       font-size: 14px;
       line-height: 1.2;
       display: inline;
-      &__mypage {
+      &__plofile {
         font-weight: bold;
       }
       a {
