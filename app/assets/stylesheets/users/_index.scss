@@ -352,6 +352,8 @@
         }
         &:hover i {
           color: #333;
+          transition: 0.4s;
+          transform: translate(4px,0px);
         }
         i {
           position: absolute;
