@@ -1,4 +1,4 @@
-.main__right__top__content {
+.main__right__top__content.main__right__top__content--logout {
   background-color: #fff;
   padding: 64px;
   .content__button {
@@ -17,4 +17,9 @@
       text-align: center;
     }
   }
+}
+
+.main__side__lists--logout {
+  background: #eee;
+  font-weight: bold;
 }
