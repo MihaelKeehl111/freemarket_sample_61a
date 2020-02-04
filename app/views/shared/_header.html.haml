@@ -19,24 +19,34 @@
           =link_to '' do
             = icon 'fas', 'tag', class: 'bottom__left__lists--icon'
             %span ブランドから探す
-    %ul.bottom__right
-      %li.bottom__right__lists
-        %h2.bottom__right__lists
-          =link_to '' do
-            = icon 'far', 'heart', class: 'bottom__right__lists--icon'
-            %span いいね！一覧
-      %li.bottom__right__lists
-        %h2.bottom__right__lists
-          =link_to '' do
-            = icon 'far', 'bell', class: 'bottom__right__lists--icon'
-            %span お知らせ
-      %li.bottom__right__lists
-        %h2.bottom__right__lists
-          =link_to '' do
-            = icon 'fas', 'check', class: 'bottom__right__lists--icon'
-            %span やることリスト
-      %li.bottom__right__lists
-        %h2.bottom__right__lists
-          =link_to users_path do
-            = image_tag 'human.svg', class: 'bottom__right__lists--profile'
-            %span マイページ
+
+    - if user_signed_in?
+      %ul.bottom__right
+        %li.bottom__right__lists
+          %h2.bottom__right__lists
+            =link_to '' do
+              = icon 'far', 'heart', class: 'bottom__right__lists--icon'
+              %span いいね！一覧
+        %li.bottom__right__lists
+          %h2.bottom__right__lists
+            =link_to '' do
+              = icon 'far', 'bell', class: 'bottom__right__lists--icon'
+              %span お知らせ
+        %li.bottom__right__lists
+          %h2.bottom__right__lists
+            =link_to '' do
+              = icon 'fas', 'check', class: 'bottom__right__lists--icon'
+              %span やることリスト
+        %li.bottom__right__lists
+          %h2.bottom__right__lists
+            =link_to users_path do
+              = image_tag 'human.svg', class: 'bottom__right__lists--profile'
+              %span マイページ
+    - else
+      %ul.bottom__right
+        %li.bottom__right__btn
+          =link_to new_user_registration_path, class: 'btn--left' do
+            新規会員登録
+        %li.bottom__right__btn
+          =link_to new_user_session_path, class: 'btn--right' do
+            ログイン
