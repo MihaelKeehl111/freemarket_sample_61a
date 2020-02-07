@@ -9,6 +9,11 @@
   </div>
 
   <div class="field">
+    <%= f.label :nickname %><br />
+    <%= f.text_field :nickname, autofocus: true, autocomplete: "nickname" %>
+  </div>
+
+  <div class="field">
     <%= f.label :password %>
     <% if @minimum_password_length %>
     <em>(<%= @minimum_password_length %> characters minimum)</em>
@@ -19,6 +24,31 @@
   <div class="field">
     <%= f.label :password_confirmation %><br />
     <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :familyname %><br />
+    <%= f.text_field :familyname, autofocus: true, autocomplete: "姓" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :firstname %><br />
+    <%= f.text_field :firstname, autofocus: true, autocomplete: "名" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :familyname_kana %><br />
+    <%= f.text_field :familyname_kana, autofocus: true, autocomplete: "セイ" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :firstname_kana %><br />
+    <%= f.text_field :firstname_kana, autofocus: true, autocomplete: "メイ" %>
+  </div>
+
+    <div class="field">
+    <%= f.label :birthday %><br />
+    <%= f.date_select :birthday, autofocus: true, autocomplete: "", start_year: 1990 %>
   </div>
 
   <div class="actions">

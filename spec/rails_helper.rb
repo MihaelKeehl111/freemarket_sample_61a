@@ -33,6 +33,7 @@ rescue ActiveRecord::PendingMigrationError => e
   exit 1
 end
 RSpec.configure do |config|
+  config.include FactoryBot::Syntax::Methods
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
 
@@ -60,4 +61,13 @@ RSpec.configure do |config|
   config.filter_rails_from_backtrace!
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace("gem name")
+end
+
+class SomeControllerTest < ActionController::TestCase
+  include Devise::Test::ControllerHelpers
+
+  def setup
+    @request.env["devise.mapping"] = Devisee.mappings[:admin]
+    sign_in FactoryBot.create(:admin)
+  end
 end
