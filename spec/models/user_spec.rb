@@ -3,10 +3,12 @@ require 'rails_helper'
 describe User do
   describe '#create' do
 
-    it "is valid with a email, password, password_confirmation" do
+    it "is valid with a email, password, password_confirmation, nickname, familyname, firstname, familyname_kana, firstname_kana, birthday" do
       user = build(:user)
       expect(user).to be_valid
     end
+
+    # emailに関するテスト
 
     it "is invalid with a duplicate email address" do
       user = create(:user)
@@ -20,6 +22,8 @@ describe User do
       user.valid?
       expect(user.errors[:email]).to include("can't be blank")
     end
+
+    # パスワードに関するテスト
 
     it "is invalid without a password" do
       user = build(:user, password: "")
@@ -55,6 +59,56 @@ describe User do
       user = build(:user, password: "abcd123", password_confirmation: "abcd123")
       user.valid?
       expect(user).to be_valid
+    end
+
+    # ニックネームに関するテスト
+
+    it "is invalid without a nickname" do
+      user = build(:user, nickname: "")
+      user.valid?
+      expect(user.errors[:nickname]).to include("can't be blank")
+    end
+
+    it "is invalid with a nickname that has more than 20 characters" do
+      user = build(:user, nickname: "abcdeabcdeabcdeabcdea")
+      user.valid?
+      expect(user.errors[:nickname]).to include("is too long (maximum is 20 characters)")
+    end
+
+    # 誕生日に関するテスト
+
+    it "is invalid without a birthday" do
+      user = build(:user, birthday: "")
+      user.valid?
+      expect(user.errors[:birthday]).to include("can't be blank")
+    end
+
+    # 姓(セイ)に関するテスト
+
+    it "is invalid without a familyname" do
+      user = build(:user, familyname: "")
+      user.valid?
+      expect(user.errors[:familyname]).to include("can't be blank")
+    end
+
+    it "is invalid without a familyname_kana" do
+      user = build(:user, familyname_kana: "")
+      user.valid?
+      expect(user.errors[:familyname_kana]).to include("can't be blank")
+    end
+
+    # 名(メイ)に関するテスト
+
+    it "is invalid without a firstname" do
+      user = build(:user, firstname: "")
+      user.valid?
+      expect(user.errors[:firstname]).to include("can't be blank")
+    end
+
+    it "is invalid without a firstname_kana" do
+      user = build(:user, firstname_kana: "")
+      user.valid?
+      expect(user.errors[:firstname_kana]).to include("can't be blank")
     end
 
   end
