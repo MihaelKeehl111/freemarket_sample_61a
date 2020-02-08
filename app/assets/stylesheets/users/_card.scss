@@ -1,3 +1,5 @@
+
+
 .main {
   display: flex;
   flex-direction: row-reverse;
@@ -81,3 +83,7 @@
 .container {
   margin: 0 126px;
 }
+
+.nav__lists__list.nav__lists__list--payment {
+  font-weight: bold;
+  }
