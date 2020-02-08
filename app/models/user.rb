@@ -12,8 +12,7 @@ class User < ApplicationRecord
   validates :firstname, presence: true, null: false
   validates :firstname_kana, presence: true, null: false
   validates :birthday, presence: true, null: false
-
-  has_one :cellphone_number
+  validates :cellphone, presence: true, null: false
   
   def password_complexity
     return if password.blank? || password =~ /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]{7,70}+\z/i

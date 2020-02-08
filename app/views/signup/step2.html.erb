@@ -1,0 +1,6 @@
+<%= form_for @user, url: "/signup", method: :post do |f| %>
+  cellphone
+  <%= f.text_field :cellphone %>
+
+  <%= f.submit 'SignUp' %>
+<% end %>

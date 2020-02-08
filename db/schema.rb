@@ -10,14 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200207105151) do
+ActiveRecord::Schema.define(version: 20200208085141) do
 
-  create_table "cellphone_numbers", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.integer  "cellphone_number"
+  create_table "addresses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "postcode",     null: false
+    t.string   "prefecture",   null: false
+    t.string   "municipality", null: false
+    t.string   "address",      null: false
+    t.string   "building"
     t.integer  "user_id"
-    t.datetime "created_at",       null: false
-    t.datetime "updated_at",       null: false
-    t.index ["user_id"], name: "index_cellphone_numbers_on_user_id", using: :btree
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.index ["user_id"], name: "index_addresses_on_user_id", using: :btree
   end
 
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -29,6 +33,7 @@ ActiveRecord::Schema.define(version: 20200207105151) do
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
     t.string   "nickname",                            null: false
+    t.integer  "cellphone"
     t.string   "familyname",                          null: false
     t.string   "firstname",                           null: false
     t.string   "familyname_kana",                     null: false
