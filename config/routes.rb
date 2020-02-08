@@ -2,8 +2,16 @@ Rails.application.routes.draw do
   devise_for :users
   root "products#index"
 
-  devise_scope :user do
-    get '/users/sign_out' => 'devise/sessions#destroy'
+  resources :signup do
+    collection do
+      get 'step1'
+      post 'step1'
+      get 'step2'
+      post 'step2'
+      get 'step3'
+      get 'step4'
+      get 'done'
+    end
   end
 
   resources :signup do
