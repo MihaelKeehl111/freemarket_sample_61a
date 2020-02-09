@@ -68,7 +68,7 @@ describe User do
       user.valid?
       expect(user.errors[:nickname]).to include("can't be blank")
     end
-
+    
     it "is invalid with a nickname that has more than 20 characters" do
       user = build(:user, nickname: "abcdeabcdeabcdeabcdea")
       user.valid?
@@ -110,6 +110,5 @@ describe User do
       user.valid?
       expect(user.errors[:firstname_kana]).to include("can't be blank")
     end
-
   end
 end

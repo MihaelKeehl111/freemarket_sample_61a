@@ -2,16 +2,16 @@
 ## users
 |Column|Type|Options|
 |------|----|-------|
-|nickname|string|null: false, unique: true|
-|email|string|null: false,unique: true|
-|password|string|null: false, unique: true|
+|nickname|string|null: false|
+|email|string|null: false, unique: true|
+|password|string|null: false|
 |familyname|string|null: false|
-|familyname(kana)|string|null: false|
+|familyname_kana|string|null: false|
 |firstname|string|null: false|
-|firstname(kana)|string|null: false|
+|firstname_kana|string|null: false|
 |birthday|string|null: false|
-|cellphone-number|string|null: false|
-|phone-number|integer||
+|cellphone|string|null: false|
+|phone|string||
 |profile|text||
 |profile-image|text||
 ### association
@@ -19,7 +19,7 @@
 - has_many :comments
 - has_many :users_rates
 - has_many :likes
-- has_one :streetaddress
+- has_one :address
 - has_one :card
 
 
@@ -63,7 +63,6 @@
 - has_many :products
 - has_ancestry
 
-
 ## brands
 |Column|Type|Options|
 |------|----|-------|
@@ -81,12 +80,12 @@
 - belongs_to :user
 - belongs_to :product
 
-## streetaddresses
+## addresses
 |Column|Type|Options|
 |------|----|-------|
 |postcode|integer|null: false|
 |prefecture|string|null: false|
-|Municipalities|string|null: false|
+|municipality|string|null: false|
 |adress|string|null: false|
 |building|string||
 |user|refarence|null: false, foreign_key: true|
@@ -104,10 +103,10 @@
 ## cards
 |Column|Type|Options|
 |------|----|-------|
-|cardnumber|integer|null: false|
-|expiration-month|integer|null: false|
-|expiration-year|integer|null: false|
-|securitycord|integer|null: false|
+|card_number|string|null: false|
+|expiration_month|integer|null: false|
+|expiration_year|integer|null: false|
+|security_cord|integer|null: false|
 |user|refarence|null: false, foreign_key: true|
 ### association
 - belongs_to :user

@@ -26,7 +26,6 @@ class SignupController < ApplicationController
   end
 
   def validates_step2
-    # session[:user_params_step2] = user_params[:user_params]
     session[:cellphone] = user_params[:cellphone] #step2で入力した値をsessionに保存
     @user = User.new(
       nickname: session[:nickname], # sessionに保存された値をインスタンスに渡す
@@ -39,8 +38,8 @@ class SignupController < ApplicationController
   end
 
   def step3 #step4のビューを呼び出すアクション
-    @user = User.new # 新規インスタンス作成
-    @user.build_address # addressの入力を記述したビューを呼び出すアクションに記述
+    @user = User.new #新規インスタンス作成
+    @user.build_address #addressの入力を記述したビューを呼び出すアクションに記述
   end
 
   def validates_step3
@@ -50,14 +49,9 @@ class SignupController < ApplicationController
     session[:firstname_kana] = user_params[:firstname_kana]
     session[:phone] = user_params[:phone]
     session[:birthday] = user_params[:birthday]
-    # session[:postcode] = user_params[:postcode]
-    # session[:prefecture] = user_params[:prefecture]
-    # session[:address] = user_params[:address]
-    # session[:municipality] = user_params[:municipality]
-    # session[:building] = user_params[:building]
     session[:address_attributes] = user_params[:address_attributes]
     @user = User.new(
-      nickname: session[:nickname], # sessionに保存された値をインスタンスに渡す
+      nickname: session[:nickname], #sessionに保存された値をインスタンスに渡す
       email: session[:email],
       password: session[:password],
       password_confirmation: session[:password_confirmation],
@@ -80,7 +74,7 @@ class SignupController < ApplicationController
 
   def create
     @user = User.new(
-      email: session[:email], # sessionに保存された値をインスタンスに渡す
+      email: session[:email], #sessionに保存された値をインスタンスに渡す
       password: session[:password],
       password_confirmation: session[:password_confirmation],
       nickname: session[:nickname],

@@ -4,8 +4,10 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
+
   validate :password_complexity
-  validates :email, presence: true, null: false, uniqueness: true, on: :validates_step1
+  validates :email, presence: true, null: false, uniqueness: true, on: :validates_step1, format: { with: VALID_EMAIL_REGEX }
   validates :nickname, presence: true, null: false, length: { maximum: 20 }, on: :validates_step1
   validates :familyname, presence: true, null: false, on: :validates_step3
   validates :familyname_kana, presence: true, null: false, on: :validates_step3
