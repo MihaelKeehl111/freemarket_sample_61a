@@ -1,4 +1,4 @@
-<%= form_for @user, url: step2_signup_index_path, method: :get do |f| %>
+<%= form_for @user, url: step2_signup_index_path do |f| %>
   email
   <%= f.email_field :email %>
   nickname
@@ -7,16 +7,5 @@
   <%= f.password_field :password %>
   password_confirmation
   <%= f.password_field :password_confirmation %>
-  firstname
-  <%= f.text_field :firstname %>
-  familyname
-  <%= f.text_field :familyname %>
-  firstname_kana
-  <%= f.text_field :firstname_kana %>
-  familyname
-  <%= f.text_field :familyname_kana %>
-  birthday
-  <%= f.date_field :birthday %>
-
   <%= f.submit 'Next' %>
 <% end %>

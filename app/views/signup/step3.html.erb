@@ -1,0 +1,31 @@
+<%= form_for @user, url: step4_signup_index_path do |f| %>
+  <%= hidden_field_tag :current_step, 'step3' %>
+  firstname
+  <%= f.text_field :firstname %>
+  familyname
+  <%= f.text_field :familyname %>
+  firstname_kana
+  <%= f.text_field :firstname_kana %>
+  familyname
+  <%= f.text_field :familyname_kana %>
+
+  <%= f.fields_for :address do |b| %>
+    postcode
+    <%= b.text_field :postcode %>
+    prefecture
+    <%= b.text_field :prefecture %>
+    municipality
+    <%= b.text_field :municipality %>
+    address
+    <%= b.text_field :address %>
+    building
+    <%= b.text_field :building %>
+  <% end %>
+
+  birthday
+  <%= f.date_field :birthday %>
+  phone
+  <%= f.text_field :phone %>
+
+  <%= f.submit 'Next' %>
+<% end %>

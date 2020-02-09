@@ -22,7 +22,7 @@
     .main__right__top
       .main__right__top__content.main__right__top__content--logout
         .content__button
-          = link_to destroy_user_session_path, method: :delete do
+          = link_to users_sign_out_path, method: :delete do
             %button{type: 'submit'} ログアウト
             %input{type: 'hidden'}
 
