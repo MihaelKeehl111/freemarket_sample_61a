@@ -7,14 +7,14 @@ class User < ApplicationRecord
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
 
   validate :password_complexity
-  validates :email, presence: true, null: false, uniqueness: true, on: :validates_step1, format: { with: VALID_EMAIL_REGEX }
-  validates :nickname, presence: true, null: false, length: { maximum: 20 }, on: :validates_step1
-  validates :familyname, presence: true, null: false, on: :validates_step3
-  validates :familyname_kana, presence: true, null: false, on: :validates_step3
-  validates :firstname, presence: true, null: false, on: :validates_step3
-  validates :firstname_kana, presence: true, null: false, on: :validates_step3
-  validates :birthday, presence: true, null: false, on: :validates_step3
-  validates :cellphone, presence: true, null: false, on: :validates_step2
+  validates :email, presence: true, uniqueness: true, format: { with: VALID_EMAIL_REGEX }
+  validates :nickname, presence: true, length: { maximum: 20 }
+  validates :familyname, presence: true, null: false
+  validates :familyname_kana, presence: true, null: false
+  validates :firstname, presence: true, null: false
+  validates :firstname_kana, presence: true, null: false
+  validates :birthday, presence: true, null: false
+  validates :cellphone, presence: true, null: false
 
   has_one :address
   accepts_nested_attributes_for :address

@@ -16,7 +16,13 @@ class SignupController < ApplicationController
       nickname: session[:nickname], # sessionに保存された値をインスタンスに渡す
       email: session[:email],
       password: session[:password],
-      password_confirmation: session[:password_confirmation]
+      password_confirmation: session[:password_confirmation],
+      cellphone: 11112222,
+      familyname: "sei",
+      firstname: "mei",
+      familyname_kana: "セイ",
+      firstname_kana: "メイ",
+      birthday: "2001-01-01"
     )
     render '/signup/step1' unless @user.valid?(:validates_step1)
   end
@@ -32,7 +38,12 @@ class SignupController < ApplicationController
       email: session[:email],
       password: session[:password],
       password_confirmation: session[:password_confirmation],
-      cellphone: session[:cellphone]
+      cellphone: session[:cellphone],
+      familyname: "sei",
+      firstname: "mei",
+      familyname_kana: "セイ",
+      firstname_kana: "メイ",
+      birthday: "2001-01-01"
     )
     render '/signup/step2' unless @user.valid?(:validates_step2)
   end
