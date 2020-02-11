@@ -1,0 +1,28 @@
+.header
+  .header__logo
+    =link_to '' do
+      =image_tag "fmarket_logo_red", height: 49
+.main
+  .registration
+    .registration__head
+      新規会員登録
+    .registration__contents
+      = link_to "https://www.facebook.com/", class: 'registration__btn registration__btn--mail' do
+        = icon 'far', 'envelope', class: 'registration__btn--mail--icon'
+        メールアドレスで登録する
+      = link_to "https://www.facebook.com/", class: 'registration__btn registration__btn--facebook' do
+        = icon 'fab', 'facebook-square', class: 'registration__btn--facebook--icon'
+        Facebookで登録する
+      = link_to "https://www.google.com/", class: 'registration__btn registration__btn--google' do
+        = icon 'fab', 'google', class: 'registration__btn--google--icon'
+        Googleで登録する
+.footer
+  = link_to "https://www.google.com/", class: 'footer__link' do
+    プライバシーポリシー  
+  = link_to "https://www.google.com/", class: 'footer__link' do
+    メルカリ利用規約  
+  = link_to "https://www.google.com/", class: 'footer__link' do
+    特定商取引に関する表記
+    .footer__logo
+      =link_to '' do
+        =image_tag "logo_gray", height: 80

@@ -1,0 +1,66 @@
+.header
+  %ul.header__logo
+    =link_to '' do
+      =image_tag "fmarket_logo_red", height: 52
+  %ul.header__bar
+    %ol.clearfix
+      %li.active
+        会員情報
+        .progress-status
+      %li.phone-page
+        電話番号認証
+        .progress-status
+      %li.address-page
+        住所入力
+        .progress-status
+      %li.credit-page
+        支払い方法
+        .progress-status
+      %li.complete-page
+        完了
+        .progress-status
+.main
+  .information
+    .information__head
+      会員情報入力
+    .information__main
+      %label.nickname
+        ニックネーム
+      %span.form-require
+        必須
+      %form.information__main--form
+        %input{placeholder: "　例)　メルカリ太郎"}
+      %label.email
+        メールアドレス
+      %span.form-require
+        必須
+      %form.information__main--form
+        %input{placeholder: "　PC・携帯どちらでも可"}
+      %label.password
+        パスワード
+      %span.form-require
+        必須
+      %form.information__main--form
+        %input{placeholder: "　６文字以上"}
+      %label.password-confirmation
+        パスワード（確認）
+      %span.form-require
+        必須
+      %form.information__main--form
+        %input{placeholder: "　６文字以上"}
+      .information__main--captcha
+        .information__main--captcha--left
+          .information__main--captcha--left--box
+      %button.information__main--form--button
+        次へ進む
+
+.footer
+  = link_to "https://www.google.com/", class: 'footer__link' do
+    プライバシーポリシー  
+  = link_to "https://www.google.com/", class: 'footer__link' do
+    メルカリ利用規約  
+  = link_to "https://www.google.com/", class: 'footer__link' do
+    特定商取引に関する表記
+    .footer__logo
+      =link_to '' do
+        =image_tag "logo_gray", height: 80
