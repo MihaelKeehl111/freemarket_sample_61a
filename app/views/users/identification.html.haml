@@ -9,8 +9,8 @@
     %li.nav__lists__list.nav__lists__list--mypage
       = link_to 'user#index' do
         %span マイページ
-      = icon 'fas', 'chevron-right', class: 'nav__lists__list.nav__lists__list--mypage--icon'
-    %li.nav__lists__list.nav__lists__list--mypage.nav__lists__list--mypage--identification
+      = icon 'fas', 'chevron-right', class: 'nav__lists__list--icon'
+    %li.nav__lists__list.nav__lists__list--identification
       %span 本人情報の登録
 
 .main.clearfix
@@ -48,7 +48,7 @@
             .main__right__contents__form__box__top__right
               任意
           .main__right__contents__form__box__bottom
-            %input{placeholder: "例)1234567"}
+            %input{placeholder: "例) 1234567"}
         .main__right__contents__form__box       
           .main__right__contents__form__box__top
             都道府県  
@@ -56,7 +56,7 @@
               任意
           .main__right__contents__form__box__bottom
             %input{placeholder: "--"}
-              = icon 'fas', 'chevron-down', class: 'buttun'
+              = icon 'fas', 'chevron-down fa-lg', class: 'main__right__contents__form__box__bottom--buttun'
         .main__right__contents__form__box       
           .main__right__contents__form__box__top
             市区町村        

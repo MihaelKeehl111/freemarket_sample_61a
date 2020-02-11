@@ -1,5 +1,11 @@
 Rails.application.routes.draw do
-  root "users#show"
-  resources :products
-  resources :users
+  root "products#index"
+
+  resources :products, only: [:index]
+
+  resources :users, only: [:index] do
+    collection do
+      get :identification
+    end
+  end  
 end
