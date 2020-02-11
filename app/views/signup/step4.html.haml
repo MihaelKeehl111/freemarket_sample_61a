@@ -1,0 +1,90 @@
+<%= form_for @user, url: "/signup", method: :post do |f| %>
+  <%= hidden_field_tag :current_step, 'step4' %>
+  <%= f.fields_for :card do |b| %>
+    card_number
+    <%= b.text_field :card_number %>
+    expiration_month
+    <%= b.text_field :expiration_month %>
+    expiration_year
+    <%= b.text_field :expiration_year %> <br>
+    security_code
+    <%= b.password_field :security_code %>
+  <% end %>
+  <%= f.submit 'SignUp' %>
+<% end %>
+
+.header
+  %ul.header__logo
+    =link_to '' do
+      =image_tag "fmarket_logo_red", height: 52
+  %ul.header__bar
+    %ol.clearfix
+      %li.through
+        会員情報
+        .progress-status
+      %li.through-two
+        電話番号認証
+        .progress-status
+      %li.through-two
+        住所入力
+        .progress-status
+      %li.active
+        支払い方法
+        .progress-status
+      %li.complete-page
+        完了
+        .progress-status
+.main
+  .information
+    .information__head
+      支払い方法
+    .information__main
+      %label.card
+        カード番号
+      %span.form-require
+        必須
+      %form.information__main--form
+        %input{placeholder: "　半角数字のみ"}
+        = image_tag("//www-mercari-jp.akamaized.net/assets/img/card/visa.svg?2845599746",class: "card-list__image--visa")
+        = image_tag("//www-mercari-jp.akamaized.net/assets/img/card/master-card.svg?2845599746",class: "card-list__image--master")
+        = image_tag("//www-mercari-jp.akamaized.net/assets/img/card/saison-card.svg?2845599746",class: "card-list__image--saison")
+        = image_tag("//www-mercari-jp.akamaized.net/assets/img/card/jcb.svg?2845599746",class: "card-list__image--jcb-club-dis")
+        = image_tag("//www-mercari-jp.akamaized.net/assets/img/card/american_express.svg?2845599746",class: "card-list__image--american-express")
+        = image_tag("//www-mercari-jp.akamaized.net/assets/img/card/dinersclub.svg?2845599746",class: "card-list__image--jcb-club-dis")
+        = image_tag("//www-mercari-jp.akamaized.net/assets/img/card/discover.svg?2845599746" ,class: "card-list__image--jcb-club-dis")
+
+      %label.expiration-date
+        有効期限
+      %span.form-require
+        必須
+      %form.information__main--form--double
+        %input.select{placeholder: "　01"}
+        %span.date
+          月
+      %form.information__main--form
+        %input.select{placeholder: "　19"}
+        %span.date
+          年
+      %label.security
+        セキュリティーコード
+      %span.form-require
+        必須
+      %form.information__main--form--double
+        %input{placeholder: "　カード背面４桁もしくは３桁の番号"}
+      %p.text-right
+        = link_to '' , class: 'reason__link' do
+          = icon 'fas', 'question-circle'
+          カード裏面の番号とは？
+      %button.information__main--form--button
+        次へ進む
+
+.footer
+  = link_to "https://www.google.com/", class: 'footer__link' do
+    プライバシーポリシー  
+  = link_to "https://www.google.com/", class: 'footer__link' do
+    メルカリ利用規約  
+  = link_to "https://www.google.com/", class: 'footer__link' do
+    特定商取引に関する表記
+    .footer__logo
+      =link_to '' do
+        =image_tag "logo_gray", height: 80
