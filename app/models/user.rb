@@ -9,12 +9,18 @@ class User < ApplicationRecord
   validate :password_complexity
   validates :email, presence: true, uniqueness: true, format: { with: VALID_EMAIL_REGEX }
   validates :nickname, presence: true, length: { maximum: 20 }
-  validates :familyname, presence: true, null: false
-  validates :familyname_kana, presence: true, null: false
-  validates :firstname, presence: true, null: false
-  validates :firstname_kana, presence: true, null: false
-  validates :birthday, presence: true, null: false
-  validates :cellphone, presence: true, null: false
+  validates :familyname, presence: true
+  validates :familyname_kana, presence: true, format: {
+    with: /\A[\p{katakana} ー－&&[^ -~｡-ﾟ]]+\z/,
+    message: "全角カタカナのみで入力して下さい"
+  }
+  validates :firstname, presence: true
+  validates :firstname_kana, presence: true, format: {
+    with: /\A[\p{katakana} ー－&&[^ -~｡-ﾟ]]+\z/,
+    message: "全角カタカナのみで入力して下さい"
+  }
+  validates :birthday, presence: true
+  validates :cellphone, presence: true
 
   has_one :address
   accepts_nested_attributes_for :address

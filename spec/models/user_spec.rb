@@ -97,6 +97,12 @@ describe User do
       expect(user.errors[:familyname_kana]).to include("can't be blank")
     end
 
+    it "is invalid with Hiragana" do
+      user = build(:user, familyname_kana: "せい")
+      user.valid?
+      expect(user.errors[:familyname_kana]).to include("全角カタカナのみで入力して下さい")
+    end
+
     # 名(メイ)に関するテスト
 
     it "is invalid without a firstname" do
@@ -110,5 +116,25 @@ describe User do
       user.valid?
       expect(user.errors[:firstname_kana]).to include("can't be blank")
     end
+
+    it "is invalid with Hiragana" do
+      user = build(:user, firstname_kana: "めい")
+      user.valid?
+      expect(user.errors[:firstname_kana]).to include("全角カタカナのみで入力して下さい")
+    end
+
+    # 電話番号に関するテスト
+
+    it "is invalid without a cellphone" do
+      user = build(:user, cellphone: "")
+      user.valid?
+      expect(user.errors[:cellphone]).to include("can't be blank")
+    end
+
+    it "is valid without a phone" do
+      user = build(:user, phone: "")
+      expect(user).to be_valid
+    end
+    
   end
 end

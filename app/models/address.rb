@@ -1,8 +1,8 @@
 class Address < ApplicationRecord
   belongs_to :user, optional: true
 
-  validates :postcode, presence: true, null: false
-  validates :address, presence: true, null: false
-  validates :prefecture, presence: true, null: false
-  validates :municipality, presence: true, null: false
+  validates :postcode, presence: true
+  validates :address, presence: true
+  validates :prefecture, presence: true
+  validates :municipality, presence: true
 end
