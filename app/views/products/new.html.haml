@@ -26,8 +26,7 @@
             商品名
             %span.sell-main__form-require
               必須
-          %div
-            %input{class:'sell-main__input-default', placeholder:"商品名（必須 40文字まで)"}
+          = f.text_field :name, {class:'sell-main__input-default', placeholder:"商品名（必須 40文字まで)"}
         .sell-main__form-group
           = f.label :description do
             商品の説明
