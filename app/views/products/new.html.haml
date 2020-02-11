@@ -32,8 +32,7 @@
             商品の説明
             %span.sell-main__form-require
               必須
-          %div
-            %textarea{class: 'sell-main__textarea-default', placeholder:"商品の説明（必須 1,000文字以内）（色、素材、重さ、定価、注意点など）例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。", rows: '5'}
+          = f.text_area :description, {class: 'sell-main__textarea-default', placeholder:"商品の説明（必須 1,000文字以内）（色、素材、重さ、定価、注意点など）例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。", rows: '5'}
       .sell-main__content.clearfix
         %h3.sell-main__sub-head
           商品の詳細
@@ -44,14 +43,14 @@
               %span.sell-main__form-require
                 必須
             %div
-              %input{class: 'sell-main__select-default', placeholder:"---"}
+              = f.text_field :category_id, {class: 'sell-main__select-default', placeholder:"---"}
           .sell-main__form-group
             = f.label :state do
               商品の状態
               %span.sell-main__form-require
                 必須
             %div
-              %input{class: 'sell-main__select-default', placeholder:"---"}
+              = f.text_field :state, {class: 'sell-main__select-default', placeholder:"---"}
       .sell-main__content.clearfix
         %h3.sell-main__sub-head
           配送について
@@ -64,21 +63,21 @@
               %span.sell-main__form-require
                 必須
             %div
-              %input{class: 'sell-main__select-default', placeholder:"---"}
+              = f.text_field :delivery_charge, {class: 'sell-main__select-default', placeholder:"---"}
           .sell-main__form-group
             = f.label :delivery_area do
               発送元の地域
               %span.sell-main__form-require
                 必須
             %div
-              %input{class: 'sell-main__select-default', placeholder:"---"}
+              = f.text_field :delivery_area, {class: 'sell-main__select-default', placeholder:"---"}
           .sell-main__form-group
             = f.label :delivery_date do
               発送までの日数
               %span.sell-main__form-require
                 必須
             %div
-              %input{class: 'sell-main__select-default', placeholder:"---"}
+              = f.text_field :delivery_date, {class: 'sell-main__select-default', placeholder:"---"}
       .sell-main__content.clearfix
         %h3.sell-main__sub-head
           販売価格(300〜9,999,999)
@@ -95,7 +94,7 @@
               .sell-main__right.sell-main__price-input  
                 ¥
                 %div
-                  %input{class: 'sell-main__input-default', placeholder:"例）300"}
+                  = f.text_field :price, {class: 'sell-main__input-default', placeholder:"例）300"}
             %li.clearfix
               .sell-main__left
                 販売手数料 (10%)
