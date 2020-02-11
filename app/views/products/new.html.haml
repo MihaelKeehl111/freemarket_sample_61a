@@ -5,20 +5,21 @@
         = image_tag "fmarket_logo_red.svg"
 
   .sell-main
-    .sell-main__head
+    %h2.sell-main__head
       商品の情報を入力
-    .sell-main__upload-box
-      %h3.sell-main__upload-head
-        出品画像
-        %span.sell-main__form-require
-          必須
-      %p 最大10枚までアップロードできます
-      .sell-main__dropbox-container.clearfix.state-image-number-10
-        .sell-main__upload-items-container
-          .sell-main__upload-drop-box.have-item-0
-            %pre.sell-main__visible-pc
-              ドラッグアンドドロップ
-              またはクリックしてファイルをアップロード
+      =form_for @product do |f|
+        .sell-main__upload-box
+          %h3.sell-main__upload-head
+            出品画像
+            %span.sell-main__form-require
+              必須
+          %p 最大10枚までアップロードできます
+          .sell-main__dropbox-container.clearfix.state-image-number-10
+            .sell-main__upload-items-container
+              .sell-main__upload-drop-box.have-item-0
+                %pre.sell-main__visible-pc
+                  ドラッグアンドドロップ
+                  またはクリックしてファイルをアップロード
     .sell-main__content
       .sell-main__form-group
         %label  商品名
