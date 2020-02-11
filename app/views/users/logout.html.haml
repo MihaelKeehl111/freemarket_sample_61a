@@ -1,0 +1,34 @@
+= render 'shared/header'
+
+-# パンくず
+
+.nav
+  %ul.nav__lists
+    %li.nav__lists__list
+      = link_to root_path do
+        %span メルカリ
+      = icon 'fas', 'chevron-right', class: 'nav__lists__list--icon'
+    %li.nav__lists__list.nav__lists__list--mypage
+      = link_to users_path do
+        %span マイページ
+      = icon 'fas', 'chevron-right', class: 'nav__lists__list--icon'
+    %li.nav__lists__list.nav__lists__list--logout
+      %span ログアウト
+
+-# メイン
+
+.main.clearfix
+  .main__right
+    .main__right__top
+      .main__right__top__content.main__right__top__content--logout
+        .content__button
+          %button{type: 'submit'} ログアウト
+          %input{type: 'hidden'}
+
+  = render 'sidebar'
+
+= render 'shared/sellbutton'
+
+= render 'shared/appbanner'
+
+= render 'shared/footer'

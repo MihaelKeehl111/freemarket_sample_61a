@@ -5,7 +5,7 @@
 .nav
   %ul.nav__lists
     %li.nav__lists__list
-      = link_to 'products#index' do
+      = link_to root_path do
         %span メルカリ
       = icon 'fas', 'chevron-right', class: 'nav__lists__list--icon'
     %li.nav__lists__list.nav__lists__list--mypage
@@ -137,105 +137,8 @@
             %li.content__lists__list--all
               = link_to '', {class: 'mypage__lists'} do
                 一覧をみる
-
-  .main__side
-    %ul
-      %li.main__side__lists
-        =link_to '' do
-          マイページ
-          = icon 'fas', 'chevron-right'
-      %li.main__side__lists
-        =link_to '' do
-          お知らせ
-          = icon 'fas', 'chevron-right'
-      %li.main__side__lists
-        =link_to '' do
-          やることリスト
-          = icon 'fas', 'chevron-right'
-      %li.main__side__lists
-        =link_to '' do
-          いいね！一覧
-          = icon 'fas', 'chevron-right'
-      %li.main__side__lists
-        =link_to '' do
-          出品する
-          = icon 'fas', 'chevron-right'
-      %li.main__side__lists
-        =link_to '' do
-          出品した商品 - 出品中
-          = icon 'fas', 'chevron-right'
-      %li.main__side__lists
-        =link_to '' do
-          出品した商品 - 取引中
-          = icon 'fas', 'chevron-right'
-      %li.main__side__lists
-        =link_to '' do
-          出品した商品 - 売却済み
-          = icon 'fas', 'chevron-right'
-      %li.main__side__lists
-        =link_to '' do
-          出品した商品 - 取引中
-          = icon 'fas', 'chevron-right'
-      %li.main__side__lists
-        =link_to '' do
-          出品した商品 - 過去の取引
-          = icon 'fas', 'chevron-right'
-      %li.main__side__lists
-        =link_to '' do
-          ニュース一覧
-          = icon 'fas', 'chevron-right'
-      %li.main__side__lists
-        =link_to '' do
-          評価一覧
-          = icon 'fas', 'chevron-right'
-      %li.main__side__lists
-        =link_to '' do
-          ガイド
-          = icon 'fas', 'chevron-right'
-      %li.main__side__lists
-        =link_to '' do
-          お問い合わせ
-          = icon 'fas', 'chevron-right'
-    %h3 メルペイ
-    %ul.main__side__lists--middle
-      %li.main__side__lists
-        =link_to '' do
-          売上・振込申請
-          = icon 'fas', 'chevron-right'
-      %li.main__side__lists
-        =link_to '' do
-          ポイント
-          = icon 'fas', 'chevron-right'
-    %h3 設定
-    %ul.main__side__lists--middle
-      %li.main__side__lists
-        =link_to '' do
-          プロフィール
-          = icon 'fas', 'chevron-right'
-      %li.main__side__lists
-        =link_to '' do
-          発送元・お届け先住所変更
-          = icon 'fas', 'chevron-right'
-      %li.main__side__lists
-        =link_to '' do
-          支払い方法
-          = icon 'fas', 'chevron-right'
-      %li.main__side__lists
-        =link_to '' do
-          メール/パスワード
-          = icon 'fas', 'chevron-right'
-      %li.main__side__lists
-        =link_to identification_users_path(:id), {controller: "users", action: "index", name: "identification"} do
-          本人情報
-          = icon 'fas', 'chevron-right'
-      %li.main__side__lists
-        =link_to '' do
-          電話番号の確認
-          = icon 'fas', 'chevron-right'
-      %li.main__side__lists
-        =link_to '' do
-          ログアウト
-          = icon 'fas', 'chevron-right'
+  
+  =render 'sidebar'
 
 = render 'shared/sellbutton'
 
