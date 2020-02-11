@@ -1,0 +1,121 @@
+<%= form_for @user, url: step4_signup_index_path do |f| %>
+  <%= hidden_field_tag :current_step, 'step3' %>
+  firstname
+  <%= f.text_field :firstname %>
+  familyname
+  <%= f.text_field :familyname %>
+  firstname_kana
+  <%= f.text_field :firstname_kana %>
+  familyname
+  <%= f.text_field :familyname_kana %>
+
+  <%= f.fields_for :address do |b| %>
+    postcode
+    <%= b.text_field :postcode %>
+    prefecture
+    <%= b.text_field :prefecture %>
+    municipality
+    <%= b.text_field :municipality %>
+    address
+    <%= b.text_field :address %>
+    building
+    <%= b.text_field :building %>
+  <% end %>
+
+  birthday
+  <%= f.date_field :birthday %>
+  phone
+  <%= f.text_field :phone %>
+
+  <%= f.submit 'Next' %>
+<% end %>
+
+.header
+  %ul.header__logo
+    =link_to '' do
+      =image_tag "fmarket_logo_red", height: 52
+  %ul.header__bar
+    %ol.clearfix
+      %li.through
+        会員情報
+        .progress-status
+      %li.through-two
+        電話番号認証
+        .progress-status
+      %li.active
+        住所入力
+        .progress-status
+      %li.credit-page
+        支払い方法
+        .progress-status
+      %li.complete-page
+        完了
+        .progress-status
+.main
+  .information
+    .information__head
+      住所入力
+    .information__main
+      %label.name
+        お名前
+      %span.form-require
+        必須
+      %form.information__main--form--double
+        %input{placeholder: "　例)　山田"}
+        %input{placeholder: "　例)　彩"}
+      %label.kana
+        お名前カナ
+      %span.form-require
+        必須
+      %form.information__main--form--double
+        %input{placeholder: "　例)　ヤマダ"}
+        %input{placeholder: "　例)　アヤ"}
+      %label.post-code
+        郵便番号
+      %span.form-require
+        必須
+      %form.information__main--form
+        %input{placeholder: "　123-4567"}
+      %label.prefectures
+        都道府県
+      %span.form-require
+        必須
+      %form.information__main--form
+        %input{placeholder: "　北海道"}
+      %label.municipality
+        市区町村
+      %span.form-require
+        必須
+      %form.information__main--form
+        %input{placeholder: "　例)　横浜市緑区"}
+      %label.address
+        番地
+      %span.form-require
+        必須
+      %form.information__main--form
+        %input{placeholder: "　例)　青山1−1−1"}
+      %label.address
+        建物名
+      %span.form-optional
+        任意
+      %form.information__main--form
+        %input{placeholder: "　例)　柳ビル103"}
+      %label.address
+        電話
+      %span.form-optional
+        任意
+      %form.information__main--form
+        %input{placeholder: "　例)　09012345678"}
+      %button.information__main--form--button
+        次へ進む
+
+.footer
+  = link_to "https://www.google.com/", class: 'footer__link' do
+    プライバシーポリシー  
+  = link_to "https://www.google.com/", class: 'footer__link' do
+    メルカリ利用規約  
+  = link_to "https://www.google.com/", class: 'footer__link' do
+    特定商取引に関する表記
+    .footer__logo
+      =link_to '' do
+        =image_tag "logo_gray", height: 80
