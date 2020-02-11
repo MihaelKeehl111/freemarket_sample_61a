@@ -3,7 +3,7 @@ class SignupController < ApplicationController
   before_action :validates_step2, only: :step3
   before_action :validates_step3, only: :step4
 
-  def step1 #step2のビューを呼び出すアクション
+  def step1
     @user = User.new # 新規インスタンス作成
   end
 
@@ -24,10 +24,10 @@ class SignupController < ApplicationController
       firstname_kana: "メイ",
       birthday: "2001-01-01"
     )
-    render '/signup/step1' unless @user.valid?(:validates_step1)
+    render '/signup/step1' unless @user.valid?
   end
 
-  def step2 #step3のビューを呼び出すアクション
+  def step2
     @user = User.new # 新規インスタンス作成
   end
 
@@ -45,10 +45,10 @@ class SignupController < ApplicationController
       firstname_kana: "メイ",
       birthday: "2001-01-01"
     )
-    render '/signup/step2' unless @user.valid?(:validates_step2)
+    render '/signup/step2' unless @user.valid?
   end
 
-  def step3 #step4のビューを呼び出すアクション
+  def step3
     @user = User.new #新規インスタンス作成
     @user.build_address #addressの入力を記述したビューを呼び出すアクションに記述
   end
@@ -75,7 +75,7 @@ class SignupController < ApplicationController
       birthday: session[:birthday]
     )
     @user.build_address(session[:address_attributes])
-    render '/signup/step3' unless @user.valid?(:validates_step3)
+    render '/signup/step3' unless @user.valid?
   end
 
   def step4
