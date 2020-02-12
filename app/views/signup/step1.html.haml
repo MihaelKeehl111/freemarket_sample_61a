@@ -1,6 +1,6 @@
 .header
   %ul.header__logo
-    =link_to '' do
+    =link_to root_path do
       =image_tag "fmarket_logo_red", height: 52
   %ul.header__bar
     %ol.clearfix
@@ -62,16 +62,16 @@
       = form_for @user, url: step2_signup_index_path do |f|
         = f.label :nickname, "ニックネーム", class: 'nickname'
         %span.form-require 必須
-        = f.text_field :nickname, class: 'form-require information__main--form', placeholder: "例)  メルカリ太郎"
+        = f.text_field :nickname, class: 'information__main--form', placeholder: "例)  メルカリ太郎"
         = f.label :email, "メールアドレス", class: 'email'
         %span.form-require 必須
-        = f.email_field :email, class: 'form-require information__main--form', placeholder: "PC・携帯どちらでも可"
+        = f.email_field :email, class: 'information__main--form', placeholder: "PC・携帯どちらでも可"
         = f.label :password, "パスワード", class: 'password'
         %span.form-require 必須
-        = f.password_field :password, class: 'form-require information__main--form', placeholder: '6文字以上'
+        = f.password_field :password, class: 'information__main--form', placeholder: '6文字以上'
         = f.label :password_confirmation, "パスワード（確認）", class: 'password-confirmation'
         %span.form-require 必須
-        = f.password_field :password_confirmation, class: 'form-require information__main--form', placeholder: '6文字以上'
+        = f.password_field :password_confirmation, class: 'information__main--form', placeholder: '6文字以上'
         .information__main--captcha
           .information__main--captcha--left
             .information__main--captcha--left--box
