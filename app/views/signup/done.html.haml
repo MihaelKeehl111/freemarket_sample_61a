@@ -1,6 +1,3 @@
-%h1  新規登録が完了しました
-=link_to "トップへ戻る", root_path
-
 .header
   %ul.header__logo
     =link_to '' do
@@ -31,8 +28,7 @@
         ありがとうございます。
       %li.information__main--message
         会員登録が完了しました。
-      %button.information__main--button
-        メルカリをはじめる
+      = link_to 'メルカリをはじめる', root_path, class: 'information__main--button'
     .information__foot
       .content
         .content__figure
