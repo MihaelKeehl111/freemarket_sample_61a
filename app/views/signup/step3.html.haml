@@ -35,26 +35,26 @@
         = f.text_field :familyname_kana, class: 'information__main--form--double', placeholder: '例) ヤマダ'
         = f.text_field :firstname_kana, class: 'information__main--form--double', placeholder: '例) アヤ'
 
-        = fields_for :address do |b|
+        = f.fields_for :address do |b|
           = b.label :postcode, '郵便番号', class: 'post-code'
           %span.form-require 必須
-          = b.text_field :postcode, class: 'information__main--form', placeholder: '123-4567'
+          = b.text_field :postcode, class: 'information__main--form', placeholder: '1234567'
           = b.label :prefecture, '都道府県', class: 'prefectures'
           %span.form-require 必須
           = b.text_field :prefecture, class: 'information__main--form', placeholder: '北海道'
           = b.label :municipality, '市区町村', class: 'municipality'
           %span.form-require 必須
           = b.text_field :municipality, class: 'information__main--form', placeholder: '例) 横浜市緑区'
-          = b.label :address, class: 'address'
+          = b.label :address, '住所', class: 'address'
           %span.form-require 必須
           = b.text_field :address, class: 'information__main--form', placeholder: '例) 青山1−1−1'
           = b.label :building, '建物名', class: 'address'
           %span.form-optional 任意
           = b.text_field :building, class: 'information__main--form', placeholder: '例) 柳ビル103'
-        = f.label :address, '電話', class: 'address'
+        = f.label :phone, '電話', class: 'address'
         %span.form-optional 任意
         = f.text_field :phone, class: 'information__main--form', placeholder: '例) 09012345678'
-        = f.label :bibrthday, '誕生日', class: 'address'
+        = f.label :birthday, '誕生日', class: 'address'
         %span.form-require 必須
         = f.date_field :birthday, class: 'information__main--form', placeholder: '例) YYYY-MM-DD'
         = f.submit '次へ進む', class: 'information__main--form--button'
