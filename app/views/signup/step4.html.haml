@@ -24,18 +24,18 @@
     .information__head
       支払い方法
     .information__main
-      = form_for @user, url: "/signup", method: :post do |f|
+      = form_for(@user, url: "/signup", method: :post) do |f|
         = f.fields_for :card do |b|
           = b.label :card_number, 'カード番号', class: 'card'
           %span.form-require 必須
           = b.text_field :card_number, class: 'information__main--form', placeholder: '半角数字のみ'
-          = image_tag("//www-mercari-jp.akamaized.net/assets/img/card/visa.svg?2845599746",class: "card-list__image--visa")
-          = image_tag("//www-mercari-jp.akamaized.net/assets/img/card/master-card.svg?2845599746",class: "card-list__image--master")
-          = image_tag("//www-mercari-jp.akamaized.net/assets/img/card/saison-card.svg?2845599746",class: "card-list__image--saison")
-          = image_tag("//www-mercari-jp.akamaized.net/assets/img/card/jcb.svg?2845599746",class: "card-list__image--jcb-club-dis")
-          = image_tag("//www-mercari-jp.akamaized.net/assets/img/card/american_express.svg?2845599746",class: "card-list__image--american-express")
-          = image_tag("//www-mercari-jp.akamaized.net/assets/img/card/dinersclub.svg?2845599746",class: "card-list__image--jcb-club-dis")
-          = image_tag("//www-mercari-jp.akamaized.net/assets/img/card/discover.svg?2845599746" ,class: "card-list__image--jcb-club-dis")
+          = image_tag("//www-mercari-jp.akamaized.net/assets/img/card/visa.svg?2845599746", class: "card-list__image--visa")
+          = image_tag("//www-mercari-jp.akamaized.net/assets/img/card/master-card.svg?2845599746", class: "card-list__image--master")
+          = image_tag("//www-mercari-jp.akamaized.net/assets/img/card/saison-card.svg?2845599746", class: "card-list__image--saison")
+          = image_tag("//www-mercari-jp.akamaized.net/assets/img/card/jcb.svg?2845599746", class: "card-list__image--jcb-club-dis")
+          = image_tag("//www-mercari-jp.akamaized.net/assets/img/card/american_express.svg?2845599746", class: "card-list__image--american-express")
+          = image_tag("//www-mercari-jp.akamaized.net/assets/img/card/dinersclub.svg?2845599746", class: "card-list__image--jcb-club-dis")
+          = image_tag("//www-mercari-jp.akamaized.net/assets/img/card/discover.svg?2845599746" , class: "card-list__image--jcb-club-dis")
           = b.label :expiration_month, '有効期限', class: 'expiration-date'
           %span.form-require 必須
           = b.text_field :expiration_month, class: 'information__main--form--double select', placeholder: '01'
@@ -59,5 +59,5 @@
   = link_to "https://www.google.com/", class: 'footer__link' do
     特定商取引に関する表記
     .footer__logo
-      =link_to '' do
-        =image_tag "logo_gray", height: 80
+      = link_to root_path do
+        = image_tag "logo_gray", height: 80
