@@ -188,7 +188,7 @@ RSpec.describe SignupController, type: :controller do
       it "redirect to step4" do
         subject
         expect(response).to render_template :step4
-        pending 'この先はなぜかテストが失敗するのであとで直す'
+        pending 'テストが失敗するのであとで直す'
       end
     end
 
@@ -286,7 +286,7 @@ RSpec.describe SignupController, type: :controller do
       it "redirect to done" do
         subject
         expect(response).to render_template :done
-        pending 'この先はなぜかテストが失敗するのであとで直す'
+        pending 'テストが失敗するのであとで直す'
       end
     end
 
