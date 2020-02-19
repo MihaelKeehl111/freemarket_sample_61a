@@ -2,7 +2,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  &--main {
+  &__main {
       width: 700px;
       background: #fff;
       margin: 40px 0;
@@ -14,11 +14,11 @@
         text-align: center;
       }
     }
-    &--item_detail {
+    &__item_detail {
       margin: 16px 0 0;
       display: flex;
       justify-content: space-between;
-      &--left {
+      &__left {
         min-width: 300px;
         max-width: 300px;
         min-height: 375px;
@@ -100,13 +100,13 @@
                   i {
                     padding-right: 2px;
                   }
-                  &__good {
+                  &--good {
                     color: #ef5185;
                   }
-                  &__normal {
+                  &--normal {
                     color: #fba933;
                   }
-                  &__bad {
+                  &--bad {
                     color: #6ab5d8;
                   }
                   span {
@@ -120,17 +120,17 @@
       }
     }
 
-    &--price_box {
+    &__price_box {
       display: flex;
       justify-content: center;
       margin: 24px 0 0 ;
-      &__item_price {
+      &--item_price {
         font-size: 50px;
         font-weight: 600;
         margin: 0 16px 0 0;
         line-height: 1;
       }
-      &__item_tax {
+      &--item_tax {
         font-size: 10px;
         line-height: 1;
         display: flex;
@@ -139,7 +139,7 @@
           display: inline-block;
         }
       }
-      &__item_fee {
+      &--item_fee {
         font-size: 16px;
         line-height: 1;
         display: flex;
@@ -162,26 +162,26 @@
         font-weight: bold;
       }
     }
-    &__pc_error_text {
+    &--pc_error_text {
       color: #ea352d;
       text-align: center;
       margin-top: 16px;
     }
-    &__item_text {
+    &--item_text {
       font-size: 16px;
       line-height: 1.5;
       padding-top: 32px;
 
     }
     
-    &--bottom {
+    &__bottom {
       margin-top: 16px;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      &--left {
+      &__left {
         display: flex;
-        &__like_button {
+        &--like_button {
           border: 1px solid #f5f5f5;
           background: #f5f5f5;
           padding: 8px 16px;
@@ -193,7 +193,7 @@
 
           }
         }
-        &__report {
+        &--report {
           border: 1px solid #f5f5f5;
           background: #f5f5f5;
           padding: 8px 16px;
@@ -201,7 +201,7 @@
           margin-left: 16px;
         }
       }
-      &__right {
+      &--right {
         a {
           color: #0099e8;
         }
@@ -212,7 +212,7 @@
     }
   }
 
-  &--message_contents {
+  &__message_contents {
     width: 700px;
     height: 500px;
     background-color: darkseagreen;
@@ -221,14 +221,14 @@
       ul {
         li {
           position: relative;
-          .message_list--user {
+          .message_list__user {
             display: flex;
             img {
               width: 40px;
               height: 40px;
               border-radius: 50%;
             } 
-            &__name {
+            &--name {
               width: 600px;
               max-width: 600px;
               height: 1.2rem;
@@ -236,7 +236,7 @@
               font-weight: bold;
           }        
           }
-          .message_list--box {
+          .message_list__box {
             position: relative;
             position: absolute;
             top: 1.5rem;
@@ -253,7 +253,7 @@
               top: 8px;
               left: -6px;
             }
-            &__date {
+            &--date {
               margin-top: 8px;
               i {
                 font-size: 16px;
@@ -298,6 +298,139 @@
         margin: 16px 0 0;
         display: block;
         font-size: 14px;
+      }
+    } 
+  }
+  &__next_item{
+    width: 700px;
+    margin-top: 24px;
+    display: flex;
+    justify-content: space-between;
+    a {
+      color: #0099e8;
+    }
+  }
+  &__sns_box {
+    width: 700px;
+    margin-top: 24px;
+    padding: 46px 0 24px;
+    background: #fff;
+    font-size: 44px;
+    &__sns_icons {
+      display: flex;
+      justify-content: center;
+      li {
+        margin-right: 8px;
+      }
+      &--fb {
+        color: #385185;
+        
+      }
+      &--tw {
+        color: #5d9dc9;
+      }
+      &--ln {
+        color: #00c137;
+      }
+      &--pr {
+        color: #aa262a;
+      }
+    }
+  }
+  &__user_anoter_items {
+    width: 700px;
+    padding-bottom: 20px;
+    &__title {
+      font-size: 22px;
+      line-height: 1.4;
+      padding: 24px 0 8px;
+      a {
+        color: #0099e8;
+        font-weight: bold;
+      }
+    }
+    &__container {
+      display: grid;
+      grid-template-columns: 220px 220px 220px ;
+      grid-template-rows: 330px 330px;
+      gap: 20px;
+      &--box {
+        width: 220px;
+        // display: grid;
+        // grid-template-columns: 220px 220px 220px;
+
+        .items_box {
+          width: 220px;
+          height: 220px;
+          img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; 
+          }
+        }
+        .items_box_body {
+            width: 220px;
+            height: 110px;
+            padding: 16px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            background: #fff;
+          &--name {
+            font-size: 16px;
+            font-weight: 400;
+            overflow: hidden;
+            word-wrap:break-word;
+          }
+          &--num {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 8px;
+            &--price {
+            font-size: 14px;
+            font-weight: 600;
+            }
+            &__like_icon {
+              &--heart {
+                font-size: 16px;
+                font-weight: 400;
+                color: #ccc;
+              }
+              span {
+                color: #333;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.nav_item {
+
+  background-color: #f5f5f5;
+  border-top: solid 1px #eee;
+  box-shadow: 0 3px 3px 0 rgba(0,0,0,0.16);
+  &__lists {
+    width: 1020px;
+    margin: 0 auto;
+    padding: 15px 0;
+    &__list {
+      font-size: 14px;
+      line-height: 1.2;
+      display: inline;
+      a {
+        display: inline-block;
+        color: #333;
+      }
+      &--icon {
+        margin: 0 8px;
+        font-size: 9px;
+        color: #888;
+      }
+      &--item {
+        font-weight: bold;
       }
     }
     
