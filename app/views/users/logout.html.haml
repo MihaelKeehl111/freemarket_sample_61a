@@ -22,8 +22,9 @@
     .main__right__top
       .main__right__top__content.main__right__top__content--logout
         .content__button
-          %button{type: 'submit'} ログアウト
-          %input{type: 'hidden'}
+          = link_to users_sign_out_path, method: :delete do
+            %button{type: 'submit'} ログアウト
+            %input{type: 'hidden'}
 
   = render 'sidebar'
 
