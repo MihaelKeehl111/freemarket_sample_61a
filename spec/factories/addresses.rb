@@ -5,5 +5,6 @@ FactoryBot.define do
     municipality             {"北区"}
     address                  {"32−3"}
     building                 {"アジアビル3F"}
+    user                     nil
   end
 end

@@ -4,5 +4,6 @@ FactoryBot.define do
     expiration_month          {"09"}
     expiration_year           {"22"}
     security_code             {"765"}
+    user                      nil
   end
 end

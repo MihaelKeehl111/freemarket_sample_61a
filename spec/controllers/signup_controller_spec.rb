@@ -1,9 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe SignupController, type: :controller do
-  let(:user) {attributes_for(:user)}
-  let(:card) {attributes_for(:card)}
-  let(:address) {attributes_for(:address)}
 
   describe "get #step1" do
     it "succeed in response" do
@@ -156,28 +153,30 @@ RSpec.describe SignupController, type: :controller do
   describe "validates_step3" do
     context "valid data" do
       before do
-        FactoryBot.create :user
-        FactoryBot.create :address
+        @request.env["devise.mapping"] = Devise.mappings[:user]
+        @user = attributes_for(:user)
+        session["devise.regist_data"] = {user: @user}
+        @address = attributes_for(:address)
+        @user = @user.merge(address_attributes: @address)
       end
       subject {
-        user_params = attributes_for(:user)
-        post :step4, params: { user: user_params, address_attributes: user_params },
-                      session: {
-                        nickname: 'test_user',
-                        email: 'aaa@gmail.com',
-                        password: 'aaaa0000',
-                        password_confirmation: 'aaaa0000',
-                        cellphone: "08011112222",
-                        familyname: 'sei',
-                        firstname: 'mei',
-                        familyname_kana: 'セイ',
-                        firstname_kana: 'メイ',
-                        birthday: '2000-01-01',
-                        postcode: 1112222,
-                        prefecture: '東京都',
-                        municipality: '渋谷区',
-                        address: '1-1',
-                      }
+        post :step4, params: { user: @user },
+                     session: {
+                          nickname: 'sample_user',
+                          email: "aaa@gmail.com",
+                          password: "aaaa0000",
+                          password_confirmation: "aaaa0000",
+                          cellphone: '08011112222',
+                          familyname: 'sei',
+                          firstname: 'mei',
+                          familyname_kana: 'セイ',
+                          firstname_kana: 'メイ',
+                          birthday: '2000-01-01',
+                          postcode: 1112222,
+                          prefecture: '東京都',
+                          municipality: '渋谷区',
+                          address: '1-1'
+                         }
       }
 
       it "return 200 response" do
@@ -187,15 +186,22 @@ RSpec.describe SignupController, type: :controller do
 
       it "redirect to step4" do
         subject
+        # session[:address_attributes] = FactoryBot.attributes_for( :address )
         expect(response).to render_template :step4
-        pending 'テストが失敗するのであとで直す'
       end
     end
 
     context "invalid data" do
+      before do
+        @request.env["devise.mapping"] = Devise.mappings[:user]
+        @user = attributes_for(:user)
+        session["devise.regist_data"] = {user: @user}
+        @address = attributes_for(:address)
+        @user = @user.merge(address_attributes: @address)
+        @user[:familyname_kana] = nil
+      end
       subject {
-        user_params = attributes_for(:user)
-        post :step4, params: {user: user_params, address_attributes: user_params },
+        post :step4, params: { user: @user },
                               session: {
                               nickname: 'test_user',
                               email: 'aaa@gmail.com',
@@ -253,9 +259,17 @@ RSpec.describe SignupController, type: :controller do
 
   describe "create" do
     context "valid data" do
+      before do
+        @request.env["devise.mapping"] = Devise.mappings[:user]
+        @user = attributes_for(:user)
+        session["devise.regist_data"] = {user: @user}
+        @address = attributes_for(:address)
+        @user = @user.merge(address_attributes: @address)
+        @card = attributes_for(:card)
+        @user = @user.merge(card_attributes: @card)
+      end
       subject {
-        user_params = attributes_for(:user)
-        post :create, params: { user: user_params, address_attributes: user_params, card_attributes: user_params },
+        post :create, params: { user: @user },
                       session: {
                         nickname: 'test_user',
                         email: 'aaa@gmail.com',
@@ -267,6 +281,7 @@ RSpec.describe SignupController, type: :controller do
                         familyname_kana: 'セイ',
                         firstname_kana: 'メイ',
                         birthday: '2000-01-01',
+                        address_attributes: @address,
                         postcode: 1112222,
                         prefecture: '東京都',
                         municipality: '渋谷区',
@@ -280,20 +295,27 @@ RSpec.describe SignupController, type: :controller do
 
       it "return 200 response" do
         subject
-        expect(response).to have_http_status "200"
+        expect(response).to have_http_status "302"
       end
 
       it "redirect to done" do
         subject
-        expect(response).to render_template :done
-        pending 'テストが失敗するのであとで直す'
+        expect(response).to redirect_to done_signup_index_path
       end
     end
 
     context "invalid data" do
+      before do
+        @request.env["devise.mapping"] = Devise.mappings[:user]
+        @user = attributes_for(:user)
+        session["devise.regist_data"] = {user: @user}
+        @address = attributes_for(:address)
+        @card = attributes_for(:card)
+        @user = @user.merge(address_attributes: @address)
+        @user = @user.merge(card_attributes: @card)
+      end
       subject {
-        user_params = attributes_for(:user)
-        post :create, params: {user: user_params, address_attributes: user_params, card_attributes: user_params },
+        post :create, params: {user: @user},
                               session: {
                               nickname: 'test_user',
                               email: 'aaa@gmail.com',
