@@ -17,6 +17,7 @@
         .sell-main__dropbox-container.clearfix.state-image-number-10
           .sell-main__upload-items-container
             .sell-main__upload-drop-box.have-item-0
+              = f.file_field :images, {id: 'sell-main__upload-drop-box'}
               %pre.sell-main__visible-pc
                 ドラッグアンドドロップ
                 またはクリックしてファイルをアップロード
@@ -43,14 +44,21 @@
               %span.sell-main__form-require
                 必須
             %div
-              = f.text_field :category_id, {class: 'sell-main__select-default', placeholder:"---"}
+              = f.collection_select(:category_id, @categories, :id, :name, { prompt: '---' }, class: 'sell-main__select-default')
+          .sell-main__form-group
+            = f.label :size do
+              サイズ
+              %span.sell-main__form-require
+                必須
+            %div
+              = f.text_field :size, {class: 'sell-main__select-default', placeholder:"---"}
           .sell-main__form-group
             = f.label :state do
               商品の状態
               %span.sell-main__form-require
                 必須
             %div
-              = f.text_field :state, {class: 'sell-main__select-default', placeholder:"---"}
+              = f.collection_select(:state_id, @states, :id, :name, { prompt: '---' }, class: 'sell-main__select-default')
       .sell-main__content.clearfix
         %h3.sell-main__sub-head
           配送について
@@ -63,21 +71,28 @@
               %span.sell-main__form-require
                 必須
             %div
-              = f.text_field :delivery_charge, {class: 'sell-main__select-default', placeholder:"---"}
+              = f.collection_select(:delivery_charge_id, @delivery_charges, :id, :name, { prompt: '---' }, class: 'sell-main__select-default')
+          .sell-main__form-group
+            = f.label :delivery_method do
+              配送方法
+              %span.sell-main__form-require
+                必須
+            %div
+              = f.collection_select(:delivery_method_id, @delivery_methods, :id, :name, { prompt: '---' }, class: 'sell-main__select-default')
           .sell-main__form-group
             = f.label :delivery_area do
               発送元の地域
               %span.sell-main__form-require
                 必須
             %div
-              = f.text_field :delivery_area, {class: 'sell-main__select-default', placeholder:"---"}
+              = f.collection_select(:delivery_area_id, @delivery_areas, :id, :name, { prompt: '---' }, class: 'sell-main__select-default')
           .sell-main__form-group
             = f.label :delivery_date do
               発送までの日数
               %span.sell-main__form-require
                 必須
             %div
-              = f.text_field :delivery_date, {class: 'sell-main__select-default', placeholder:"---"}
+              = f.collection_select(:delivery_date_id, @delivery_dates, :id, :name, { prompt: '---' }, class: 'sell-main__select-default')
       .sell-main__content.clearfix
         %h3.sell-main__sub-head
           販売価格(300〜9,999,999)
@@ -120,8 +135,7 @@
             また、出品をもちまして
             = link_to '加盟店規約', '#'
             に同意したことになります。
-        %button{type: 'submit', name: '出品する', class: 'sell-main__btn-default sell-main__btn-red'}
-          出品する
+        = f.submit '出品する', class: 'sell-main__btn-default sell-main__btn-red'
         = link_to '#', class: 'sell-main__btn-default sell-main__btn-gray' do
           もどる
 

@@ -1,11 +1,4 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
-
+# カテゴリー
 # レディース
 lady = Category.create(name: "レディース")
 lady_1 = lady.children.create(name: "トップス")
@@ -334,3 +327,89 @@ others_8 = others.children.create(name: "事務/店舗用品")
 others_8.children.create([{name: "オフィス用品一般"},{name: "オフィス家具"},{name: "店舗用品"},{name: "OA機器"},{name: "ラッピング/包装"},{name: "その他"}])
 others_9 = others.children.create(name: "その他")
 others_9.children.create([{name: "すべて"}])
+
+# 商品の状態
+State.create(name: "新品、未使用")
+State.create(name: "未使用に近い")
+State.create(name: "目立った傷や汚れなし")
+State.create(name: "やや傷や汚れあり")
+State.create(name: "傷や汚れあり")
+State.create(name: "全体的に状態が悪い")
+
+# 配送料の負担
+DeliveryCharge.create(name: "送料込み(出品者負担)", id: 1)
+DeliveryCharge.create(name: "着払い(購入者負担)", id: 2)
+
+# 配送の方法
+# 送料込み(出品者負担)
+DeliveryMethod.create(name: "未定", delivery_charge_id: 1)
+DeliveryMethod.create(name: "らくらくメルカリ便", delivery_charge_id: 1)
+DeliveryMethod.create(name: "ゆうメール", delivery_charge_id: 1)
+DeliveryMethod.create(name: "レターパック", delivery_charge_id: 1)
+DeliveryMethod.create(name: "普通郵便(定形、定形外)", delivery_charge_id: 1)
+DeliveryMethod.create(name: "クロネコヤマト", delivery_charge_id: 1)
+DeliveryMethod.create(name: "ゆうパック", delivery_charge_id: 1)
+DeliveryMethod.create(name: "クリックポスト", delivery_charge_id: 1)
+DeliveryMethod.create(name: "ゆうパケット", delivery_charge_id: 1)
+
+# 着払い(購入者負担)
+DeliveryMethod.create(name: "未定", delivery_charge_id: 2)
+DeliveryMethod.create(name: "クロネコヤマト", delivery_charge_id: 2)
+DeliveryMethod.create(name: "ゆうパック", delivery_charge_id: 2)
+DeliveryMethod.create(name: "ゆうメール", delivery_charge_id: 2)
+
+
+# 発送元の地域
+DeliveryArea.create(name: "北海道")
+DeliveryArea.create(name: "青森県")
+DeliveryArea.create(name: "岩手県")
+DeliveryArea.create(name: "宮城県")
+DeliveryArea.create(name: "秋田県")
+DeliveryArea.create(name: "山形県")
+DeliveryArea.create(name: "福島県")
+DeliveryArea.create(name: "茨城県")
+DeliveryArea.create(name: "栃木県")
+DeliveryArea.create(name: "群馬県")
+DeliveryArea.create(name: "埼玉県")
+DeliveryArea.create(name: "千葉県")
+DeliveryArea.create(name: "東京都")
+DeliveryArea.create(name: "神奈川県")
+DeliveryArea.create(name: "新潟県")
+DeliveryArea.create(name: "富山県")
+DeliveryArea.create(name: "石川県")
+DeliveryArea.create(name: "福井県")
+DeliveryArea.create(name: "山梨県")
+DeliveryArea.create(name: "長野県")
+DeliveryArea.create(name: "岐阜県")
+DeliveryArea.create(name: "静岡県")
+DeliveryArea.create(name: "愛知県")
+DeliveryArea.create(name: "三重県")
+DeliveryArea.create(name: "滋賀県")
+DeliveryArea.create(name: "京都府")
+DeliveryArea.create(name: "大阪府")
+DeliveryArea.create(name: "兵庫県")
+DeliveryArea.create(name: "奈良県")
+DeliveryArea.create(name: "和歌山県")
+DeliveryArea.create(name: "鳥取県")
+DeliveryArea.create(name: "島根県")
+DeliveryArea.create(name: "岡山県")
+DeliveryArea.create(name: "広島県")
+DeliveryArea.create(name: "山口県")
+DeliveryArea.create(name: "徳島県")
+DeliveryArea.create(name: "香川県")
+DeliveryArea.create(name: "愛媛県")
+DeliveryArea.create(name: "高知県")
+DeliveryArea.create(name: "福岡県")
+DeliveryArea.create(name: "佐賀県")
+DeliveryArea.create(name: "長崎県")
+DeliveryArea.create(name: "熊本県")
+DeliveryArea.create(name: "大分県")
+DeliveryArea.create(name: "宮崎県")
+DeliveryArea.create(name: "鹿児島県")
+DeliveryArea.create(name: "沖縄県")
+DeliveryArea.create(name: "未定")
+
+# 発送までの日数
+DeliveryDate.create(name: "1~2日で発送")
+DeliveryDate.create(name: "2~3日で発送")
+DeliveryDate.create(name: "4~7日で発送")

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200209103631) do
+ActiveRecord::Schema.define(version: 20200222080210) do
 
   create_table "categories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name",       null: false
@@ -20,21 +20,64 @@ ActiveRecord::Schema.define(version: 20200209103631) do
     t.index ["ancestry"], name: "index_categories_on_ancestry", using: :btree
   end
 
-  create_table "products", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string   "name",                          null: false
-    t.string   "size",                          null: false
-    t.text     "description",     limit: 65535, null: false
-    t.string   "state",                         null: false
-    t.string   "price",                         null: false
-    t.string   "delivery_charge",               null: false
-    t.string   "delivery_method",               null: false
-    t.string   "delivery_area",                 null: false
-    t.string   "delivery_date",                 null: false
-    t.integer  "category_id",                   null: false
-    t.datetime "created_at",                    null: false
-    t.datetime "updated_at",                    null: false
-    t.index ["category_id"], name: "index_products_on_category_id", using: :btree
+  create_table "delivery_areas", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "name",       null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
+  create_table "delivery_charges", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "name",       null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "delivery_dates", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "name",       null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "delivery_methods", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "name",               null: false
+    t.integer  "delivery_charge_id", null: false
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+    t.index ["delivery_charge_id"], name: "index_delivery_methods_on_delivery_charge_id", using: :btree
+  end
+
+  create_table "products", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "name",                             null: false
+    t.string   "size",                             null: false
+    t.text     "description",        limit: 65535, null: false
+    t.integer  "state_id",                         null: false
+    t.string   "price",                            null: false
+    t.integer  "delivery_charge_id",               null: false
+    t.integer  "delivery_method_id",               null: false
+    t.integer  "delivery_area_id",                 null: false
+    t.integer  "delivery_date_id",                 null: false
+    t.integer  "category_id",                      null: false
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
+    t.index ["category_id"], name: "index_products_on_category_id", using: :btree
+    t.index ["delivery_area_id"], name: "index_products_on_delivery_area_id", using: :btree
+    t.index ["delivery_charge_id"], name: "index_products_on_delivery_charge_id", using: :btree
+    t.index ["delivery_date_id"], name: "index_products_on_delivery_date_id", using: :btree
+    t.index ["delivery_method_id"], name: "index_products_on_delivery_method_id", using: :btree
+    t.index ["state_id"], name: "index_products_on_state_id", using: :btree
+  end
+
+  create_table "states", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "name",       null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_foreign_key "delivery_methods", "delivery_charges"
   add_foreign_key "products", "categories"
+  add_foreign_key "products", "delivery_areas"
+  add_foreign_key "products", "delivery_charges"
+  add_foreign_key "products", "delivery_dates"
+  add_foreign_key "products", "delivery_methods"
+  add_foreign_key "products", "states"
 end
