@@ -34,10 +34,10 @@
         = f.email_field :email, class: 'information__main--form', placeholder: "PC・携帯どちらでも可"
         = f.label :password, "パスワード", class: 'password'
         %span.form-require 必須
-        = f.password_field :password, class: 'information__main--form', placeholder: '英数字混在8文字以上'
+        = f.password_field :password, class: 'information__main--form', placeholder: '英数字混在7文字以上'
         = f.label :password_confirmation, "パスワード（確認）", class: 'password-confirmation'
         %span.form-require 必須
-        = f.password_field :password_confirmation, class: 'information__main--form', placeholder: '英数字混在8文字以上'
+        = f.password_field :password_confirmation, class: 'information__main--form', placeholder: '英数字混在7文字以上'
         = f.submit "次へ進む", class: 'information__main--form--button'
 
 .footer
