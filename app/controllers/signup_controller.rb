@@ -101,13 +101,13 @@ class SignupController < ApplicationController
     @user.build_card(user_params[:card_attributes])
     if @user.save
       session[:id] = @user.id
-      redirect_to done_signup_index_path
+      redirect_to complete_registration_signup_index_path
     else
       render '/signup/register_user_info'
     end
   end
   
-  def done
+  def complete_registration
     sign_in User.find(session[:id]) unless user_signed_in?
   end
 

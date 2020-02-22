@@ -298,9 +298,9 @@ RSpec.describe SignupController, type: :controller do
         expect(response).to have_http_status "302"
       end
 
-      it "redirect to done" do
+      it "redirect to complete_registration " do
         subject
-        expect(response).to redirect_to done_signup_index_path
+        expect(response).to redirect_to complete_registration_signup_index_path
       end
     end
 
@@ -339,7 +339,7 @@ RSpec.describe SignupController, type: :controller do
         expect(response).to have_http_status "200"
       end
 
-      it "render to register_user-info" do
+      it "render to register_user_info" do
         subject
         expect(response).to render_template :register_user_info
       end

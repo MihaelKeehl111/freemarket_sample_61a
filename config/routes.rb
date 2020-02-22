@@ -12,7 +12,7 @@ Rails.application.routes.draw do
       post 'register_cellphone'
       post 'register_address'
       post 'register_card'
-      get 'done'
+      get 'complete_registration'
     end
   end
 
