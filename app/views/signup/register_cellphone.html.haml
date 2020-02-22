@@ -24,7 +24,7 @@
     .information__head
       電話番号の確認
     .information__main
-      = form_for @user, url: step3_signup_index_path do |f|
+      = form_for @user, url: register_address_signup_index_path do |f|
         = f.label :cellphone, '携帯電話の番号', class: 'phone-number'
         = f.text_field :cellphone, placeholder: '携帯電話の番号を入力'
         %h1.attention

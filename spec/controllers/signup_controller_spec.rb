@@ -2,23 +2,23 @@ require 'rails_helper'
 
 RSpec.describe SignupController, type: :controller do
 
-  describe "get #step1" do
+  describe "get #register_user-info" do
     it "succeed in response" do
-      get :step1
+      get :register_user_info
       expect(response).to be_successful
     end
 
     it "return 200 response" do
-      get :step1
+      get :register_user_info
       expect(response).to have_http_status "200"
     end
   end
 
-  describe "validates_step1" do
+  describe "validates_register_user_info" do
     context "valid data" do
       subject {
         user_params = attributes_for(:user)
-        post :step2, params: {user: user_params},
+        post :register_cellphone, params: {user: user_params},
                               session: {
                                 nickname: 'test_user',
                                 email: 'aaa@gmail',
@@ -32,16 +32,16 @@ RSpec.describe SignupController, type: :controller do
         expect(response).to have_http_status "200"
       end
 
-      it "redirect to step2" do
+      it "redirect to register_cellphone" do
         subject
-        expect(response).to render_template :step2
+        expect(response).to render_template :register_cellphone
       end
     end
 
     context "invalid data" do
       subject {
         user_params = attributes_for(:user, nickname: '')
-        post :step2, params: {user: user_params},
+        post :register_cellphone, params: {user: user_params},
                               session: {
                               nickname: '',
                               email: 'aaa@gmail',
@@ -55,17 +55,17 @@ RSpec.describe SignupController, type: :controller do
         expect(response).to have_http_status "200"
       end
 
-      it "render to step1" do
+      it "render to register_user_info" do
         subject
-        expect(response).to render_template :step1
+        expect(response).to render_template :register_user_info
       end
     end
   end
 
 
-  describe 'get #step2' do
+  describe 'get #register_cellphone' do
     before do
-      get :step2, user: { name: 'sample_user',
+      get :register_cellphone, user: { name: 'sample_user',
                           email: "aaa@gmail.com",
                           password: "aaaa0000",
                           password_confirmation: "aaaa0000" }
@@ -80,11 +80,11 @@ RSpec.describe SignupController, type: :controller do
     end
   end
 
-  describe "validates_step2" do
+  describe "validates_register_cellphone" do
     context "valid data" do
       subject {
         user_params = attributes_for(:user)
-        post :step3, params: { user: user_params },
+        post :register_address, params: { user: user_params },
                     session: {
                       nickname: 'test_user',
                       email: 'aaa@gmail.com',
@@ -99,16 +99,16 @@ RSpec.describe SignupController, type: :controller do
         expect(response).to have_http_status "200"
       end
 
-      it "redirect to step3" do
+      it "redirect to register_address" do
         subject
-        expect(response).to render_template :step3
+        expect(response).to render_template :register_address
       end
     end
 
     context "invalid data" do
       subject {
         user_params = attributes_for(:user, cellphone: '')
-        post :step3, params: { user: user_params },
+        post :register_address, params: { user: user_params },
                     session: {
                       nickname: 'test_user',
                       email: 'aaa@gmail.com',
@@ -123,17 +123,17 @@ RSpec.describe SignupController, type: :controller do
         expect(response).to have_http_status "200"
       end
 
-      it "render to step2" do
+      it "render to register_cellphone" do
         subject
-        expect(response).to render_template :step2
+        expect(response).to render_template :register_cellphone
       end
     end
   end
 
   
-  describe 'get #step3' do
+  describe 'get #register_address' do
     before do
-      get :step3, user: { name: 'sample_user',
+      get :register_address, user: { name: 'sample_user',
                           email: "aaa@gmail.com",
                           password: "aaaa0000",
                           password_confirmation: "aaaa0000",
@@ -150,7 +150,7 @@ RSpec.describe SignupController, type: :controller do
     end
   end
 
-  describe "validates_step3" do
+  describe "validates_register_address" do
     context "valid data" do
       before do
         @request.env["devise.mapping"] = Devise.mappings[:user]
@@ -160,7 +160,7 @@ RSpec.describe SignupController, type: :controller do
         @user = @user.merge(address_attributes: @address)
       end
       subject {
-        post :step4, params: { user: @user },
+        post :register_card, params: { user: @user },
                      session: {
                           nickname: 'sample_user',
                           email: "aaa@gmail.com",
@@ -184,10 +184,10 @@ RSpec.describe SignupController, type: :controller do
         expect(response).to have_http_status "200"
       end
 
-      it "redirect to step4" do
+      it "redirect to register_card" do
         subject
         # session[:address_attributes] = FactoryBot.attributes_for( :address )
-        expect(response).to render_template :step4
+        expect(response).to render_template :register_card
       end
     end
 
@@ -201,7 +201,7 @@ RSpec.describe SignupController, type: :controller do
         @user[:familyname_kana] = nil
       end
       subject {
-        post :step4, params: { user: @user },
+        post :register_card, params: { user: @user },
                               session: {
                               nickname: 'test_user',
                               email: 'aaa@gmail.com',
@@ -221,17 +221,17 @@ RSpec.describe SignupController, type: :controller do
         expect(response).to have_http_status "200"
       end
 
-      it "render to step3" do
+      it "render to register_address" do
         subject
-        expect(response).to render_template :step3
+        expect(response).to render_template :register_address
       end
     end
   end
 
 
-  describe 'get #step4' do
+  describe 'get #register_card' do
     before do
-      get :step4, user: { name: 'sample_user',
+      get :register_card, user: { name: 'sample_user',
                           email: "aaa@gmail.com",
                           password: "aaaa0000",
                           password_confirmation: "aaaa0000",
@@ -339,9 +339,9 @@ RSpec.describe SignupController, type: :controller do
         expect(response).to have_http_status "200"
       end
 
-      it "render to step1" do
+      it "render to register_user-info" do
         subject
-        expect(response).to render_template :step1
+        expect(response).to render_template :register_user_info
       end
     end
   end

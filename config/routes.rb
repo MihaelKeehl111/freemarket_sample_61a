@@ -8,10 +8,10 @@ Rails.application.routes.draw do
 
   resources :signup do
     collection do
-      get 'step1'
-      post 'step2'
-      post 'step3'
-      post 'step4'
+      get 'register_user_info'
+      post 'register_cellphone'
+      post 'register_address'
+      post 'register_card'
       get 'done'
     end
   end

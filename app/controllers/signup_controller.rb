@@ -1,14 +1,14 @@
 class SignupController < ApplicationController
-  before_action :validates_step1, only: :step2
-  before_action :validates_step2, only: :step3
-  before_action :validates_step3, only: :step4
+  before_action :validates_register_user_info, only: :register_cellphone
+  before_action :validates_register_cellphone, only: :register_address
+  before_action :validates_register_address, only: :register_card
 
-  def step1
+  def register_user_info
     @user = User.new # 新規インスタンス作成
   end
 
-  def validates_step1
-    session[:nickname] = user_params[:nickname] #step1で入力した値をsessionに保存
+  def validates_register_user_info
+    session[:nickname] = user_params[:nickname] #register_user_infoで入力した値をsessionに保存
     session[:email] = user_params[:email]
     session[:password] = user_params[:password]
     session[:password_confirmation] = user_params[:password_confirmation]
@@ -24,15 +24,15 @@ class SignupController < ApplicationController
       firstname_kana: "メイ",
       birthday: "2001-01-01"
     )
-    render '/signup/step1' unless @user.valid?
+    render '/signup/register_user_info' unless @user.valid?
   end
 
-  def step2
+  def register_cellphone
     @user = User.new # 新規インスタンス作成
   end
 
-  def validates_step2
-    session[:cellphone] = user_params[:cellphone] #step2で入力した値をsessionに保存
+  def validates_register_cellphone
+    session[:cellphone] = user_params[:cellphone] #register_cellphoneで入力した値をsessionに保存
     @user = User.new(
       nickname: session[:nickname], # sessionに保存された値をインスタンスに渡す
       email: session[:email],
@@ -45,16 +45,16 @@ class SignupController < ApplicationController
       firstname_kana: "メイ",
       birthday: "2001-01-01"
     )
-    render '/signup/step2' unless @user.valid?
+    render '/signup/register_cellphone' unless @user.valid?
   end
 
-  def step3
+  def register_address
     @user = User.new #新規インスタンス作成
     @user.build_address #addressの入力を記述したビューを呼び出すアクションに記述
   end
 
-  def validates_step3
-    session[:familyname] = user_params[:familyname] #step3で入力した値をsessionに保存
+  def validates_register_address
+    session[:familyname] = user_params[:familyname] #register_addressで入力した値をsessionに保存
     session[:firstname] = user_params[:firstname]
     session[:familyname_kana] = user_params[:familyname_kana]
     session[:firstname_kana] = user_params[:firstname_kana]
@@ -75,10 +75,10 @@ class SignupController < ApplicationController
       birthday: session[:birthday]
     )
     @user.build_address(session[:address_attributes])
-    render '/signup/step3' unless @user.valid?
+    render '/signup/register_address' unless @user.valid?
   end
 
-  def step4
+  def register_card
     @user = User.new #新規インスタンス作成
     @user.build_card #cardの入力を記述したビューを呼び出すアクションに記述
   end
@@ -103,7 +103,7 @@ class SignupController < ApplicationController
       session[:id] = @user.id
       redirect_to done_signup_index_path
     else
-      render '/signup/step1'
+      render '/signup/register_user_info'
     end
   end
   

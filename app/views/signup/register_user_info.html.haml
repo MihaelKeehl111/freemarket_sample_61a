@@ -25,7 +25,7 @@
     .information__head
       会員情報入力
     .information__main
-      = form_for @user, url: step2_signup_index_path do |f|
+      = form_for @user, url: register_cellphone_signup_index_path do |f|
         = f.label :nickname, "ニックネーム", class: 'nickname'
         %span.form-require 必須
         = f.text_field :nickname, class: 'information__main--form', placeholder: "例)  メルカリ太郎"
@@ -38,9 +38,6 @@
         = f.label :password_confirmation, "パスワード（確認）", class: 'password-confirmation'
         %span.form-require 必須
         = f.password_field :password_confirmation, class: 'information__main--form', placeholder: '6文字以上'
-        .information__main--captcha
-          .information__main--captcha--left
-            .information__main--captcha--left--box
         = f.submit "次へ進む", class: 'information__main--form--button'
 
 .footer

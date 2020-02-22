@@ -25,7 +25,7 @@
     .information__head
       住所入力
     .information__main
-      = form_for @user, url: step4_signup_index_path do |f|
+      = form_for @user, url: register_card_signup_index_path do |f|
         = f.label :name, 'お名前', class: 'name'
         %span.form-require 必須
         = f.text_field :familyname, class: 'information__main--form--double', placeholder: '例) 山田'
