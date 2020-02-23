@@ -18,11 +18,6 @@ class ProductsController < ApplicationController
 
   def create
     @product = Product.create(product_params)
-    # if @product.save
-    #   redirect_to root_path, notice: '登録が完了しました。'
-    # else
-    #   render :new
-    # end
   end
 
   private
