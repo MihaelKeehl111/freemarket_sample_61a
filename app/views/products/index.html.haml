@@ -447,7 +447,8 @@
               = link_to '', class: "toppage-main__item-name--text" do
                 ジャケット
 
-= render 'shared/sellbutton'
+- if user_signed_in?
+  = render 'shared/sellbutton'
 
 = render 'shared/appbanner'
   

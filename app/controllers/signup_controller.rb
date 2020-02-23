@@ -24,7 +24,10 @@ class SignupController < ApplicationController
       firstname_kana: "メイ",
       birthday: "2001-01-01"
     )
-    render '/signup/register_user_info' unless @user.valid?
+    unless @user.valid?
+      flash.now[:alert] = @user.errors.full_messages
+      render '/signup/register_user_info'
+    end
   end
 
   def register_cellphone
@@ -45,7 +48,10 @@ class SignupController < ApplicationController
       firstname_kana: "メイ",
       birthday: "2001-01-01"
     )
-    render '/signup/register_cellphone' unless @user.valid?
+    unless @user.valid?
+      flash.now[:alert] = @user.errors.full_messages
+      render '/signup/register_cellphone'
+    end
   end
 
   def register_address
@@ -75,7 +81,10 @@ class SignupController < ApplicationController
       birthday: session[:birthday]
     )
     @user.build_address(session[:address_attributes])
-    render '/signup/register_address' unless @user.valid?
+    unless @user.valid?
+      flash.now[:alert] = @user.errors.full_messages
+      render '/signup/register_address'
+    end
   end
 
   def register_card
@@ -103,7 +112,8 @@ class SignupController < ApplicationController
       session[:id] = @user.id
       redirect_to complete_registration_signup_index_path
     else
-      render '/signup/register_user_info'
+      flash.now[:alert] = @user.errors.full_messages
+      render '/signup/register_card'
     end
   end
   
