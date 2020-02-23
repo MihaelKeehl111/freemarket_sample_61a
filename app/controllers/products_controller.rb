@@ -5,6 +5,9 @@ class ProductsController < ApplicationController
   def show
   end
 
+  def completion
+  end
+
   def new
     redirect_to new_user_session_path unless user_signed_in?
     @product = Product.new
@@ -18,6 +21,11 @@ class ProductsController < ApplicationController
 
   def create
     @product = Product.create(product_params)
+    if @product.save
+      render "products/completion"
+    else
+      redirect_to new_product_path, notice: '必須事項を入力して下さい'
+    end
   end
 
   private
