@@ -1,9 +1,9 @@
 .complete_registration
-  .header
-    %ul.header__logo
+  .complete_registration__header
+    %ul.complete_registration__header__logo
       =link_to '' do
         =image_tag "fmarket_logo_red", height: 52
-    %ul.header__bar
+    %ul.complete_registration__header__bar
       %ol.clearfix
         %li.through
           会員情報
@@ -20,7 +20,7 @@
         %li.active
           完了
           .progress-status
-  .main
+  .complete_registration__main
     .information
       .information__head
         会員登録完了
@@ -36,14 +36,15 @@
             = image_tag "appbanner_figure.jpg", height: 300
             %h1 スマホでかんたんフリマアプリ
             %h2 今すぐ無料ダウンロード！
-            %h3.apple
-              = link_to "https://itunes.apple.com" do
-                = image_tag "app-store.svg"
-            %h3.google
-              = link_to "https://play.google.com" do
-                = image_tag "google-play.svg"
+            %ul
+              %li.banner
+                = link_to "https://itunes.apple.com" do
+                  = image_tag "app-store.svg", alt: "appstore-logo"
+              %li.banner.google
+                = link_to "https://play.google.com" do
+                  = image_tag "google-play.svg", alt: "googleplay-logo"
         
-  .footer
+  .complete_registration__footer
     = link_to "https://www.google.com/", class: 'footer__link' do
       プライバシーポリシー  
     = link_to "https://www.google.com/", class: 'footer__link' do

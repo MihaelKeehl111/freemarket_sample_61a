@@ -2,6 +2,7 @@ class SignupController < ApplicationController
   before_action :validates_register_user_info, only: :register_cellphone
   before_action :validates_register_cellphone, only: :register_address
   before_action :validates_register_address, only: :register_card
+  require "date"
 
   def register_user_info
     @user = User.new # 新規インスタンス作成
@@ -60,12 +61,12 @@ class SignupController < ApplicationController
   end
 
   def validates_register_address
+    session[:birthday] = Date.new(params[:birthday]["birthday(1i)"].to_i,params[:birthday]["birthday(2i)"].to_i,params[:birthday]["birthday(3i)"].to_i)
     session[:familyname] = user_params[:familyname] #register_addressで入力した値をsessionに保存
     session[:firstname] = user_params[:firstname]
     session[:familyname_kana] = user_params[:familyname_kana]
     session[:firstname_kana] = user_params[:firstname_kana]
     session[:phone] = user_params[:phone]
-    session[:birthday] = user_params[:birthday]
     session[:address_attributes] = user_params[:address_attributes]
     @user = User.new(
       nickname: session[:nickname], #sessionに保存された値をインスタンスに渡す

@@ -155,7 +155,7 @@ body {
   }
   
   &__main{
-    height: 1370px;
+    // height: 1370px;
     width:100%;
     margin: 0 auto;
     .information{
@@ -175,7 +175,6 @@ body {
         font-weight: 550;
       }
       &__main{
-        height: 1220px;
         max-width: 320px;
         margin: 40px auto 40px auto;
         &--label{
@@ -219,6 +218,7 @@ body {
             color: white;
             font-size: 13px;
             margin-top: 10px;
+            margin-bottom: 40px;
             height: 48px;
             width: 100%;
             border-radius: 2px;
