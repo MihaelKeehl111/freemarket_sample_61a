@@ -70,16 +70,18 @@ ActiveRecord::Schema.define(version: 20200222080210) do
   end
 
   create_table "products", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string   "name",                             null: false
-    t.string   "size",                             null: false
-    t.text     "description",        limit: 65535, null: false
-    t.integer  "state_id",                         null: false
-    t.string   "price",                            null: false
-    t.integer  "delivery_charge_id",               null: false
-    t.integer  "delivery_method_id",               null: false
-    t.integer  "delivery_area_id",                 null: false
-    t.integer  "delivery_date_id",                 null: false
-    t.integer  "category_id",                      null: false
+    t.string   "image"
+    t.string   "name"
+    t.text     "description",        limit: 65535
+    t.integer  "category_id"
+    t.string   "size"
+    t.integer  "state_id"
+    t.integer  "delivery_charge_id"
+    t.integer  "delivery_method_id"
+    t.integer  "delivery_area_id"
+    t.integer  "delivery_date_id"
+    t.string   "price"
+    t.integer  "user_id"
     t.datetime "created_at",                       null: false
     t.datetime "updated_at",                       null: false
     t.index ["category_id"], name: "index_products_on_category_id", using: :btree
@@ -88,6 +90,7 @@ ActiveRecord::Schema.define(version: 20200222080210) do
     t.index ["delivery_date_id"], name: "index_products_on_delivery_date_id", using: :btree
     t.index ["delivery_method_id"], name: "index_products_on_delivery_method_id", using: :btree
     t.index ["state_id"], name: "index_products_on_state_id", using: :btree
+    t.index ["user_id"], name: "index_products_on_user_id", using: :btree
   end
 
   create_table "states", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -123,4 +126,5 @@ ActiveRecord::Schema.define(version: 20200222080210) do
   add_foreign_key "products", "delivery_dates"
   add_foreign_key "products", "delivery_methods"
   add_foreign_key "products", "states"
+  add_foreign_key "products", "users"
 end
