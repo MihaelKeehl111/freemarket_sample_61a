@@ -31,63 +31,49 @@
           .main__rights__contents__form__box__top
             お名前
           .main__rights__contents__form__box__bottom
-            木下藤吉郎
+            = current_user.familyname + current_user.firstname
         .main__rights__contents__form__box
           .main__rights__contents__form__box__top
             お名前カナ
           .main__rights__contents__form__box__bottom
-            キノシタトウキチロウ
+            = current_user.familyname_kana + current_user.firstname_kana
         .main__rights__contents__form__box    
           .main__rights__contents__form__box__top
             生年月日
           .main__rights__contents__form__box__bottom
-            1537/03/17
-        .main__rights__contents__form__box    
-          .main__rights__contents__form__box__top
-            郵便番号        
-            .main__rights__contents__form__box__top__right
-              任意
-          .main__rights__contents__form__box__bottom
-            %input{placeholder: "例) 1234567"}
-        .main__rights__contents__form__box       
-          .main__rights__contents__form__box__top
-            都道府県  
-            .main__rights__contents__form__box__top__right
-              任意
-          .main__rights__contents__form__box__bottom
-            %input{placeholder: "--"}
-              = icon 'fas', 'chevron-down fa-lg', class: 'main__rights__contents__form__box__bottom--buttun'
-        .main__rights__contents__form__box       
-          .main__rights__contents__form__box__top
-            市区町村        
-            .main__rights__contents__form__box__top__right
-              任意
-          .main__rights__contents__form__box__bottom
-            %input{placeholder: "例)大阪市中央区"}
-        .main__rights__contents__form__box       
-          .main__rights__contents__form__box__top
-            番地      
-            .main__rights__contents__form__box__top__right
-              任意
-          .main__rights__contents__form__box__bottom
-            %input{class: 'input', placeholder: "例)1-1"}
-        .main__rights__contents__form__box       
-          .main__rights__contents__form__box__top
-            建物名       
-            .main__rights__contents__form__box__top__right
-              任意
-          .main__rights__contents__form__box__bottom
-            %input{placeholder: "例)大阪城天守閣"}
-        .main__rights__contents__form__btn
+            = current_user.birthday
+
+        = form_for :address do |f|
+          .main__rights__contents__form__box
+            = f.label :postcode, '郵便番号', class: 'main__rights__contents__form__box__top'
+            %span.form-optional 任意
+            = f.text_field :postcode, value: @address.postcode
+          .main__rights__contents__form__box
+            = f.label :prefecture, '都道府県', class: 'main__rights__contents__form__box__top'
+            %span.form-optional 任意
+            = f.text_field :prefecture, value: @address.prefecture
+          .main__rights__contents__form__box
+            = f.label :municipality, '市区町村', class: 'main__rights__contents__form__box__top'
+            %span.form-optional 任意
+            = f.text_field :municipality, value: @address.municipality
+          .main__rights__contents__form__box
+            = f.label :address, '番地', class: 'main__rights__contents__form__box__top'
+            %span.form-optional 任意
+            = f.text_field :address, value: @address.address
+          .main__rights__contents__form__box
+            = f.label :building, '建物名', class: 'main__rights__contents__form__box__top'
+            %span.form-optional 任意
+            = f.text_field :building, value: @address.building
+          .main__rights__contents__form__box
+            = f.submit '登録する', class: 'form--button'
+
+        .main__rights__contents__form__sub
           = link_to '' do
-            %a 登録する
-        .main__rights__contents__form__sub   
-          = link_to ''  do
-            %a 本人情報の登録について
+            本人情報の登録について
           = icon 'fas', 'chevron-right', class: 'icon'
 
-  = render 'sidebar'      
-                
+  = render 'sidebar'
+
 = render 'shared/sellbutton'
 
 = render 'shared/appbanner'

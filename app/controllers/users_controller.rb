@@ -3,6 +3,7 @@ class UsersController < ApplicationController
   end
 
   def identification
+    @address = Address.find_by(user_id: current_user.id)
   end
 
   def edit
@@ -19,6 +20,20 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:nickname, :profile)
+    params.require(:user).permit(
+      :email,
+      :password,
+      :password_confirmation,
+      :nickname,
+      :cellphone,
+      :familyname,
+      :firstname,
+      :familyname_kana,
+      :firstname_kana,
+      :birthday,
+      :phone,
+      address_attributes: [:id, :postcode, :prefecture, :municipality, :address, :building],
+      card_attributes: [:id, :card_number, :expiration_month, :expiration_year, :security_code]
+    )
   end
 end
