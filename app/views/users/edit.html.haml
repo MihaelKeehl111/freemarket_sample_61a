@@ -15,17 +15,6 @@
 
 .main
   .main--profile_contents
-    -# .main--profile_contents__title
-    -#   %h1 プロフィール
-    -# .main--profile_contents__user_name
-    -#   = image_tag 'human.svg', alt: '', class: 'user_img'
-    -#   %input.user_name{value: current_user.nickname }
-    -# .main--profile_contents__user_message
-    -#   %textarea#profile_message{name: "profile_message", placeholder: "例）こんにちは☆ ご覧いただきありがとうございます！かわいいものやきれいめオフィスカジュアル中心に出品しています。服のサイズは主に9号です。気持ちよくお取引できるよう心がけていますので、商品や発送方法などご質問がありましたらお気軽にどうぞ♪"}
-    -#   = link_to '', {class: 'button'} do
-    -#     変更する
-      
-
     = form_for(current_user) do |f|
       .main--profile_contents__title
         %h1 プロフィール
@@ -33,7 +22,7 @@
         = image_tag 'human.svg', alt: '', class: 'user_img'
         = f.text_field :nickname, value: current_user.nickname, class: 'user_name'
       .main--profile_contents__user_message
-        %textarea#profile_message{name: "profile_message", placeholder: "例）こんにちは☆ ご覧いただきありがとうございます！かわいいものやきれいめオフィスカジュアル中心に出品しています。服のサイズは主に9号です。気持ちよくお取引できるよう心がけていますので、商品や発送方法などご質問がありましたらお気軽にどうぞ♪"}
+        = f.text_area :profile, rows: '9', wrap: 'soft', class: 'profile_message', placeholder: "例）こんにちは☆ ご覧いただきありがとうございます！かわいいものやきれいめオフィスカジュアル中心に出品しています。服のサイズは主に9号です。気持ちよくお取引できるよう心がけていますので、商品や発送方法などご質問がありましたらお気軽にどうぞ♪"
         = f.submit '変更する', class: 'button'
 
   = render 'sidebar'
