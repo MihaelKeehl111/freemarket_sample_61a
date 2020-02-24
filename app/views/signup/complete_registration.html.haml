@@ -36,13 +36,12 @@
             = image_tag "appbanner_figure.jpg", height: 300
             %h1 スマホでかんたんフリマアプリ
             %h2 今すぐ無料ダウンロード！
-            %ul
-              %li.banner
-                = link_to "https://itunes.apple.com" do
-                  = image_tag "app-store.svg", alt: "appstore-logo"
-              %li.banner.google
-                = link_to "https://play.google.com" do
-                  = image_tag "google-play.svg", alt: "googleplay-logo"
+            .banner--apple
+              = link_to "https://itunes.apple.com" do
+                = image_tag "app-store.svg", alt: "appstore-logo"
+            .banner--google
+              = link_to "https://play.google.com" do
+                = image_tag "google-play.svg", alt: "googleplay-logo"
         
   .complete_registration__footer
     = link_to "https://www.google.com/", class: 'footer__link' do

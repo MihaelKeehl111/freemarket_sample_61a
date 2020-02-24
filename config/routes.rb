@@ -18,7 +18,7 @@ Rails.application.routes.draw do
 
   resources :products, only: [:index, :new]
 
-  resources :users, only: [:index, :edit] do
+  resources :users, only: [:index, :edit, :update] do
     collection do
       get :identification
       get :logout

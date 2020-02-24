@@ -216,21 +216,24 @@ body {
               top: 55px;
               left: 140px;
             }
-            ul {
-              .banner {
-                float: left;
-                img {
-                  width: 130px;
-                  margin-top: 20px;
-                  margin-right: 20px;
-                }
+            .banner--apple {
+              position: absolute;
+              top: 100px;
+              left: 120px;
+              img {
+                width: 200px;
+                margin-top: 20px;
+                margin-right: 20px;
               }
-              .google {
-                img {
-                  width: 130px;
-                  margin-top: 20px;
-                  margin-right: 20px;
-                }
+            }
+            .banner--google {
+              position: absolute;
+              top: 100px;
+              right: 120px;
+              img {
+                width: 200px;
+                margin-top: 20px;
+                margin-right: 20px;
               }
             }
           }
