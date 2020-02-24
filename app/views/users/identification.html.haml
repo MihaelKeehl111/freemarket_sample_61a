@@ -43,27 +43,28 @@
           .main__rights__contents__form__box__bottom
             = current_user.birthday
 
-        = form_for :address do |f|
-          .main__rights__contents__form__box
-            = f.label :postcode, '郵便番号', class: 'main__rights__contents__form__box__top'
-            %span.form-optional 任意
-            = f.text_field :postcode, value: @address.postcode
-          .main__rights__contents__form__box
-            = f.label :prefecture, '都道府県', class: 'main__rights__contents__form__box__top'
-            %span.form-optional 任意
-            = f.text_field :prefecture, value: @address.prefecture
-          .main__rights__contents__form__box
-            = f.label :municipality, '市区町村', class: 'main__rights__contents__form__box__top'
-            %span.form-optional 任意
-            = f.text_field :municipality, value: @address.municipality
-          .main__rights__contents__form__box
-            = f.label :address, '番地', class: 'main__rights__contents__form__box__top'
-            %span.form-optional 任意
-            = f.text_field :address, value: @address.address
-          .main__rights__contents__form__box
-            = f.label :building, '建物名', class: 'main__rights__contents__form__box__top'
-            %span.form-optional 任意
-            = f.text_field :building, value: @address.building
+        = form_for(current_user) do |f|
+          = f.fields_for :address do |b|
+            .main__rights__contents__form__box
+              = b.label :postcode, '郵便番号', class: 'main__rights__contents__form__box__top'
+              %span.form-optional 任意
+              = b.text_field :postcode, value: @address.postcode
+            .main__rights__contents__form__box
+              = b.label :prefecture, '都道府県', class: 'main__rights__contents__form__box__top'
+              %span.form-optional 任意
+              = b.text_field :prefecture, value: @address.prefecture
+            .main__rights__contents__form__box
+              = b.label :municipality, '市区町村', class: 'main__rights__contents__form__box__top'
+              %span.form-optional 任意
+              = b.text_field :municipality, value: @address.municipality
+            .main__rights__contents__form__box
+              = b.label :address, '番地', class: 'main__rights__contents__form__box__top'
+              %span.form-optional 任意
+              = b.text_field :address, value: @address.address
+            .main__rights__contents__form__box
+              = b.label :building, '建物名', class: 'main__rights__contents__form__box__top'
+              %span.form-optional 任意
+              = b.text_field :building, value: @address.building
           .main__rights__contents__form__box
             = f.submit '登録する', class: 'form--button'
 
