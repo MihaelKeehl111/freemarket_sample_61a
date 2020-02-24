@@ -12,6 +12,10 @@ class UsersController < ApplicationController
   def check_cellphone
   end
 
+  def change_address
+    @address = Address.find_by(user_id: current_user.id)
+  end
+
   def edit
   end
 

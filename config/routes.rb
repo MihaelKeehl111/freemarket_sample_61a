@@ -23,6 +23,7 @@ Rails.application.routes.draw do
       get :identification
       get :change_password
       get :check_cellphone
+      get :change_address
       get :logout
       get :card 
     end
