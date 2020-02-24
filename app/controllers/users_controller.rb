@@ -4,11 +4,12 @@ class UsersController < ApplicationController
 
   def identification
     @address = Address.find_by(user_id: current_user.id)
-    # if @address.update(address_params)
-    #   redirect_to users_path
-    # else
-    #   render :identification
-    # end
+  end
+
+  def change_password
+  end
+
+  def check_cellphone
   end
 
   def edit
@@ -37,14 +38,9 @@ class UsersController < ApplicationController
       :firstname_kana,
       :birthday,
       :phone,
+      :profile,
       address_attributes: [:id, :postcode, :prefecture, :municipality, :address, :building],
       card_attributes: [:id, :card_number, :expiration_month, :expiration_year, :security_code]
     )
   end
-
-  # def address_params
-  #   params.require(:addres).permit(
-  #     :postcode, :prefecture, :municipality, :address, :building
-  #   )
-  # end
 end
