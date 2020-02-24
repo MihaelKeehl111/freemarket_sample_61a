@@ -16,7 +16,11 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :products, only: [:index, :new, :create]
+  resources :products, only: [:index, :new, :create] do
+    collection do
+      get :completion
+    end
+  end
 
   resources :users, only: [:index, :edit] do
     collection do

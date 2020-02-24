@@ -22,9 +22,10 @@ class ProductsController < ApplicationController
   def create
     @product = Product.new(product_params)
     if @product.save
-      render "products/completion"
+      redirect_to completion_products_path, {controller: "products", action: "index", name: "completion"} do
     else
-      redirect_to new_product_path, notice: '必須事項を入力して下さい'
+      render :new, notice: '必須事項を入力して下さい'
+      end
     end
   end
 

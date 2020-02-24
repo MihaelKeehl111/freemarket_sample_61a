@@ -1,7 +1,5 @@
+@import "config/colors";
 .notification {
-  $white: #fff;
-  $light_blue: #38AEF0;
-  $alert_orange: #F35500;
   .notice {
     background-color: $light_blue;
     color: $white;
