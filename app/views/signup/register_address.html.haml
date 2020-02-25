@@ -1,0 +1,71 @@
+.header
+  %ul.header__logo
+    =link_to root_path do
+      =image_tag "fmarket_logo_red", height: 52
+  %ul.header__bar
+    %ol.clearfix
+      %li.through
+        会員情報
+        .progress-status
+      %li.through-two
+        電話番号認証
+        .progress-status
+      %li.active
+        住所入力
+        .progress-status
+      %li.credit-page
+        支払い方法
+        .progress-status
+      %li.complete-page
+        完了
+        .progress-status
+
+.main
+  .information
+    .information__head
+      住所入力
+    .information__main
+      = form_for @user, url: register_card_signup_index_path do |f|
+        = f.label :name, 'お名前', class: 'name'
+        %span.form-require 必須
+        = f.text_field :familyname, class: 'information__main--form--double', placeholder: '例) 山田'
+        = f.text_field :firstname, class: 'information__main--form--double', placeholder: '例) 彩'
+        = f.label :name_kana, 'お名前カナ', class: 'kana'
+        %span.form-require 必須
+        = f.text_field :familyname_kana, class: 'information__main--form--double', placeholder: '例) ヤマダ'
+        = f.text_field :firstname_kana, class: 'information__main--form--double', placeholder: '例) アヤ'
+
+        = f.fields_for :address do |b|
+          = b.label :postcode, '郵便番号', class: 'post-code'
+          %span.form-require 必須
+          = b.text_field :postcode, class: 'information__main--form', placeholder: '1234567'
+          = b.label :prefecture, '都道府県', class: 'prefectures'
+          %span.form-require 必須
+          = b.text_field :prefecture, class: 'information__main--form', placeholder: '北海道'
+          = b.label :municipality, '市区町村', class: 'municipality'
+          %span.form-require 必須
+          = b.text_field :municipality, class: 'information__main--form', placeholder: '例) 横浜市緑区'
+          = b.label :address, '住所', class: 'address'
+          %span.form-require 必須
+          = b.text_field :address, class: 'information__main--form', placeholder: '例) 青山1−1−1'
+          = b.label :building, '建物名', class: 'address'
+          %span.form-optional 任意
+          = b.text_field :building, class: 'information__main--form', placeholder: '例) 柳ビル103'
+        = f.label :phone, '電話', class: 'address'
+        %span.form-optional 任意
+        = f.text_field :phone, class: 'information__main--form', placeholder: '例) 09012345678'
+        = f.label :birthday, '誕生日', class: 'address'
+        %span.form-require 必須
+        = f.date_field :birthday, class: 'information__main--form', placeholder: '例) YYYY-MM-DD'
+        = f.submit '次へ進む', class: 'information__main--form--button'
+
+.footer
+  = link_to "https://www.google.com/", class: 'footer__link' do
+    プライバシーポリシー  
+  = link_to "https://www.google.com/", class: 'footer__link' do
+    メルカリ利用規約  
+  = link_to "https://www.google.com/", class: 'footer__link' do
+    特定商取引に関する表記
+    .footer__logo
+      =link_to '' do
+        =image_tag "logo_gray", height: 80

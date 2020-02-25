@@ -1,12 +1,10 @@
 .header {
-  height: 100px;
+  padding: 8px 0 0;
   position: relative;
   background-color: white;
   box-shadow: rgba(0, 0, 0, 0.18) 0px 2px 4px;
   .top {
     width: 1020px;
-    height: 40px;
-    padding: 8px 0 0;
     margin: 0 auto;
     display: flex;
     &__logo {
@@ -50,9 +48,10 @@
   }
   .bottom {
     width: 1020px;
-    margin: 8px auto 0;
+    margin: 8px auto 5px;
     &__left {
       float: left;
+      height: 50px;
       &__lists {
         padding-right: 11px;
         display: inline;
@@ -75,6 +74,40 @@
     }
     &__right {
       float: right;
+      &__btn {
+        padding-left: 11px;
+        display: inline-block;
+        a {
+          display: inline-block;
+          position: relative;
+          text-align: center;
+        }
+        .btn--left {
+          background-color: rgb(234, 53, 45);
+          color: rgb(255, 255, 255);
+          display: block;
+          font-size: 14px;
+          border-width: 1px;
+          border-style: solid;
+          border-color: rgb(234, 53, 45);
+          border-image: initial;
+          border-radius: 4px;
+          padding: 8px 10px;
+        }
+        .btn--right {
+          background-color: rgb(255, 255, 255);
+          color: rgb(0, 149, 238);
+          display: block;
+          font-size: 14px;
+          border-width: 1px;
+          border-style: solid;
+          border-color: rgb(0, 149, 238);
+          border-image: initial;
+          border-radius: 4px;
+          padding: 8px 10px;
+          transition: all 0.3s ease-out 0s;
+        }
+      }
       &__lists {
         padding-left: 11px;
         display: inline;
