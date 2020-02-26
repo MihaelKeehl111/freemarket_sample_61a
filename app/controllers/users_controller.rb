@@ -1,9 +1,10 @@
 class UsersController < ApplicationController
+  before_action :set_user
+
   def index
   end
 
   def identification
-    @address = Address.find_by(user_id: current_user.id)
   end
 
   def change_password
@@ -13,11 +14,9 @@ class UsersController < ApplicationController
   end
 
   def change_address
-    @address = Address.find_by(user_id: current_user.id)
   end
 
   def card
-    @card = Card.find_by(user_id: current_user.id)
     card_number = @card.card_number.to_i
     last_4_number = card_number % 10000
     @last_4_number = last_4_number.to_s
@@ -55,5 +54,10 @@ class UsersController < ApplicationController
       address_attributes: [:id, :postcode, :prefecture, :municipality, :address, :building],
       card_attributes: [:id, :card_number, :expiration_month, :expiration_year, :security_code]
     )
+  end
+
+  def set_user
+    @address = Address.find_by(user_id: current_user.id)
+    @card = Card.find_by(user_id: current_user.id)
   end
 end
