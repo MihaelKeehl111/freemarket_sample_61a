@@ -3,72 +3,72 @@
 .nav
   %ul.nav__lists
     %li.nav__lists__list
-      = link_to 'products#index' do
+      = link_to root_path do
         %span メルカリ
       = icon 'fas', 'chevron-right', class: 'nav__lists__list--icon'
     %li.nav__lists__list.nav__lists__list--mypage
-      = link_to 'user#index' do
+      = link_to users_path do
         %span マイページ
       = icon 'fas', 'chevron-right', class: 'nav__lists__list--icon'
     %li.nav__lists__list.nav__lists__list--identification
       %span 本人情報の登録
 
 .main.clearfix
-  .main__rights
-    .main__rights__header
+  .identification__main__rights
+    .identification__main__rights__header
       本人情報の登録
-    .main__rights__contents
-      .main__rights__contents__top
-        .main__rights__contents__top__text
+    .identification__main__rights__contents
+      .identification__main__rights__contents__top
+        .identification__main__rights__contents__top__text
           %p お客さまの本人情報をご登録ください。
           %p 登録されたお名前・生年月日を変更する場合、本人確認書類の提出が必要になります。
-        .main__rights__contents__top__sub
+        .identification__main__rights__contents__top__sub
           = link_to '' do
             %a 本人確認書類のアップロードについて
           = icon 'fas', 'chevron-right', class: 'icon'
-      .main__rights__contents__form
-        .main__rights__contents__form__box
-          .main__rights__contents__form__box__top
+      .identification__main__rights__contents__form
+        .identification__main__rights__contents__form__box
+          .identification__main__rights__contents__form__box__top
             お名前
-          .main__rights__contents__form__box__bottom
+          .identification__main__rights__contents__form__box__bottom
             = current_user.familyname + current_user.firstname
-        .main__rights__contents__form__box
-          .main__rights__contents__form__box__top
+        .identification__main__rights__contents__form__box
+          .identification__main__rights__contents__form__box__top
             お名前カナ
-          .main__rights__contents__form__box__bottom
+          .identification__main__rights__contents__form__box__bottom
             = current_user.familyname_kana + current_user.firstname_kana
-        .main__rights__contents__form__box    
-          .main__rights__contents__form__box__top
+        .identification__main__rights__contents__form__box    
+          .identification__main__rights__contents__form__box__top
             生年月日
-          .main__rights__contents__form__box__bottom
+          .identification__main__rights__contents__form__box__bottom
             = current_user.birthday
 
         = form_for(current_user) do |f|
           = f.fields_for :address do |b|
-            .main__rights__contents__form__box
-              = b.label :postcode, '郵便番号', class: 'main__rights__contents__form__box__top'
+            .identification__main__rights__contents__form__box
+              = b.label :postcode, '郵便番号', class: 'identification__main__rights__contents__form__box__top'
               %span.form-optional 任意
               = b.text_field :postcode, value: @address.postcode
-            .main__rights__contents__form__box
-              = b.label :prefecture, '都道府県', class: 'main__rights__contents__form__box__top'
+            .identification__main__rights__contents__form__box
+              = b.label :prefecture, '都道府県', class: 'identification__main__rights__contents__form__box__top'
               %span.form-optional 任意
               = b.text_field :prefecture, value: @address.prefecture
-            .main__rights__contents__form__box
-              = b.label :municipality, '市区町村', class: 'main__rights__contents__form__box__top'
+            .identification__main__rights__contents__form__box
+              = b.label :municipality, '市区町村', class: 'identification__main__rights__contents__form__box__top'
               %span.form-optional 任意
               = b.text_field :municipality, value: @address.municipality
-            .main__rights__contents__form__box
-              = b.label :address, '番地', class: 'main__rights__contents__form__box__top'
+            .identification__main__rights__contents__form__box
+              = b.label :address, '番地', class: 'identification__main__rights__contents__form__box__top'
               %span.form-optional 任意
               = b.text_field :address, value: @address.address
-            .main__rights__contents__form__box
-              = b.label :building, '建物名', class: 'main__rights__contents__form__box__top'
+            .identification__main__rights__contents__form__box
+              = b.label :building, '建物名', class: 'identification__main__rights__contents__form__box__top'
               %span.form-optional 任意
               = b.text_field :building, value: @address.building
-          .main__rights__contents__form__box
+          .identification__main__rights__contents__form__box
             = f.submit '登録する', class: 'form--button'
 
-        .main__rights__contents__form__sub
+        .identification__main__rights__contents__form__sub
           = link_to '' do
             本人情報の登録について
           = icon 'fas', 'chevron-right', class: 'icon'

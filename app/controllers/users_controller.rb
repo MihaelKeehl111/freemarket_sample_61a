@@ -16,6 +16,13 @@ class UsersController < ApplicationController
     @address = Address.find_by(user_id: current_user.id)
   end
 
+  def card
+    @card = Card.find_by(user_id: current_user.id)
+    card_number = @card.card_number.to_i
+    last_4_number = card_number % 10000
+    @last_4_number = last_4_number.to_s
+  end
+
   def edit
   end
 
@@ -23,7 +30,9 @@ class UsersController < ApplicationController
     if current_user.update(user_params)
       redirect_to users_path
     else
-      render :edit
+      # @user = User.find_by(id: current_user)
+      # flash.now[:alert] = @user.errors.full_messages
+      return
     end
   end
 

@@ -8,30 +8,40 @@
         %span メルカリ
       = icon 'fas', 'chevron-right', class: 'nav__lists__list--icon'
     %li.nav__lists__list.nav__lists__list--mypage
-      %span マイページ
+      = link_to users_path do
+        %span マイページ
       = icon 'fas', 'chevron-right', class: 'nav__lists__list--icon'
     %li.nav__lists__list.nav__lists__list--payment
       %span 支払い方法
 
 .main
-  .main--right_contents
-    .main--right_contents__title
+  .main__right_contents
+    .main__right_contents--title
       %h1 支払い方法
-    .main--right_contents--inner
-      .main--right_contents--inner__title.container
+    .main__right_contents__inner
+      .main__right_contents__inner--title.container
         %h3 クレジットカード一覧
-      .main--right_contents--inner--list.container
-        .main--right_contents--inner--list--box
-          = image_tag 'card.svg', alt: '', class: ''
-          .main--right_contents--inner--list--box__pay_num
-            %p ************0000
-          .main--right_contents--inner--list--box__pay_num
-            %p 01/20
-          .main--right_contents--inner--list--box__button
-            = link_to '', {class: 'button'} do
-              削除する
-      .main--right_contents--inner__bottom
-        = link_to '', {class: 'button'} do
+      - if @card
+        .main__right_contents__inner__list.container
+          .main__right_contents__inner__list__box
+            = icon 'far', 'credit-card'
+            .main__right_contents__inner__list__box--pay_num
+              %p 
+                = '************' + @last_4_number
+            .main__right_contents__inner__list__box--pay_num
+              %p
+                = @card.expiration_month + '/' + @card.expiration_year
+            .main__right_contents__inner__list__box--button
+              = link_to '', class: 'button' do
+                削除する
+      - else
+        .main__rights__contents__inner__list.container
+          .main__rights__contents__inner__list--button
+            = icon 'far', 'credit-card', class: 'button--icon'
+            %span クレジットカードを追加する
+      
+      .main__right_contents__inner--bottom
+        = link_to '' do
           支払い方法について 
           = icon 'fas', 'angle-right', class: 'icon'
           

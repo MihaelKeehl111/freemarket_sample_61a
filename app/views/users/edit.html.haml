@@ -8,7 +8,8 @@
         %span メルカリ
       = icon 'fas', 'chevron-right', class: 'nav__lists__list--icon'
     %li.nav__lists__list.nav__lists__list--mypage
-      %span マイページ
+      = link_to users_path do
+        %span マイページ
       = icon 'fas', 'chevron-right', class: 'nav__lists__list--icon'
     %li.nav__lists__list.nav__lists__list--plofile
       %span プロフィール
