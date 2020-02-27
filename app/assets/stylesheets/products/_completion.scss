@@ -1,6 +1,7 @@
+@import "config/colors";
 .sell-completion {
   text-align: center;
-  background: #fff;
+  background: $white;
   margin: 0 auto;
   padding: 40px 0;
   font-size: 16px;
@@ -33,14 +34,14 @@
       margin: 40px auto 0;
       background: #ea352d;
       border: 1px solid #ea352d;
-      color: #fff;
+      color: $white;
     }
     .sell-completion__btn-gray {
       width: 40%;
       margin: 24px auto 0;
       background: #aaa;
       border: 1px solid #aaa;
-      color: #fff;
+      color: $white;
     }
   }
 }
