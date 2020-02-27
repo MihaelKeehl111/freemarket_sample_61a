@@ -2,6 +2,9 @@ Rails.application.routes.draw do
   devise_for :users 
   root "products#index"
 
+
+  resources :products, only: [:index, :new, :show]
+
   devise_scope :user do
     get "/users/sign_out", to: "devise/sessions#destroy" 
   end
@@ -21,6 +24,7 @@ Rails.application.routes.draw do
       get :completion
     end
   end
+
 
   resources :users, only: [:index, :edit] do
     collection do
