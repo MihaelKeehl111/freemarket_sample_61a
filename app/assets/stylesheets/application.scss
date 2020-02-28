@@ -15,6 +15,8 @@
  */
 
 @import "reset";
+@import "config/colors";
+@import "modules/flash";
 @import "modules/products";
 @import "modules/header";
 @import "modules/footer";
@@ -22,6 +24,7 @@
 @import "modules/appbanner";
 @import "products/index";
 @import "products/new";
+@import "products/completion";
 @import "products/show";
 @import "users/index";
 @import "users/edit";
