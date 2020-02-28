@@ -1,0 +1,367 @@
+= render 'shared/header'
+
+.item_detail_container
+  .item_detail_container__main
+    .item_detail_container__main--item_name
+      %h1 トラさん
+    .item_detail_container__main__item_detail
+      .item_detail_container__main__item_detail__left
+        .item_detail_container__main__item_detail__left--top
+          .bg_photo
+            = image_tag '22574-17.jpg', class: ''
+        .item_detail_container__main__item_detail__left--bottom
+          .sm_photos
+            = image_tag '22574-17.jpg', class: ''
+          .sm_photos
+            = image_tag '22574-17.jpg', class: ''
+          .sm_photos
+            = image_tag '22574-17.jpg', class: ''
+          .sm_photos
+            = image_tag '22574-17.jpg', class: ''
+          .sm_photos
+            = image_tag '22574-17.jpg', class: ''
+          .sm_photos
+            = image_tag '22574-17.jpg', class: ''
+          .sm_photos
+            = image_tag '22574-17.jpg', class: ''
+          .sm_photos
+            = image_tag '22574-17.jpg', class: ''
+          .sm_photos
+            = image_tag '22574-17.jpg', class: ''
+          -# .sm_photos
+          -#   = image_tag '22574-17.jpg', class: ''
+
+
+
+      .item_detail_container__main__item_detail--right
+        %table
+          %tr
+            %th 出品者
+            %td
+              =link_to '' do
+                user name
+              %div
+                .item_rate
+                  = icon 'fas', 'grin', class: 'item_rate--good'
+                  %span 10
+                .item_rate
+                  = icon 'fas', 'meh', class: 'item_rate--normal'
+                  %span 5
+                .item_rate
+                  = icon 'fas', 'frown', class: 'item_rate--bad'
+                  %span 1
+          %tr
+            %th カテゴリー
+            %td
+              =link_to '' do
+                %span おもちゃ・ホビー・グッズ
+              %br/
+              =link_to '' do
+                = icon 'fas', 'angle-right'
+                %span おもちゃ
+              %br/
+              =link_to '' do
+                = icon 'fas', 'angle-right'
+                %span ぬいぐるみ
+          %tr
+            %th ブランド
+            %td
+              =link_to '' do
+                サファリ
+          %tr
+            %th 商品の状態
+            %td やや傷や汚れあり
+          %tr
+            %th 配送料の負担
+            %td 送料込み（出品者負担）
+          %tr
+            %th 配送の方法
+            %td 大型らくらくメルカリ便
+          %tr
+            %th 配送元の地域
+            %td
+              =link_to '' do
+                神奈川県
+          %tr
+            %th 発送日の目安
+            %td 4~7日で発送
+
+    .item_detail_container__main__price_box
+      .item_detail_container__main__price_box--item_price
+        %span ¥1,000,000円
+      .item_detail_container__main__price_box--item_tax
+        %span （税込）
+      .item_detail_container__main__price_box--item_fee
+        %span 送料込み
+    .item_detail_container__main--item_buy_button
+      =link_to '' ,class: '' do
+        購入画面に進む
+    .item_detail_container__main--pc_error_text
+      この商品は大型らくらくメルカリ便を利用しているため、アプリからのみ購入できます。
+    .item_detail_container__main--item_text
+      本物にそっくりのトラのぬいぐるみです。
+      %br/
+      大きさも２メートルあり、飾っておくだけでも迫力があります。
+      %br/
+      %br/
+      大きなぬいぐるみなので圧縮してお送りします。
+      %br/
+      多少シワが残る可能性があるのでご了承ください。
+    .item_detail_container__main__bottom
+      .item_detail_container__main__bottom__left
+        .item_detail_container__main__bottom__left--like_button
+          = icon 'far', 'heart'
+          %span いいね!
+          %span.like_num 10
+        .item_detail_container__main__bottom__left--report
+          = icon 'far', 'flag'
+          不適切な商品の報告
+      .item_detail_container__main__bottom--right
+        =link_to '' ,class: '' do
+          = icon 'fas', 'lock'
+          あんしん・あんぜんへの取り組み
+
+  .item_detail_container__message_contents
+    .item_detail_container__message_contents--message_list
+      %ul
+        %li
+          .message_list__user
+            .message_list__user--icon
+              = image_tag 'human.svg', alt: '', height: '', width: '', class: ''
+            .message_list__user--name
+              たろう
+          .message_list__box
+            .message_list__box--text
+              ぬいぐるみ欲しいです
+            .message_list__box--date
+              = icon 'far', 'clock'
+              %span 16日前
+            = icon 'fas', 'caret-left', class:'icon_bubble'
+            
+
+
+  .item_detail_container__message_contents
+    %p 相手のことを考え丁寧なコメントを心がけましょう。不快な言葉遣いなどは利用制限や退会処分となることがあります。
+    %textarea.product_detail_textarea
+    = link_to '', {class: 'product_detail_textarea__btn'} do
+      コメントする
+
+  %ul.item_detail_container__next_item
+    %li.item_detail_container__next_item--prev
+      = link_to '', {class: ''} do
+        = icon 'fas', 'chevron-left'
+        ライオンさん
+    %li.item_detail_container__next_item--next
+      = link_to '', {class: ''} do
+        ネコちゃん
+        = icon 'fas', 'chevron-right'
+  .item_detail_container__sns_box
+    %ul.item_detail_container__sns_box__sns_icons
+      %li
+        = link_to '', {class: 'item_detail_container__sns_box__sns_icons--fb'} do
+          = icon 'fab', 'facebook-square'
+      %li
+        = link_to '', {class: 'item_detail_container__sns_box__sns_icons--tw'} do
+          = icon 'fab', 'twitter-square'
+      %li
+        = link_to '', {class: 'item_detail_container__sns_box__sns_icons--ln'} do
+          = icon 'fab', 'line'
+      %li
+        = link_to '', {class: 'item_detail_container__sns_box__sns_icons--pr'} do
+          = icon 'fab', 'pinterest-square'
+
+
+  .item_detail_container__user_anoter_items
+    %h2.item_detail_container__user_anoter_items__title
+      = link_to '', {class: ''} do
+        user nameさんのその他の出品
+
+    .item_detail_container__user_anoter_items__container
+      .item_detail_container__user_anoter_items__container--box
+        .items_box
+          = image_tag '22574-17.jpg', class: ''
+        .items_box_body
+          %h3.items_box_body--name
+            トラさんトラさんトラさんトラさんトラさんトラさんトラさんトラさん
+          .items_box_body--num
+            .items_box_body--num--price
+              ¥1,000,000円
+            .items_box_body--num__like_icon
+              = link_to '', {class: ''} do
+                = icon 'far', 'heart',class:'items_box_body--num__like_icon--heart'
+                %span 10
+    
+      .item_detail_container__user_anoter_items__container--box
+        .items_box
+          = image_tag '22574-17.jpg', class: ''
+        .items_box_body
+          %h3.items_box_body--name
+            トラさんトラさんトラさんトラさんトラさんトラさんトラさんトラさん
+          .items_box_body--num
+            .items_box_body--num--price
+              ¥1,000,000円
+            .items_box_body--num__like_icon
+              = link_to '', {class: ''} do
+                = icon 'far', 'heart',class:'items_box_body--num__like_icon--heart'
+                %span 10
+    
+      .item_detail_container__user_anoter_items__container--box
+        .items_box
+          = image_tag '22574-17.jpg', class: ''
+        .items_box_body
+          %h3.items_box_body--name
+            トラさんトラさんトラさんトラさんトラさんトラさんトラさんトラさん
+          .items_box_body--num
+            .items_box_body--num--price
+              ¥1,000,000円
+            .items_box_body--num__like_icon
+              = link_to '', {class: ''} do
+                = icon 'far', 'heart',class:'items_box_body--num__like_icon--heart'
+                %span 10
+    
+      .item_detail_container__user_anoter_items__container--box
+        .items_box
+          = image_tag '22574-17.jpg', class: ''
+        .items_box_body
+          %h3.items_box_body--name
+            トラさんトラさんトラさんトラさんトラさんトラさんトラさんトラさん
+          .items_box_body--num
+            .items_box_body--num--price
+              ¥1,000,000円
+            .items_box_body--num__like_icon
+              = link_to '', {class: ''} do
+                = icon 'far', 'heart',class:'items_box_body--num__like_icon--heart'
+                %span 10
+    
+      .item_detail_container__user_anoter_items__container--box
+        .items_box
+          = image_tag '22574-17.jpg', class: ''
+        .items_box_body
+          %h3.items_box_body--name
+            トラさんトラさんトラさんトラさんトラさんトラさんトラさんトラさん
+          .items_box_body--num
+            .items_box_body--num--price
+              ¥1,000,000円
+            .items_box_body--num__like_icon
+              = link_to '', {class: ''} do
+                = icon 'far', 'heart',class:'items_box_body--num__like_icon--heart'
+                %span 10
+    
+      .item_detail_container__user_anoter_items__container--box
+        .items_box
+          = image_tag '22574-17.jpg', class: ''
+        .items_box_body
+          %h3.items_box_body--name
+            トラさんトラさんトラさんトラさんトラさんトラさんトラさんトラさん
+          .items_box_body--num
+            .items_box_body--num--price
+              ¥1,000,000円
+            .items_box_body--num__like_icon
+              = link_to '', {class: ''} do
+                = icon 'far', 'heart',class:'items_box_body--num__like_icon--heart'
+                %span 10
+
+
+  .item_detail_container__user_anoter_items
+    %h2.item_detail_container__user_anoter_items__title
+      = link_to '', {class: ''} do
+        トラさん その他の商品
+
+    .item_detail_container__user_anoter_items__container
+      .item_detail_container__user_anoter_items__container--box
+        .items_box
+          = image_tag '22574-17.jpg', class: ''
+        .items_box_body
+          %h3.items_box_body--name
+            トラさんトラさんトラさんトラさんトラさんトラさんトラさんトラさん
+          .items_box_body--num
+            .items_box_body--num--price
+              ¥1,000,000円
+            .items_box_body--num__like_icon
+              = link_to '', {class: ''} do
+                = icon 'far', 'heart',class:'items_box_body--num__like_icon--heart'
+                %span 10
+    
+      .item_detail_container__user_anoter_items__container--box
+        .items_box
+          = image_tag '22574-17.jpg', class: ''
+        .items_box_body
+          %h3.items_box_body--name
+            トラさんトラさんトラさんトラさんトラさんトラさんトラさんトラさん
+          .items_box_body--num
+            .items_box_body--num--price
+              ¥1,000,000円
+            .items_box_body--num__like_icon
+              = link_to '', {class: ''} do
+                = icon 'far', 'heart',class:'items_box_body--num__like_icon--heart'
+                %span 10
+    
+      .item_detail_container__user_anoter_items__container--box
+        .items_box
+          = image_tag '22574-17.jpg', class: ''
+        .items_box_body
+          %h3.items_box_body--name
+            トラさんトラさんトラさんトラさんトラさんトラさんトラさんトラさん
+          .items_box_body--num
+            .items_box_body--num--price
+              ¥1,000,000円
+            .items_box_body--num__like_icon
+              = link_to '', {class: ''} do
+                = icon 'far', 'heart',class:'items_box_body--num__like_icon--heart'
+                %span 10
+    
+      .item_detail_container__user_anoter_items__container--box
+        .items_box
+          = image_tag '22574-17.jpg', class: ''
+        .items_box_body
+          %h3.items_box_body--name
+            トラさんトラさんトラさんトラさんトラさんトラさんトラさんトラさん
+          .items_box_body--num
+            .items_box_body--num--price
+              ¥1,000,000円
+            .items_box_body--num__like_icon
+              = link_to '', {class: ''} do
+                = icon 'far', 'heart',class:'items_box_body--num__like_icon--heart'
+                %span 10
+    
+      .item_detail_container__user_anoter_items__container--box
+        .items_box
+          = image_tag '22574-17.jpg', class: ''
+        .items_box_body
+          %h3.items_box_body--name
+            トラさんトラさんトラさんトラさんトラさんトラさんトラさんトラさん
+          .items_box_body--num
+            .items_box_body--num--price
+              ¥1,000,000円
+            .items_box_body--num__like_icon
+              = link_to '', {class: ''} do
+                = icon 'far', 'heart',class:'items_box_body--num__like_icon--heart'
+                %span 10
+    
+      .item_detail_container__user_anoter_items__container--box
+        .items_box
+          = image_tag '22574-17.jpg', class: ''
+        .items_box_body
+          %h3.items_box_body--name
+            トラさんトラさんトラさんトラさんトラさんトラさんトラさんトラさん
+          .items_box_body--num
+            .items_box_body--num--price
+              ¥1,000,000円
+            .items_box_body--num__like_icon
+              = link_to '', {class: ''} do
+                = icon 'far', 'heart',class:'items_box_body--num__like_icon--heart'
+                %span 10
+
+
+.nav_item
+  %ul.nav_item__lists
+    %li.nav_item__lists__list
+      = link_to root_path do
+        %span メルカリ
+      = icon 'fas', 'chevron-right', class: 'nav__lists__list--icon'
+    %li.nav_item__lists__list.nav_item__lists__list--item
+      %span トラさん
+    
+= render 'shared/appbanner'
+  
+= render 'shared/footer'
