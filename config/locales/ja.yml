@@ -1,3 +1,35 @@
+ja:
+  activerecord:
+    models:
+      user: ユーザー
+      card: クレジットカード
+      address: 住所
+    attributes:
+      user:
+        name: 名前
+        email: メールアドレス
+        password: パスワード
+        password_confirmation: 確認用パスワード
+        nickname: ニックネーム
+        cellphone: 携帯番号
+        familyname: 氏
+        familyname_kana: 氏（カナ）
+        firstname: 名
+        firstname_kana: 名（カナ）
+        phone: 電話番号
+        birthday: 誕生日
+      address:
+        postcode: 郵便番号
+        prefecture: 都道府県
+        municipality: 市区町村
+        address: 番地
+        building: 建物名
+      card:
+        card_number: カード番号
+        expiration_month: 有効期限（月）
+        expiration_year: 有効期限（年）
+        security_code: セキュリティコード
+
 ---
 ja:
   activerecord:

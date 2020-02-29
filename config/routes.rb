@@ -23,10 +23,12 @@ Rails.application.routes.draw do
     end
   end
 
-
-  resources :users, only: [:index, :edit] do
+  resources :users, only: [:index, :edit, :update] do
     collection do
       get :identification
+      get :change_password
+      get :check_cellphone
+      get :change_address
       get :logout
       get :card 
     end

@@ -32,7 +32,7 @@
 }
 
 .main {
-  .identification__main__rights {
+  .change_address__main__rights {
     float: right;
     width: 700px;
     background-color: white;
@@ -57,6 +57,8 @@
         }
       }
       &__form { 
+        width: 320px;
+        margin: 0 auto;
         &__box {
           margin: 30px 0 0;
           label {
@@ -72,6 +74,15 @@
             vertical-align: top;
             background-color: #ccc;
           }
+          .form-require{
+            margin: 0 0 0 8px;
+            padding: 2px 4px;
+            border-radius: 2px;
+            color: #fff;
+            font-size: 12px;
+            vertical-align: top;
+            background-color: red;
+          }
           input {
             position: relative;
             width: 100%;
@@ -80,17 +91,11 @@
             font-size: 16px;
             border-radius: 4px;
             border: 1px solid #ccc;
+            margin: 0 0 8px;
           }
           &__top {
             font-weight: bold;
             display: flex;
-          }
-          &__bottom {
-            position: relative;
-            margin: 8px 0 0;
-            display: block;
-            font-size: inherit;
-            line-height: inherit;
           }
           .form--button {
             text-align: center;
@@ -98,7 +103,7 @@
             color: #fff;
             background-color: red;
             cursor: pointer;
-            margin: 20px 0 0 0; 
+            margin: 40px 0 0 0; 
           } 
         }
         &__sub {
