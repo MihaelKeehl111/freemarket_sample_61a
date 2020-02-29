@@ -19,6 +19,7 @@ Rails.application.routes.draw do
   resources :products, only: [:index, :new, :create, :show] do
     collection do
       get :completion
+      get :exhibiting
     end
   end
 
