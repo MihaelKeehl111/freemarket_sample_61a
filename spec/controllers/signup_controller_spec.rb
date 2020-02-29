@@ -339,9 +339,9 @@ RSpec.describe SignupController, type: :controller do
         expect(response).to have_http_status "200"
       end
 
-      it "render to register_user_info" do
+      it "render to register_card" do
         subject
-        expect(response).to render_template :register_user_info
+        expect(response).to render_template :register_card
       end
     end
   end

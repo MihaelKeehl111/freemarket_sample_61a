@@ -18,7 +18,8 @@
         = link_to '' do
           .main__right__top__header__profile
             = image_tag 'human.svg', class: 'prof-image'
-          %h2 user-nickname
+          %h2 
+            = current_user.nickname
           .main__right__top__header__about
             評価
             %span.main__right__top__header__about--bold 10
@@ -138,7 +139,7 @@
               = link_to '', {class: 'mypage__lists'} do
                 一覧をみる
   
-  =render 'sidebar'
+  = render 'sidebar'
 
 = render 'shared/sellbutton'
 

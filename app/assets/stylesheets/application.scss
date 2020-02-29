@@ -29,6 +29,7 @@
 @import "users/index";
 @import "users/edit";
 @import "users/logout";
+@import "signin/signin";
 @import "signup/complete_registration";
 @import "signup/index";
 @import "signup/register_address";
@@ -37,5 +38,8 @@
 @import "signup/register_user_info";
 @import "users/sidebar";
 @import "users/identification";
+@import "users/change-password";
+@import "users/check-cellphone";
+@import "users/change-address";
 @import "font-awesome-sprockets";
 @import "font-awesome";
