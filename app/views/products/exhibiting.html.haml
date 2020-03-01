@@ -41,9 +41,26 @@
                   .list__text
                     .list__text--name
                       = product.name
-                    .list__text--status
-                      %span
-                        出品中
+                    - if product.status.id == 1
+                      .list__text--status
+                        .status-1
+                          %span
+                          = product.status.name
+                    - elsif product.status.id == 2
+                      .list__text--status
+                        .status-2
+                          %span
+                          = product.status.name
+                    - elsif product.status.id == 3
+                      .list__text--status
+                        .status-3
+                          %span
+                          = product.status.name
+                    - elsif product.status.id == 4
+                      .list__text--status
+                        .status-4
+                          %span
+                          = product.status.name
                   = icon 'fas', 'chevron-right'
             %li.content__lists--all
               = link_to '', {class: 'mypage__lists'} do
