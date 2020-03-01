@@ -71,3 +71,6 @@ gem 'ancestry'
 gem 'devise'
 gem 'pry-rails'
 gem 'erb2haml'
+
+gem 'omniauth-facebook'
+gem "omniauth-rails_csrf_protection"
