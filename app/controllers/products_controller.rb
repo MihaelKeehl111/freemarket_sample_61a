@@ -8,6 +8,10 @@ class ProductsController < ApplicationController
   def completion
   end
 
+  def exhibiting
+    @products = current_user.products
+  end
+
   def new
     redirect_to new_user_session_path unless user_signed_in?
     @product = Product.new

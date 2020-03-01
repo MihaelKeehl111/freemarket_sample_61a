@@ -20,7 +20,7 @@
     .exhibiting__right--header
       %h2 出品した商品
     .exhibiting__right--content
-      %ul.exhibiting__right--content__tabs
+      %ul.exhibiting-content__tabs
         %li.content__tabs.active
           %h3
             出品中
@@ -30,69 +30,28 @@
         %li.content__tabs
           %h3
             売却済み
-      .exhibiting__right--content__lists
-        %ul.content__lists
-          %li.content__lists__list
-            = link_to '' do
-              .content__lists__list--image
-                = image_tag "logo_red.svg", width: 48, height: 48
-              .content__lists__list__content
-                .content__lists__list__content--text
-                  《もう参加した？》今なら2,020名様に1万円が当たるチャンス！詳しくはこちらから♪aaaaaaaaaaaaaaaaaaaaaaaaaaaa
-                .content__lists__list__content--time
-                  = icon 'far', 'clock'
-                  %span ４日前
-              = icon 'fas', 'chevron-right'
-          %li.content__lists__list
-            = link_to '' do
-              .content__lists__list--image
-                = image_tag "logo_red.svg", width: 48, height: 48
-              .content__lists__list__content
-                .content__lists__list__content--text
-                  事務局から個別メッセージ「ログイン通知」
-                .content__lists__list__content--time
-                  = icon 'far', 'clock'
-                  %span ５日前
-              = icon 'fas', 'chevron-right'
-          %li.content__lists__list
-            = link_to '' do
-              .content__lists__list--image
-                = image_tag "logo_red.svg", width: 48, height: 48
-              .content__lists__list__content
-                .content__lists__list__content--text
-                  事務局から個別メッセージ「ログイン通知」
-                .content__lists__list__content--time
-                  = icon 'far', 'clock'
-                  %span ５日前
-              = icon 'fas', 'chevron-right'
-          %li.content__lists__list
-            = link_to '' do
-              .content__lists__list--image
-                = image_tag "logo_red.svg", width: 48, height: 48
-              .content__lists__list__content
-                .content__lists__list__content--text
-                  事務局から個別メッセージ「ログイン通知」
-                .content__lists__list__content--time
-                  = icon 'far', 'clock'
-                  %span ５日前
-              = icon 'fas', 'chevron-right'
-          %li.content__lists__list
-            = link_to '' do
-              .content__lists__list--image
-                = image_tag "logo_red.svg", width: 48, height: 48
-              .content__lists__list__content
-                .content__lists__list__content--text
-                  事務局から個別メッセージ「ログイン通知」
-                .content__lists__list__content--time
-                  = icon 'far', 'clock'
-                  %span ５日前
-              = icon 'fas', 'chevron-right'
-          %li.content__lists__list--all
-            = link_to '', {class: 'mypage__lists'} do
-              一覧をみる
-        %ul.content__lists.show
-          %li.content__lists__list--notfound
-            %span 現在、やることリストはありません
+      .exhibiting-content__lists
+        - if @products.any?
+          %ul.content__lists
+            %li.content__lists--list
+              - @products.each do |product|
+                .list
+                  .list__image
+                    = image_tag product.image
+                  .list__text
+                    .list__text--name
+                      = product.name
+                    .list__text--status
+                      %span
+                        出品中
+                  = icon 'fas', 'chevron-right'
+            %li.content__lists--all
+              = link_to '', {class: 'mypage__lists'} do
+                一覧をみる
+        - else
+          %ul.content__lists.show
+            %li.content__lists__list--notfound
+              %span 現在、やることリストはありません
       
 
   =render 'users/sidebar'
