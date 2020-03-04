@@ -1,13 +1,13 @@
 .item_detail_container__user_anoter_items__container--box
   = link_to '' do
     .items_box
-      = image_tag @product.image.url
+      = image_tag products_more.image.url
     .items_box_body
       %h3.items_box_body--name
-        = @product.name
+        = products_more.name
       .items_box_body--num
         .items_box_body--num--price
-          = number_to_currency(@product.price, unit: "￥", format: "%u%n")
+          = number_to_currency(products_more.price, unit: "￥", format: "%u%n")
         .items_box_body--num__like_icon
           = link_to '' do
             = icon 'far', 'heart',class:'items_box_body--num__like_icon--heart'

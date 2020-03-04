@@ -123,52 +123,66 @@
           = icon 'fas', 'lock'
           あんしん・あんぜんへの取り組み
 
-  -# .item_detail_container__message_contents
-  -#   .item_detail_container__message_contents--message_list
-  -#     %ul
-        -# %li
-        -#   .message_list__user
-        -#     .message_list__user--icon
-        -#       = image_tag 'human.svg', alt: '', height: '', width: '', class: ''
-        -#     .message_list__user--name
-        -#       たろう
-        -#   .message_list__box
-        -#     .message_list__box--text
-        -#       ぬいぐるみ欲しいです
-        -#     .message_list__box--date
-        -#       = icon 'far', 'clock'
-        -#       %span 16日前
-        -#     = icon 'fas', 'caret-left', class:'icon_bubble'
-
   .item_detail_container__message_contents
-    %p 相手のことを考え丁寧なコメントを心がけましょう。不快な言葉遣いなどは利用制限や退会処分となることがあります。
-    %textarea.product_detail_textarea
-    = link_to '', {class: 'product_detail_textarea__btn'} do
-      コメントする
+    .item_detail_container__message_contents--message_list
+      %ul
+        %li
+          .message_list__user
+            .message_list__user--icon
+              = image_tag 'human.svg'
+            .message_list__user--name
+              たろう
+          .message_list__box
+            .message_list__box--text
+              ぬいぐるみ欲しいです
+            .message_list__box--date
+              = icon 'far', 'clock'
+              %span 16日前
+            = icon 'fas', 'caret-left', class:'icon_bubble'
+        %li
+          .message_list__user
+            .message_list__user--icon
+              = image_tag 'human.svg'
+            .message_list__user--name
+              たろう
+          .message_list__box
+            .message_list__box--text
+              ぬいぐるみ欲しいです
+            .message_list__box--date
+              = icon 'far', 'clock'
+              %span 16日前
+            = icon 'fas', 'caret-left', class:'icon_bubble'
+    
 
-  %ul.item_detail_container__next_item
-    %li.item_detail_container__next_item--prev
-      = link_to '' do
-        = icon 'fas', 'chevron-left'
-        ライオンさん
-    %li.item_detail_container__next_item--next
-      = link_to '' do
-        ネコちゃん
-        = icon 'fas', 'chevron-right'
-  .item_detail_container__sns_box
-    %ul.item_detail_container__sns_box__sns_icons
-      %li
+    .item_detail_container__message_contents--textarea
+      %p 相手のことを考え丁寧なコメントを心がけましょう。不快な言葉遣いなどは利用制限や退会処分となることがあります。
+      %textarea.product_detail_textarea
+      = link_to '', {class: 'product_detail_textarea__btn'} do
+        コメントする
+
+    %ul.item_detail_container__next_item
+      %li.item_detail_container__next_item--prev
         = link_to '' do
-          = icon 'fab', 'facebook-square'
-      %li
+          = icon 'fas', 'chevron-left'
+          ライオンさん
+      %li.item_detail_container__next_item--next
         = link_to '' do
-          = icon 'fab', 'twitter-square'
-      %li
-        = link_to '' do
-          = icon 'fab', 'line'
-      %li
-        = link_to '' do
-          = icon 'fab', 'pinterest-square'
+          ネコちゃん
+          = icon 'fas', 'chevron-right'
+    .item_detail_container__sns_box
+      %ul.item_detail_container__sns_box__sns_icons
+        %li
+          = link_to '' do
+            = icon 'fab', 'facebook-square'
+        %li
+          = link_to '' do
+            = icon 'fab', 'twitter-square'
+        %li
+          = link_to '' do
+            = icon 'fab', 'line'
+        %li
+          = link_to '' do
+            = icon 'fab', 'pinterest-square'
 
 
   .item_detail_container__user_anoter_items
@@ -181,7 +195,7 @@
   .item_detail_container__user_anoter_items
     %h2.item_detail_container__user_anoter_items__title
       = link_to '' do
-        = @product.category.children.name + ' その他の商品'
+        = @product.category.name + ' その他の商品'
     .item_detail_container__user_anoter_items__container
       = render partial: "products/products_more", collection: @category_products, limit: 6
 

@@ -11,7 +11,8 @@ class ProductsController < ApplicationController
 
   def show
     @product = Product.find(params[:id])
-    @user_products = Product.where(user_id: @product.user_id)
+    user = @product.user_id
+    @user_products = Product.where(user_id: user)
     @category_products = Product.where(category_id: @product.category_id)
   end
 

@@ -217,6 +217,7 @@
       ul {
         li {
           position: relative;
+          margin-bottom: 90px;
           .message_list__user {
             display: flex;
             img {
@@ -230,10 +231,9 @@
               height: 1.2rem;
               margin-left: auto;
               font-weight: bold;
-          }        
+            }
           }
           .message_list__box {
-            position: relative;
             position: absolute;
             top: 1.5rem;
             right: 0;
@@ -264,41 +264,43 @@
         }
       }
     }
-    p {
-      padding: 8px;
-      font-size: 14px;
-      background: #fff6de;
-    }
-    .product_detail_textarea {
-      margin-top: 8px;
-      display: block;
-      width: 100%;
-      max-width: 100%;
-      min-height: 104px;
-      padding: 10px;
-      border: 1px solid #ccc;
-      background: #fff;
-      font-size: 16px;
-      line-height: 1.5;
-      &:focus {
-        border: 1px solid #0099e8;
-        outline: 0;
-      }
-      &__btn {
-        background: #ccc;
-        border: 1px solid #ccc;
-        color: #ffffff;
-        width: 100%;
-        line-height: 48px;
-        text-align: center;
-        margin: 16px 0 0;
-        display: block;
+    &--textarea {
+      p {
+        padding: 8px;
         font-size: 14px;
+        background: #fff6de;
       }
-    } 
+      .product_detail_textarea {
+        margin-top: 8px;
+        display: block;
+        width: 100%;
+        max-width: 100%;
+        min-height: 104px;
+        padding: 10px;
+        border: 1px solid #ccc;
+        background: #fff;
+        font-size: 16px;
+        line-height: 1.5;
+        &:focus {
+          border: 1px solid #0099e8;
+          outline: 0;
+        }
+        &__btn {
+          background: #ccc;
+          border: 1px solid #ccc;
+          color: #ffffff;
+          width: 100%;
+          line-height: 48px;
+          text-align: center;
+          margin: 16px 0 0;
+          display: block;
+          font-size: 14px;
+        }
+      } 
+    }
   }
   &__next_item{
-    width: 700px;
+    width: 100%;
     margin-top: 24px;
     display: flex;
     justify-content: space-between;
@@ -307,7 +309,7 @@
     }
   }
   &__sns_box {
-    width: 700px;
+    width: 100%;
     margin-top: 24px;
     padding: 46px 0 24px;
     background: #fff;
