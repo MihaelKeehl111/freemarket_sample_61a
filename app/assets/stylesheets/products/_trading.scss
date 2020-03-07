@@ -119,6 +119,11 @@
                     font-size: 13px;
                     vertical-align: top;
                     .status-trading {
+                      background: rgb(40, 201, 40);
+                      padding: 2px 4px;
+                      border-radius: 2px;
+                    }
+                    .status-sending {
                       background: #ea352d;
                       padding: 2px 4px;
                       border-radius: 2px;

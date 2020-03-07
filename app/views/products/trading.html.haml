@@ -37,16 +37,21 @@
           %ul.content__lists
             %li.content__lists--list
               - @products.each do |product|
-                - if product.status.id == 6
+                - if product.status.id == 2 || product.status.id == 6
                   .list
                     .list__image
                       = image_tag product.image
                     .list__text
                       .list__text--name
                         = product.name
-                      - if product.status.id == 6
+                      - if product.status.id == 2
                         .list__text--status
                           .status-trading
+                            %span
+                            = product.status.name
+                      - elsif product.status.id == 6
+                        .list__text--status
+                          .status-sending
                             %span
                             = product.status.name
                     = icon 'fas', 'chevron-right'
