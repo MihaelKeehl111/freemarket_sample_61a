@@ -1,6 +1,6 @@
 = render 'shared/header'
 
--# 出品中
+-# 取引中
 
 .nav
   %ul.nav__lists
@@ -12,32 +12,28 @@
       %span マイページ
       = icon 'fas', 'chevron-right', class: 'nav__lists__list--icon'
     %li.nav__lists__list.nav__lists__list--exhibiting
-      %span 出品した商品-出品中
+      %span 購入した商品-取引中
 
 
-.exhibiting.clearfix
-  .exhibiting__right
-    .exhibiting__right--header
-      %h2 出品した商品
-    .exhibiting__right--content
-      %ul.exhibiting-content__tabs
+.purchase.clearfix
+  .purchase__right
+    .purchase__right--header
+      %h2 購入した商品
+    .purchase__right--content
+      %ul.purchase-content__tabs
         %li.content__tabs.active
           %h3
-            出品中
+            取引中
         %li.content__tabs
-          = link_to trading_products_path do
+          = link_to purchased_products_path do
             %h3
-              取引中
-        %li.content__tabs
-          = link_to sold_products_path do
-            %h3
-              売却済み
-      .exhibiting-content__lists
+              過去の取引
+      .purchase-content__lists
         - if @products.any?
           %ul.content__lists
             %li.content__lists--list
               - @products.each do |product|
-                - if product.status.id == 1 || product.status.id == 3
+                - if product.status.id == 2
                   .list
                     .list__image
                       = image_tag product.image

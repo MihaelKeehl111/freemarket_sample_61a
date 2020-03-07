@@ -12,6 +12,22 @@ class ProductsController < ApplicationController
     @products = current_user.products
   end
 
+  def trading
+    @products = current_user.products
+  end
+
+  def sold
+    @products = current_user.products
+  end
+
+  def purchase
+    @products = current_user.products
+  end
+
+  def purchased
+    @products = current_user.products
+  end
+
   def new
     redirect_to new_user_session_path unless user_signed_in?
     @product = Product.new

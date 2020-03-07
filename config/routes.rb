@@ -20,6 +20,10 @@ Rails.application.routes.draw do
     collection do
       get :completion
       get :exhibiting
+      get :trading
+      get :sold
+      get :purchase
+      get :purchased
     end
   end
 
