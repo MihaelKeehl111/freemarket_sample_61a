@@ -421,3 +421,36 @@ Status.create(name: "公開停止中")
 Status.create(name: "取引完了")
 Status.create(name: "売却済み")
 Status.create(name: "発送待ち")
+
+# 商品ダミーデータ
+# 10.times do |n|
+#   name = Faker::Pokemon.name
+#   description = Faker::Lorem.sentence
+#   category_id = Faker::Number.between(1,1000)
+#   size = '小'
+#   state_id = Faker:: Number.between(1,6)
+#   delivery_area_id = Faker::Number.between(1,48)
+#   delivery_charge_id = Faker::Number.between(1,2)
+#   delivery_date_id = Faker::Number.between(1,3)
+#   delivery_method_id = Faker::Number.between(1,13)
+#   price = Faker::Number.between(1,50000)
+#   user_id = Faker::Number.between(15,18)
+#   created_at = Faker::Time.between(from: DateTime.now - 1, to: DateTime.now)
+
+
+#   Product.create!(
+#     name: name,
+#     image: open("#{Rails.root}/db/fixtures/image1.jpg"),
+#     description: description,
+#     category_id: category_id,
+#     size: size,
+#     state_id: state_id,
+#     delivery_area_id: delivery_area_id,
+#     delivery_charge_id: delivery_charge_id,
+#     delivery_date_id: delivery_date_id,
+#     delivery_method_id: delivery_method_id,
+#     price: price,
+#     user_id: user_id,
+#     created_at: created_at,
+#     updated_at: created_at)
+# end
