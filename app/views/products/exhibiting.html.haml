@@ -46,32 +46,12 @@
                         = product.name
                       - if product.status.id == 1
                         .list__text--status
-                          .status-1
-                            %span
-                            = product.status.name
-                      - elsif product.status.id == 2
-                        .list__text--status
-                          .status-2
+                          .status-exhibiting
                             %span
                             = product.status.name
                       - elsif product.status.id == 3
                         .list__text--status
-                          .status-3
-                            %span
-                            = product.status.name
-                      - elsif product.status.id == 4
-                        .list__text--status
-                          .status-4
-                            %span
-                            = product.status.name
-                      - elsif product.status.id == 5
-                        .list__text--status
-                          .status-5
-                            %span
-                            = product.status.name
-                      - elsif product.status.id == 6
-                        .list__text--status
-                          .status-6
+                          .status-exhibiting-stop
                             %span
                             = product.status.name
                     = icon 'fas', 'chevron-right'
