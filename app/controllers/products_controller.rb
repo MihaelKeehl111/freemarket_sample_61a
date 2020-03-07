@@ -17,8 +17,8 @@ class ProductsController < ApplicationController
     if params[:id].to_i - 1 != 0
       @previous_product = Product.find((params[:id].to_i - 1).to_s)
     end
-    if Product.find_by((params[:id].to_i + 1).to_s) != nil
-      @next_product = Product.find_by((params[:id].to_i + 1).to_s)
+    if Product.find_by(id: (params[:id].to_i + 1).to_s) != nil
+      @next_product = Product.find_by(id: (params[:id].to_i + 1).to_s)
     end
   end
 

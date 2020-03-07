@@ -126,10 +126,10 @@
   - if @product.user_id == current_user.id
     .item_detail_container__change-status
       .item_detail_container__change-status__box
-        = link_to "商品の編集", "", class: 'change-status__box--edit'
+        = link_to "商品の編集", "", class: 'item_detail_container__change-status__box--edit'
         %p or
-        = link_to "出品を一旦停止する", "", class: 'change-status__box--stop'
-        = link_to "この商品を削除する", "", class: 'change-status__box--delete'
+        = link_to "出品を一旦停止する", "", class: 'item_detail_container__change-status__box--stop'
+        = link_to "この商品を削除する", "", class: 'item_detail_container__change-status__box--delete'
 
   .item_detail_container__message_contents
     .item_detail_container__message_contents--message_list
@@ -171,12 +171,12 @@
     %ul.item_detail_container__next_item
       - if @previous_product
         %li.item_detail_container__next_item--prev
-          = link_to "/products/#{@previous_product.id}" do
+          = link_to product_path(@previous_product) do
             = icon 'fas', 'chevron-left'
             = @previous_product.name
       - if @next_product
         %li.item_detail_container__next_item--next
-          = link_to "/products/#{@next_product.id}" do
+          = link_to product_path(@next_product) do
             = @next_product.name
             = icon 'fas', 'chevron-right'
     .item_detail_container__sns_box
