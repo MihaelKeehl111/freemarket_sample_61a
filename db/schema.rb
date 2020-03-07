@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200224062057) do
+ActiveRecord::Schema.define(version: 20200305053835) do
 
   create_table "addresses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "postcode",     null: false
@@ -69,6 +69,14 @@ ActiveRecord::Schema.define(version: 20200224062057) do
     t.index ["delivery_charge_id"], name: "index_delivery_methods_on_delivery_charge_id", using: :btree
   end
 
+  create_table "images", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "image"
+    t.integer  "product_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["product_id"], name: "index_images_on_product_id", using: :btree
+  end
+
   create_table "products", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "image"
     t.string   "name"
@@ -121,6 +129,7 @@ ActiveRecord::Schema.define(version: 20200224062057) do
   end
 
   add_foreign_key "delivery_methods", "delivery_charges"
+  add_foreign_key "images", "products"
   add_foreign_key "products", "categories"
   add_foreign_key "products", "delivery_areas"
   add_foreign_key "products", "delivery_charges"
