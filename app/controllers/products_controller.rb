@@ -1,5 +1,6 @@
 class ProductsController < ApplicationController
   before_action :set_category, :category_ranking, only: :index
+  before_action :set_current_user_products, only: [:exhibiting, :trading, :sold, :purchase, :purchased]
 
   def index
     @products = Product.order('created_at DESC')
@@ -23,6 +24,21 @@ class ProductsController < ApplicationController
   end
 
   def completion
+  end
+
+  def exhibiting
+  end
+
+  def trading
+  end
+
+  def sold
+  end
+
+  def purchase
+  end
+
+  def purchased
   end
 
   def new
@@ -49,7 +65,11 @@ class ProductsController < ApplicationController
 
   private
   def product_params
-    params.require(:product).permit(:image, :name, :description, :category_id, :size, :state_id, :delivery_charge_id, :delivery_method_id, :delivery_area_id, :delivery_date_id, :price).merge(user_id: current_user.id)
+    params.require(:product).permit(:image, :name, :description, :category_id, :size, :state_id, :delivery_charge_id, :delivery_method_id, :delivery_area_id, :delivery_date_id, :price).merge(user_id: current_user.id, status_id: 1)
+  end
+
+  def set_current_user_products
+    @products = current_user.products
   end
 
   def set_category

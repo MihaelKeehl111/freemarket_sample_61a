@@ -414,6 +414,14 @@ DeliveryDate.create(name: "1~2日で発送")
 DeliveryDate.create(name: "2~3日で発送")
 DeliveryDate.create(name: "4~7日で発送")
 
+# 商品のステータス
+Status.create(name: "出品中")
+Status.create(name: "取引中")
+Status.create(name: "公開停止中")
+Status.create(name: "取引完了")
+Status.create(name: "売却済み")
+Status.create(name: "発送待ち")
+
 # 商品ダミーデータ
 # 10.times do |n|
 #   name = Faker::Pokemon.name
