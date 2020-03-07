@@ -15,8 +15,8 @@ class ProductsController < ApplicationController
     user = @product.user_id
     @user_products = Product.where(user_id: user)
     @category_products = Product.where(category_id: @product.category_id)
-    if params[:id].to_i - 1 != 0
-      @previous_product = Product.find((params[:id].to_i - 1).to_s)
+    if Product.find_by(id: (params[:id].to_i - 1).to_s) != nil
+      @previous_product = Product.find_by(id: (params[:id].to_i - 1).to_s)
     end
     if Product.find_by(id: (params[:id].to_i + 1).to_s) != nil
       @next_product = Product.find_by(id: (params[:id].to_i + 1).to_s)
@@ -39,6 +39,12 @@ class ProductsController < ApplicationController
   end
 
   def purchased
+  end
+
+  def destroy
+    @product = Product.find(params[:id])
+    @product.destroy if @product.user_id == current_user.id
+    render :exhibiting
   end
 
   def new
