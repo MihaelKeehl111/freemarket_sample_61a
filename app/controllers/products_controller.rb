@@ -48,14 +48,14 @@ class ProductsController < ApplicationController
     @product = Product.find(params[:id])
     @product.status_id = params[:status_id]
     @product.save
-    redirect_to product_path(@product)
+    redirect_to product_path(@product), notice: '出品の一旦停止をしました'
   end
 
   def reselling
     @product = Product.find(params[:id])
     @product.status_id = params[:status_id]
     @product.save
-    redirect_to product_path(@product)
+    redirect_to product_path(@product), notice: '出品の再開をしました'
   end
 
   def destroy
