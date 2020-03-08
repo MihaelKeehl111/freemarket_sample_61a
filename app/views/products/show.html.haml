@@ -98,9 +98,10 @@
         %span （税込）
       .item_detail_container__main__price_box--item_fee
         %span 送料込み
-    .item_detail_container__main--item_buy_button
-      = link_to '' do
-        購入画面に進む
+    - if @product.status_id == 1
+      .item_detail_container__main--item_buy_button
+        = link_to '' do
+          購入画面に進む
 
     - if @product.delivery_method == 2
       .item_detail_container__main--pc_error_text
@@ -132,9 +133,6 @@
           = button_to "出品を一旦停止する", stop_selling_product_path(@product, status_id: 3), {method: :put, class: 'item_detail_container__change-status__box--stop'}
         - else
           = button_to "出品を再開する", reselling_product_path(@product, status_id: 1), {method: :put, class: 'item_detail_container__change-status__box--stop'}
-        = link_to "この商品を削除する", "", class: 'item_detail_container__change-status__box--delete'
-        = link_to "", class: 'item_detail_container__change-status__box--stop' do
-          出品を一旦停止する
         %button#modal-open-btn.item_detail_container__change-status__box--delete この商品を削除する
         = link_to '', product_path(@product), method: :delete, id: 'item-delete-btn'
         #overlay
@@ -182,9 +180,15 @@
 
     .item_detail_container__message_contents--textarea
       %p 相手のことを考え丁寧なコメントを心がけましょう。不快な言葉遣いなどは利用制限や退会処分となることがあります。
-      %textarea.product_detail_textarea
-      = link_to '', class: 'product_detail_textarea__btn' do
-        コメントする
+      - if @product.status_id == 1
+        %textarea.product_detail_textarea
+        = link_to '', class: 'product_detail_textarea__btn' do
+          コメントする
+      - else
+        .product_detail_textarea
+        = link_to '', class: 'product_detail_textarea__btn' do
+          売り切れのためコメントできません
+
 
     %ul.item_detail_container__next_item
       - if @previous_product
@@ -212,20 +216,20 @@
           = link_to '' do
             = icon 'fab', 'pinterest-square'
 
-
-  .item_detail_container__user_anoter_items
-    %h2.item_detail_container__user_anoter_items__title
-      = link_to '' do
-        = @product.user.nickname + 'さんのその他の出品'
-    .item_detail_container__user_anoter_items__container
-      = render partial: "products/products_more", collection: @user_products, limit: 6
-
-  .item_detail_container__user_anoter_items
-    %h2.item_detail_container__user_anoter_items__title
-      = link_to '' do
-        = @product.category.name + ' その他の商品'
-    .item_detail_container__user_anoter_items__container
-      = render partial: "products/products_more", collection: @category_products, limit: 6
+  - if @user_products.present?
+    .item_detail_container__user_anoter_items
+      %h2.item_detail_container__user_anoter_items__title
+        = link_to '' do
+          = @product.user.nickname + 'さんのその他の出品'
+      .item_detail_container__user_anoter_items__container
+        = render partial: "products/products_more", collection: @user_products, limit: 6
+  - if @category_products.present?
+    .item_detail_container__user_anoter_items
+      %h2.item_detail_container__user_anoter_items__title
+        = link_to '' do
+          = @product.category.name + ' その他の商品'
+      .item_detail_container__user_anoter_items__container
+        = render partial: "products/products_more", collection: @category_products, limit: 6
 
 .nav_item
   %ul.nav_item__lists
