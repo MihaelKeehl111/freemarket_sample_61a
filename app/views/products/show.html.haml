@@ -126,7 +126,7 @@
   - if @product.user_id == current_user.id
     .item_detail_container__change-status
       .item_detail_container__change-status__box
-        = link_to "商品の編集", "", class: 'item_detail_container__change-status__box--edit'
+        = link_to "商品の編集", edit_product_path, class: 'item_detail_container__change-status__box--edit'
         %p or
         = link_to "出品を一旦停止する", "", class: 'item_detail_container__change-status__box--stop'
         = link_to "この商品を削除する", "", class: 'item_detail_container__change-status__box--delete'

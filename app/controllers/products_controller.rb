@@ -1,6 +1,8 @@
 class ProductsController < ApplicationController
   before_action :set_category, :category_ranking, only: :index
   before_action :set_current_user_products, only: [:exhibiting, :trading, :sold, :purchase, :purchased]
+  before_action :set_product, only: [:show, :edit, :update]
+  before_action :set_product_information, only: [:new, :edit, :update]
 
   def index
     @products = Product.order('created_at DESC')
@@ -11,7 +13,6 @@ class ProductsController < ApplicationController
   end
 
   def show
-    @product = Product.find(params[:id])
     user = @product.user_id
     @user_products = Product.where(user_id: user)
     @category_products = Product.where(category_id: @product.category_id)
@@ -44,12 +45,6 @@ class ProductsController < ApplicationController
   def new
     redirect_to new_user_session_path unless user_signed_in?
     @product = Product.new
-    @categories = Category.all
-    @states = State.all
-    @delivery_charges = DeliveryCharge.all
-    @delivery_methods = DeliveryMethod.all
-    @delivery_areas = DeliveryArea.all
-    @delivery_dates = DeliveryDate.all
   end
 
   def create
@@ -63,6 +58,18 @@ class ProductsController < ApplicationController
     end
   end
 
+  def edit
+  end
+
+  def update
+    if @product.update(product_params)
+      redirect_to root_path
+    else
+      flash.now[:alert] = '必須事項を入力して下さい'
+      render :edit
+    end
+  end
+
   private
   def product_params
     params.require(:product).permit(:image, :name, :description, :category_id, :size, :state_id, :delivery_charge_id, :delivery_method_id, :delivery_area_id, :delivery_date_id, :price).merge(user_id: current_user.id, status_id: 1)
@@ -70,6 +77,19 @@ class ProductsController < ApplicationController
 
   def set_current_user_products
     @products = current_user.products
+  end
+
+  def set_product
+    @product = Product.find(params[:id])
+  end
+
+  def set_product_information
+    @categories = Category.all
+    @states = State.all
+    @delivery_charges = DeliveryCharge.all
+    @delivery_methods = DeliveryMethod.all
+    @delivery_areas = DeliveryArea.all
+    @delivery_dates = DeliveryDate.all
   end
 
   def set_category
