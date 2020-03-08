@@ -4,123 +4,123 @@
       =link_to root_path do
         = image_tag "fmarket_logo_red.svg"
 
-  .sell-main
-    %h2.sell-main__head
+  .sell-edit
+    %h2.sell-edit__head
       商品の情報を入力
     =form_for @product do |f|
-      .sell-main__upload-box
-        %h3.sell-main__upload-head
+      .sell-edit__upload-box
+        %h3.sell-edit__upload-head
           出品画像
-          %span.sell-main__form-require
+          %span.sell-edit__form-require
             必須
         %p 最大10枚までアップロードできます
-        .sell-main__dropbox-container.clearfix.state-image-number-10
-          .sell-main__upload-items-container
-            .sell-main__upload-drop-box.have-item-0
-              = f.file_field :image, {id: 'sell-main__upload-drop-box'}
-              %pre.sell-main__visible-pc
+        .sell-edit__dropbox-container.clearfix.state-image-number-10
+          .sell-edit__upload-items-container
+            .sell-edit__upload-drop-box.have-item-0
+              = f.file_field :image, {id: 'sell-edit__upload-drop-box'}
+              %pre.sell-edit__visible-pc
                 ドラッグアンドドロップ
                 またはクリックしてファイルをアップロード
-      .sell-main__content
-        .sell-main__form-group
+      .sell-edit__content
+        .sell-edit__form-group
           = f.label :name do
             商品名
-            %span.sell-main__form-require
+            %span.sell-edit__form-require
               必須
-          = f.text_field :name, {class:'sell-main__input-default', placeholder:"商品名（必須 40文字まで)"}
-        .sell-main__form-group
+          = f.text_field :name, {class:'sell-edit__input-default', placeholder:"商品名（必須 40文字まで)"}
+        .sell-edit__form-group
           = f.label :description do
             商品の説明
-            %span.sell-main__form-require
+            %span.sell-edit__form-require
               必須
-          = f.text_area :description, {class: 'sell-main__textarea-default', placeholder:"商品の説明（必須 1,000文字以内）（色、素材、重さ、定価、注意点など）例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。", rows: '5'}
-      .sell-main__content.clearfix
-        %h3.sell-main__sub-head
+          = f.text_area :description, {class: 'sell-edit__textarea-default', placeholder:"商品の説明（必須 1,000文字以内）（色、素材、重さ、定価、注意点など）例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。", rows: '5'}
+      .sell-edit__content.clearfix
+        %h3.sell-edit__sub-head
           商品の詳細
-        .sell-main__form-box
-          .sell-main__form-group
+        .sell-edit__form-box
+          .sell-edit__form-group
             = f.label :category_id do
               カテゴリー
-              %span.sell-main__form-require
+              %span.sell-edit__form-require
                 必須
             %div
-              = f.collection_select(:category_id, @categories, :id, :name, { prompt: '---' }, class: 'sell-main__select-default')
-          .sell-main__form-group
+              = f.collection_select(:category_id, @categories, :id, :name, { prompt: '---' }, class: 'sell-edit__select-default')
+          .sell-edit__form-group
             = f.label :size do
               サイズ
-              %span.sell-main__form-require
+              %span.sell-edit__form-require
                 必須
             %div
-              = f.text_field :size, {class: 'sell-main__select-default', placeholder:"---"}
-          .sell-main__form-group
+              = f.text_field :size, {class: 'sell-edit__select-default', placeholder:"---"}
+          .sell-edit__form-group
             = f.label :state do
               商品の状態
-              %span.sell-main__form-require
+              %span.sell-edit__form-require
                 必須
             %div
-              = f.collection_select(:state_id, @states, :id, :name, { prompt: '---' }, class: 'sell-main__select-default')
-      .sell-main__content.clearfix
-        %h3.sell-main__sub-head
+              = f.collection_select(:state_id, @states, :id, :name, { prompt: '---' }, class: 'sell-edit__select-default')
+      .sell-edit__content.clearfix
+        %h3.sell-edit__sub-head
           配送について
-          %a.sell-main__form-question
+          %a.sell-edit__form-question
             ?
-        .sell-main__form-box
-          .sell-main__form-group
+        .sell-edit__form-box
+          .sell-edit__form-group
             = f.label :delivery_charge do
               配送料の負担
-              %span.sell-main__form-require
+              %span.sell-edit__form-require
                 必須
             %div
-              = f.collection_select(:delivery_charge_id, @delivery_charges, :id, :name, { prompt: '---' }, class: 'sell-main__select-default')
-          .sell-main__form-group
+              = f.collection_select(:delivery_charge_id, @delivery_charges, :id, :name, { prompt: '---' }, class: 'sell-edit__select-default')
+          .sell-edit__form-group
             = f.label :delivery_method do
               配送方法
-              %span.sell-main__form-require
+              %span.sell-edit__form-require
                 必須
             %div
-              = f.collection_select(:delivery_method_id, @delivery_methods, :id, :name, { prompt: '---' }, class: 'sell-main__select-default')
-          .sell-main__form-group
+              = f.collection_select(:delivery_method_id, @delivery_methods, :id, :name, { prompt: '---' }, class: 'sell-edit__select-default')
+          .sell-edit__form-group
             = f.label :delivery_area do
               発送元の地域
-              %span.sell-main__form-require
+              %span.sell-edit__form-require
                 必須
             %div
-              = f.collection_select(:delivery_area_id, @delivery_areas, :id, :name, { prompt: '---' }, class: 'sell-main__select-default')
-          .sell-main__form-group
+              = f.collection_select(:delivery_area_id, @delivery_areas, :id, :name, { prompt: '---' }, class: 'sell-edit__select-default')
+          .sell-edit__form-group
             = f.label :delivery_date do
               発送までの日数
-              %span.sell-main__form-require
+              %span.sell-edit__form-require
                 必須
             %div
-              = f.collection_select(:delivery_date_id, @delivery_dates, :id, :name, { prompt: '---' }, class: 'sell-main__select-default')
-      .sell-main__content.clearfix
-        %h3.sell-main__sub-head
+              = f.collection_select(:delivery_date_id, @delivery_dates, :id, :name, { prompt: '---' }, class: 'sell-edit__select-default')
+      .sell-edit__content.clearfix
+        %h3.sell-edit__sub-head
           販売価格(300〜9,999,999)
-          %a.sell-main__form-question
+          %a.sell-edit__form-question
             ?
-        .sell-main__form-box
-          %ul.sell-main__price
-            %li.sell-main__form-group
-              .sell-main__left.clearfix
+        .sell-edit__form-box
+          %ul.sell-edit__price
+            %li.sell-edit__form-group
+              .sell-edit__left.clearfix
                 = f.label :price do
                   価格
-                  %span.sell-main__form-require
+                  %span.sell-edit__form-require
                     必須
-              .sell-main__right.sell-main__price-input  
+              .sell-edit__right.sell-edit__price-input
                 ¥
                 %div
-                  = f.text_field :price, {class: 'sell-main__input-default', placeholder:"例）300"}
+                  = f.text_field :price, {class: 'sell-edit__input-default', placeholder:"例）300"}
             %li.clearfix
-              .sell-main__left
+              .sell-edit__left
                 販売手数料 (10%)
-              .sell-main__right
+              .sell-edit__right
                 −
             %li.clearfix.bold
-              .sell-main__left
+              .sell-edit__left
                 販売利益
-              .sell-main__right
+              .sell-edit__right
                 –
-      .sell-main__content.sell-main__btn-box
+      .sell-edit__content.sell-edit__btn-box
         %div
           %p
             = link_to '禁止されている出品', '#'
@@ -135,8 +135,8 @@
             また、出品をもちまして
             = link_to '加盟店規約', '#'
             に同意したことになります。
-        = f.submit '変更する', class: 'sell-main__btn-default sell-main__btn-red'
-        = link_to root_path, class: 'sell-main__btn-default sell-main__btn-gray' do
+        = f.submit '変更する', class: 'sell-edit__btn-default sell-edit__btn-red'
+        = link_to root_path, class: 'sell-edit__btn-default sell-edit__btn-gray' do
           キャンセル
 
   .sell-footer
