@@ -22,7 +22,6 @@ class ProductsController < ApplicationController
     if Product.find_by(id: (params[:id].to_i + 1).to_s) != nil
       @next_product = Product.find_by(id: (params[:id].to_i + 1).to_s)
     end
-    # binding.pry
   end
 
   def completion

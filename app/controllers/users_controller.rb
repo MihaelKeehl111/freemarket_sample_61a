@@ -29,8 +29,6 @@ class UsersController < ApplicationController
     if current_user.update(user_params)
       redirect_to users_path
     else
-      # @user = User.find_by(id: current_user)
-      # flash.now[:alert] = @user.errors.full_messages
       return
     end
   end
