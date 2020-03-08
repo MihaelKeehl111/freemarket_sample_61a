@@ -32,12 +32,19 @@
         = f.label :email, "メールアドレス", class: 'email'
         %span.form-require 必須
         = f.email_field :email, class: 'information__main--form', placeholder: "PC・携帯どちらでも可"
-        = f.label :password, "パスワード", class: 'password'
-        %span.form-require 必須
-        = f.password_field :password, class: 'information__main--form', placeholder: '英数字混在7文字以上'
-        = f.label :password_confirmation, "パスワード（確認）", class: 'password-confirmation'
-        %span.form-require 必須
-        = f.password_field :password_confirmation, class: 'information__main--form', placeholder: '英数字混在7文字以上'
+        - if @sns_id.present?
+          = hidden_field_tag :sns_auth, true
+        - else
+          = render partial: 'error_messages', locals: {user: @user, column: 'email'}
+        - if @sns_id.present?
+          = hidden_field_tag :sns_auth, true
+        - else
+          = f.label :password, "パスワード", class: 'password'
+          %span.form-require 必須
+          = f.password_field :password, class: 'information__main--form', placeholder: '英数字混在7文字以上', autocomplete: "new-password"
+          = f.label :password_confirmation, "パスワード（確認）", class: 'password-confirmation'
+          %span.form-require 必須
+          = f.password_field :password_confirmation, class: 'information__main--form', placeholder: '英数字混在7文字以上', autocomplete: "new-password"
         = f.submit "次へ進む", class: 'information__main--form--button'
 
 .footer
