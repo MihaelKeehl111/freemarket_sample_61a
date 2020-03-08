@@ -16,7 +16,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :products, only: [:index, :new, :create, :show, :edit, :update] do
+  resources :products, only: [:index, :new, :create, :show, :edit, :update, :destroy] do
     collection do
       get :completion
       get :exhibiting
