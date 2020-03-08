@@ -1,0 +1,224 @@
+= render 'shared/header'
+
+.item_detail_container
+  .item_detail_container__main
+    .item_detail_container__main--item_name
+      %h1
+        = @product.name
+    .item_detail_container__main__item_detail
+      .item_detail_container__main__item_detail__left
+        .item_detail_container__main__item_detail__left--top
+          .bg_photo
+            = image_tag @product.image.url
+        .item_detail_container__main__item_detail__left--bottom
+          -# .sm_photos
+          -#   = image_tag '22574-17.jpg', class: ''
+          -# .sm_photos
+          -#   = image_tag '22574-17.jpg', class: ''
+          -# .sm_photos
+          -#   = image_tag '22574-17.jpg', class: ''
+          -# .sm_photos
+          -#   = image_tag '22574-17.jpg', class: ''
+          -# .sm_photos
+          -#   = image_tag '22574-17.jpg', class: ''
+          -# .sm_photos
+          -#   = image_tag '22574-17.jpg', class: ''
+          -# .sm_photos
+          -#   = image_tag '22574-17.jpg', class: ''
+          -# .sm_photos
+          -#   = image_tag '22574-17.jpg', class: ''
+          -# .sm_photos
+          -#   = image_tag '22574-17.jpg', class: ''
+
+      .item_detail_container__main__item_detail--right
+        %table
+          %tr
+            %th 出品者
+            %td
+              = link_to '' do
+                = @product.user.nickname
+              %div
+                .item_rate
+                  = icon 'fas', 'grin', class: 'item_rate--good'
+                  %span 10
+                .item_rate
+                  = icon 'fas', 'meh', class: 'item_rate--normal'
+                  %span 5
+                .item_rate
+                  = icon 'fas', 'frown', class: 'item_rate--bad'
+                  %span 1
+          %tr
+            %th カテゴリー
+            %td
+              =link_to '' do
+                %span
+                  = @product.category.root.name
+              %br/
+              =link_to '' do
+                = icon 'fas', 'angle-right'
+                %span
+                  = @product.category.parent.name
+              %br/
+              =link_to '' do
+                = icon 'fas', 'angle-right'
+                %span
+                  = @product.category.name
+          %tr
+            %th ブランド
+            %td
+              =link_to '' do
+                サファリ
+          %tr
+            %th 商品の状態
+            %td
+              = @product.state.name
+          %tr
+            %th 配送料の負担
+            %td
+              = @product.delivery_charge.name
+          %tr
+            %th 配送の方法
+            %td
+              = @product.delivery_method.name
+          %tr
+            %th 配送元の地域
+            %td
+              =link_to '' do
+                = @product.delivery_area.name
+          %tr
+            %th 発送日の目安
+            %td
+              = @product.delivery_date.name
+
+    .item_detail_container__main__price_box
+      .item_detail_container__main__price_box--item_price
+        %span
+          = number_to_currency(@product.price, unit: "￥", format: "%u%n")
+      .item_detail_container__main__price_box--item_tax
+        %span （税込）
+      .item_detail_container__main__price_box--item_fee
+        %span 送料込み
+    .item_detail_container__main--item_buy_button
+      = link_to '' ,class: '' do
+        購入画面に進む
+
+    - if @product.delivery_method == 2
+      .item_detail_container__main--pc_error_text
+        この商品はらくらくメルカリ便を利用しているため、アプリからのみ購入できます。
+
+    .item_detail_container__main--item_text
+      = simple_format(@product.description)
+
+    .item_detail_container__main__bottom
+      .item_detail_container__main__bottom__left
+        .item_detail_container__main__bottom__left--like_button
+          = icon 'far', 'heart'
+          %span いいね!
+          %span.like_num 10
+        .item_detail_container__main__bottom__left--report
+          = icon 'far', 'flag'
+          不適切な商品の報告
+      .item_detail_container__main__bottom--right
+        =link_to '' ,class: '' do
+          = icon 'fas', 'lock'
+          あんしん・あんぜんへの取り組み
+
+  - if @product.user_id == current_user.id
+    .item_detail_container__change-status
+      .item_detail_container__change-status__box
+        = link_to "商品の編集", "", class: 'item_detail_container__change-status__box--edit'
+        %p or
+        = link_to "出品を一旦停止する", "", class: 'item_detail_container__change-status__box--stop'
+        = link_to "この商品を削除する", "", class: 'item_detail_container__change-status__box--delete'
+
+  .item_detail_container__message_contents
+    .item_detail_container__message_contents--message_list
+      %ul
+        %li
+          .message_list__user
+            .message_list__user--icon
+              = image_tag 'human.svg'
+            .message_list__user--name
+              たろう
+          .message_list__box
+            .message_list__box--text
+              ぬいぐるみ欲しいです
+            .message_list__box--date
+              = icon 'far', 'clock'
+              %span 16日前
+            = icon 'fas', 'caret-left', class:'icon_bubble'
+        %li
+          .message_list__user
+            .message_list__user--icon
+              = image_tag 'human.svg'
+            .message_list__user--name
+              たろう
+          .message_list__box
+            .message_list__box--text
+              ぬいぐるみ欲しいです
+            .message_list__box--date
+              = icon 'far', 'clock'
+              %span 16日前
+            = icon 'fas', 'caret-left', class:'icon_bubble'
+    
+
+    .item_detail_container__message_contents--textarea
+      %p 相手のことを考え丁寧なコメントを心がけましょう。不快な言葉遣いなどは利用制限や退会処分となることがあります。
+      %textarea.product_detail_textarea
+      = link_to '', {class: 'product_detail_textarea__btn'} do
+        コメントする
+
+    %ul.item_detail_container__next_item
+      - if @previous_product
+        %li.item_detail_container__next_item--prev
+          = link_to product_path(@previous_product) do
+            = icon 'fas', 'chevron-left'
+            = @previous_product.name
+      - if @next_product
+        %li.item_detail_container__next_item--next
+          = link_to product_path(@next_product) do
+            = @next_product.name
+            = icon 'fas', 'chevron-right'
+    .item_detail_container__sns_box
+      %ul.item_detail_container__sns_box__sns_icons
+        %li
+          = link_to '' do
+            = icon 'fab', 'facebook-square'
+        %li
+          = link_to '' do
+            = icon 'fab', 'twitter-square'
+        %li
+          = link_to '' do
+            = icon 'fab', 'line'
+        %li
+          = link_to '' do
+            = icon 'fab', 'pinterest-square'
+
+
+  .item_detail_container__user_anoter_items
+    %h2.item_detail_container__user_anoter_items__title
+      = link_to '' do
+        = @product.user.nickname + 'さんのその他の出品'
+    .item_detail_container__user_anoter_items__container
+      = render partial: "products/products_more", collection: @user_products, limit: 6
+
+  .item_detail_container__user_anoter_items
+    %h2.item_detail_container__user_anoter_items__title
+      = link_to '' do
+        = @product.category.name + ' その他の商品'
+    .item_detail_container__user_anoter_items__container
+      = render partial: "products/products_more", collection: @category_products, limit: 6
+
+.nav_item
+  %ul.nav_item__lists
+    %li.nav_item__lists__list
+      = link_to root_path do
+        %span メルカリ
+      = icon 'fas', 'chevron-right', class: 'nav__lists__list--icon'
+    %li.nav_item__lists__list.nav_item__lists__list--item
+      %span
+        = @product.name
+    
+= render 'shared/appbanner'
+  
+= render 'shared/footer'

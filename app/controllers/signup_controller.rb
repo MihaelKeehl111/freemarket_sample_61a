@@ -2,6 +2,7 @@ class SignupController < ApplicationController
   before_action :validates_register_user_info, only: :register_cellphone
   before_action :validates_register_cellphone, only: :register_address
   before_action :validates_register_address, only: :register_card
+  require "date"
 
   def register_user_info
     @user = User.new # 新規インスタンス作成
@@ -29,7 +30,10 @@ class SignupController < ApplicationController
       firstname_kana: "メイ",
       birthday: "2001-01-01"
     )
-    render '/signup/register_user_info' unless @user.valid?
+    unless @user.valid?
+      flash.now[:alert] = @user.errors.full_messages
+      render '/signup/register_user_info'
+    end
   end
 
   def register_cellphone
@@ -50,7 +54,10 @@ class SignupController < ApplicationController
       firstname_kana: "メイ",
       birthday: "2001-01-01"
     )
-    render '/signup/register_cellphone' unless @user.valid?
+    unless @user.valid?
+      flash.now[:alert] = @user.errors.full_messages
+      render '/signup/register_cellphone'
+    end
   end
 
   def register_address
@@ -59,12 +66,12 @@ class SignupController < ApplicationController
   end
 
   def validates_register_address
+    session[:birthday] = Date.new(params[:birthday]["birthday(1i)"].to_i,params[:birthday]["birthday(2i)"].to_i,params[:birthday]["birthday(3i)"].to_i)
     session[:familyname] = user_params[:familyname] #register_addressで入力した値をsessionに保存
     session[:firstname] = user_params[:firstname]
     session[:familyname_kana] = user_params[:familyname_kana]
     session[:firstname_kana] = user_params[:firstname_kana]
     session[:phone] = user_params[:phone]
-    session[:birthday] = user_params[:birthday]
     session[:address_attributes] = user_params[:address_attributes]
     @user = User.new(
       nickname: session[:nickname], #sessionに保存された値をインスタンスに渡す
@@ -80,7 +87,10 @@ class SignupController < ApplicationController
       birthday: session[:birthday]
     )
     @user.build_address(session[:address_attributes])
-    render '/signup/register_address' unless @user.valid?
+    unless @user.valid?
+      flash.now[:alert] = @user.errors.full_messages
+      render '/signup/register_address'
+    end
   end
 
   def register_card
@@ -108,7 +118,8 @@ class SignupController < ApplicationController
       session[:id] = @user.id
       redirect_to complete_registration_signup_index_path
     else
-      render '/signup/register_user_info'
+      flash.now[:alert] = @user.errors.full_messages
+      render '/signup/register_card'
     end
   end
   
