@@ -74,12 +74,17 @@ class ProductsController < ApplicationController
   end
 
   def update
-    product = Product.find(params[:id])
-    if product.user_id == current_user.id
-      product.update(product_params)
+    @product = Product.find(params[:id])
+    @categories = Category.all
+    @states = State.all
+    @delivery_charges = DeliveryCharge.all
+    @delivery_methods = DeliveryMethod.all
+    @delivery_areas = DeliveryArea.all
+    @delivery_dates = DeliveryDate.all
+    if @product.update(product_params)
       redirect_to root_path
     else
-      flash.now[:alert] =  '必須事項を入力して下さい'
+      flash.now[:alert] = '必須事項を入力して下さい'
       render :edit
     end
   end
