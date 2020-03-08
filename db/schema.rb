@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200305053835) do
+ActiveRecord::Schema.define(version: 20200308123950) do
 
   create_table "addresses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "postcode",     null: false
@@ -78,7 +78,6 @@ ActiveRecord::Schema.define(version: 20200305053835) do
   end
 
   create_table "products", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string   "image"
     t.string   "name"
     t.text     "description",        limit: 65535
     t.integer  "category_id"
@@ -92,16 +91,26 @@ ActiveRecord::Schema.define(version: 20200305053835) do
     t.integer  "user_id"
     t.datetime "created_at",                       null: false
     t.datetime "updated_at",                       null: false
+    t.integer  "status_id"
+    t.integer  "image_id"
     t.index ["category_id"], name: "index_products_on_category_id", using: :btree
     t.index ["delivery_area_id"], name: "index_products_on_delivery_area_id", using: :btree
     t.index ["delivery_charge_id"], name: "index_products_on_delivery_charge_id", using: :btree
     t.index ["delivery_date_id"], name: "index_products_on_delivery_date_id", using: :btree
     t.index ["delivery_method_id"], name: "index_products_on_delivery_method_id", using: :btree
+    t.index ["image_id"], name: "index_products_on_image_id", using: :btree
     t.index ["state_id"], name: "index_products_on_state_id", using: :btree
+    t.index ["status_id"], name: "index_products_on_status_id", using: :btree
     t.index ["user_id"], name: "index_products_on_user_id", using: :btree
   end
 
   create_table "states", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "name",       null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "statuses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name",       null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -135,6 +144,8 @@ ActiveRecord::Schema.define(version: 20200305053835) do
   add_foreign_key "products", "delivery_charges"
   add_foreign_key "products", "delivery_dates"
   add_foreign_key "products", "delivery_methods"
+  add_foreign_key "products", "images"
   add_foreign_key "products", "states"
+  add_foreign_key "products", "statuses"
   add_foreign_key "products", "users"
 end
