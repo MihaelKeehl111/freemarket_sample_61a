@@ -99,7 +99,7 @@
       .item_detail_container__main__price_box--item_fee
         %span 送料込み
     .item_detail_container__main--item_buy_button
-      = link_to '' ,class: '' do
+      = link_to '' do
         購入画面に進む
 
     - if @product.delivery_method == 2
@@ -122,6 +122,27 @@
         =link_to '' ,class: '' do
           = icon 'fas', 'lock'
           あんしん・あんぜんへの取り組み
+
+  - if @product.user_id == current_user.id
+    .item_detail_container__change-status
+      .item_detail_container__change-status__box
+        = link_to "商品の編集", edit_product_path, class: 'item_detail_container__change-status__box--edit'
+        %p or
+        = link_to "", class: 'item_detail_container__change-status__box--stop' do
+          出品を一旦停止する
+        %button#modal-open-btn.item_detail_container__change-status__box--delete この商品を削除する
+        = link_to '', product_path(@product), method: :delete, id: 'item-delete-btn'
+        #overlay
+        #modalWindow
+          .modal-message-box
+            .modal-message-box--bold
+              確認
+            .modal-message-box--normal
+              削除すると二度と復活できません。<br>
+              削除する代わりに停止することもできます。<br><br>
+              本当に削除しますか？
+          %button#modal-close-btn キャンセル
+          %button#delete-comformation-btn 削除する
 
   .item_detail_container__message_contents
     .item_detail_container__message_contents--message_list
@@ -157,18 +178,20 @@
     .item_detail_container__message_contents--textarea
       %p 相手のことを考え丁寧なコメントを心がけましょう。不快な言葉遣いなどは利用制限や退会処分となることがあります。
       %textarea.product_detail_textarea
-      = link_to '', {class: 'product_detail_textarea__btn'} do
+      = link_to '', class: 'product_detail_textarea__btn' do
         コメントする
 
     %ul.item_detail_container__next_item
-      %li.item_detail_container__next_item--prev
-        = link_to '' do
-          = icon 'fas', 'chevron-left'
-          ライオンさん
-      %li.item_detail_container__next_item--next
-        = link_to '' do
-          ネコちゃん
-          = icon 'fas', 'chevron-right'
+      - if @previous_product
+        %li.item_detail_container__next_item--prev
+          = link_to product_path(@previous_product) do
+            = icon 'fas', 'chevron-left'
+            = @previous_product.name
+      - if @next_product
+        %li.item_detail_container__next_item--next
+          = link_to product_path(@next_product) do
+            = @next_product.name
+            = icon 'fas', 'chevron-right'
     .item_detail_container__sns_box
       %ul.item_detail_container__sns_box__sns_icons
         %li
@@ -206,7 +229,8 @@
         %span メルカリ
       = icon 'fas', 'chevron-right', class: 'nav__lists__list--icon'
     %li.nav_item__lists__list.nav_item__lists__list--item
-      %span トラさん
+      %span
+        = @product.name
     
 = render 'shared/appbanner'
   
