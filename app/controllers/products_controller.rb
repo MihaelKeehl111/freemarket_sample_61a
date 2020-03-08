@@ -24,7 +24,7 @@ class ProductsController < ApplicationController
   def create
     @product = Product.new(product_params)
     if @product.save
-        params[:images][:image].each do |image|
+        params[:image].each do |image|
           @product.images.create(image: image, product_id: @product.id)
         end  
       redirect_to completion_products_path, {controller: "products", action: "index", name: "completion"} do
