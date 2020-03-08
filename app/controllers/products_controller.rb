@@ -15,7 +15,7 @@ class ProductsController < ApplicationController
     user = @product.user_id
     @user_products = Product.where(user_id: user)
     @category_products = Product.where(category_id: @product.category_id)
-    if params[:id].to_i - 1 != 0
+    if Product.find_by(id: (params[:id].to_i - 1).to_s) != nil
       @previous_product = Product.find((params[:id].to_i - 1).to_s)
     end
     if Product.find_by(id: (params[:id].to_i + 1).to_s) != nil
@@ -39,6 +39,20 @@ class ProductsController < ApplicationController
   end
 
   def purchased
+  end
+
+  def stop_selling
+    @product = Product.find(params[:id])
+    @product.status_id = params[:status_id]
+    @product.save
+    redirect_to product_path(@product)
+  end
+
+  def reselling
+    @product = Product.find(params[:id])
+    @product.status_id = params[:status_id]
+    @product.save
+    redirect_to product_path(@product)
   end
 
   def new

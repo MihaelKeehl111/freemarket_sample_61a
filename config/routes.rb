@@ -25,6 +25,10 @@ Rails.application.routes.draw do
       get :purchase
       get :purchased
     end
+    member do
+      put :stop_selling
+      put :reselling
+    end
   end
 
   resources :categories, only: [:index, :show]
