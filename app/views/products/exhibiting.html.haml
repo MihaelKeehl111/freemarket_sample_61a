@@ -33,7 +33,7 @@
             %h3
               売却済み
       .exhibiting-content__lists
-        - if @products != nil
+        - if @products.present?
           %ul.content__lists
             %li.content__lists--list
               - @products.each do |product|
