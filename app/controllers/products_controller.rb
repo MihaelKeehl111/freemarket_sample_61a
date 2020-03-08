@@ -1,7 +1,8 @@
 class ProductsController < ApplicationController
   before_action :set_category, :category_ranking, only: :index
   before_action :set_current_user_products, only: [:exhibiting, :trading, :sold, :purchase, :purchased]
-  before_action :set_product, only: [:show, :destroy]
+  before_action :set_product, only: [:show, :edit, :update, :destroy]
+  before_action :set_product_information, only: [:new, :edit, :update]
 
   def index
     @products = Product.order('created_at DESC')
@@ -54,12 +55,6 @@ class ProductsController < ApplicationController
   def new
     redirect_to new_user_session_path unless user_signed_in?
     @product = Product.new
-    @categories = Category.all
-    @states = State.all
-    @delivery_charges = DeliveryCharge.all
-    @delivery_methods = DeliveryMethod.all
-    @delivery_areas = DeliveryArea.all
-    @delivery_dates = DeliveryDate.all
   end
 
   def create
@@ -70,6 +65,18 @@ class ProductsController < ApplicationController
       flash.now[:alert] = '必須事項を入力して下さい'
       render :new
       end
+    end
+  end
+
+  def edit
+  end
+
+  def update
+    if @product.update(product_params)
+      redirect_to root_path
+    else
+      flash.now[:alert] = '必須事項を入力して下さい'
+      render :edit
     end
   end
 
@@ -85,6 +92,19 @@ class ProductsController < ApplicationController
 
   def set_current_user_products
     @products = current_user.products
+  end
+
+  def set_product
+    @product = Product.find(params[:id])
+  end
+
+  def set_product_information
+    @categories = Category.all
+    @states = State.all
+    @delivery_charges = DeliveryCharge.all
+    @delivery_methods = DeliveryMethod.all
+    @delivery_areas = DeliveryArea.all
+    @delivery_dates = DeliveryDate.all
   end
 
   def set_category
