@@ -1,6 +1,7 @@
 .registration_index
   .registration_index__header
     .registration_index__header__logo
+
       =link_to '' do
         =image_tag "fmarket_logo_red", height: 49
   .registration_index__main
@@ -11,7 +12,7 @@
         = link_to register_user_info_signup_index_path, class: 'registration__btn registration__btn--mail' do
           = icon 'far', 'envelope', class: 'registration__btn--mail--icon'
           メールアドレスで登録する
-        = link_to "https://www.facebook.com/", class: 'registration__btn registration__btn--facebook' do
+        = link_to user_facebook_omniauth_authorize_path, method: "post", class: 'registration__btn registration__btn--facebook' do
           = icon 'fab', 'facebook-square', class: 'registration__btn--facebook--icon'
           Facebookで登録する
         = link_to "https://www.google.com/", class: 'registration__btn registration__btn--google' do
