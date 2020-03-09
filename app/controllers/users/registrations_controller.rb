@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class Users::RegistrationsController < Devise::RegistrationsController
+
   # before_action :configure_sign_up_params, only: [:create, :create_cellphone_numbers, :create_user_details]
   # before_action :configure_account_update_params, only: [:update]
 
