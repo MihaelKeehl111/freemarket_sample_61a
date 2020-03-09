@@ -28,12 +28,11 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   #   super(scope)
   # end
 
-  # ファーストトライ
 
   def facebook
     authorization
   end
-  # binding.pry
+  
 
   def google_oauth2
     authorization
