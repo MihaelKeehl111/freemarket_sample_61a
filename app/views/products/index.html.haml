@@ -8,14 +8,18 @@
     人気のカテゴリー
     %ul.toppage-main__list
       %li.toppage-main__menu
-        .toppage-main__logo
-          レディース
-        .toppage-main__logo
-          メンズ
-        .toppage-main__logo
-          家電・スマホ・カメラ
-        .toppage-main__logo
-          おもちゃ・ホビー・グッズ
+        - if @ranking[0][0]
+          .toppage-main__logo
+            = @first_category.root.name
+        - if @ranking[1][0]
+          .toppage-main__logo
+            = @second_category.root.name
+        - if @ranking[2][0]
+          .toppage-main__logo
+            = @third_category.root.name
+        - if @ranking[3][0]
+          .toppage-main__logo
+            = @forth_category.root.name
 
   .toppage-main__category-bottom
     - if @ranking[0][0]

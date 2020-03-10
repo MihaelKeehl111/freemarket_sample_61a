@@ -5,7 +5,7 @@ class ProductsController < ApplicationController
   before_action :set_product_information, only: [:new, :edit, :update]
 
   def index
-    @products = Product.order('created_at DESC')
+    @products = Product.order('created_at DESC').where.not(status_id: 3)
     @products_ladies_index = @products_ladies.order('created_at DESC').limit(10)
     @products_mens_index = @products_mens.order('created_at DESC').limit(10)
     @products_electronics_index = @products_electronics.order('created_at DESC').limit(10)
@@ -14,11 +14,13 @@ class ProductsController < ApplicationController
 
   def show
     user = @product.user_id
-    @user_products = Product.where(user_id: @product.user_id)
-    @category_products = Product.where(category_id: @product.category_id)
+    @user_products = Product.where(user_id: @product.user_id && @product.status_id != 3)
+    @category_products = Product.where(category_id: @product.category_id && @product.status_id != 3)
+
     if Product.find_by(id: (params[:id].to_i - 1).to_s) != nil
-      @previous_product = Product.find_by(id: (params[:id].to_i - 1).to_s)
+      @previous_product = Product.find((params[:id].to_i - 1).to_s)
     end
+
     if Product.find_by(id: (params[:id].to_i + 1).to_s) != nil
       @next_product = Product.find_by(id: (params[:id].to_i + 1).to_s)
     end
@@ -42,6 +44,20 @@ class ProductsController < ApplicationController
   def purchased
   end
 
+  def stop_selling
+    @product = Product.find(params[:id])
+    @product.status_id = params[:status_id]
+    @product.save
+    redirect_to product_path(@product), notice: '出品の一旦停止をしました'
+  end
+
+  def reselling
+    @product = Product.find(params[:id])
+    @product.status_id = params[:status_id]
+    @product.save
+    redirect_to product_path(@product), notice: '出品の再開をしました'
+  end
+
   def destroy
     @product.destroy if @product.user_id == current_user.id
     if @product.destroy
@@ -59,11 +75,10 @@ class ProductsController < ApplicationController
   def create
     @product = Product.new(product_params)
     if @product.save
-      redirect_to completion_products_path, {controller: "products", action: "index", name: "completion"} do
+      redirect_to completion_products_path, {controller: "products", action: "index", name: "completion"}
     else
       flash.now[:alert] = '必須事項を入力して下さい'
       render :new
-      end
     end
   end
 
@@ -112,79 +127,79 @@ class ProductsController < ApplicationController
     ladies = Category.find_by name: "レディース"
     if ladies
       @ladies_ids = Category.descendants_of ladies
-      @products_ladies = Product.where(category_id: @ladies_ids)
+      @products_ladies = Product.where(category_id: @ladies_ids).where.not(status_id: 3)
     end
 
     mens = Category.find_by name: "メンズ"
     if mens
       @mens_ids = Category.descendants_of mens
-      @products_mens = Product.where(category_id: @mens_ids)
+      @products_mens = Product.where(category_id: @mens_ids).where.not(status_id: 3)
     end
 
     kids = Category.find_by name: "ベビー・キッズ"
     if kids
       @kids_ids = Category.descendants_of kids
-      @products_kids = Product.where(category_id: @kids_ids)
+      @products_kids = Product.where(category_id: @kids_ids).where.not(status_id: 3)
     end
 
     interia = Category.find_by name: "インテリア・住まい・小物"
     if interia
       @interia_ids = Category.descendants_of interia
-      @products_interia = Product.where(category_id: @interia_ids)
+      @products_interia = Product.where(category_id: @interia_ids).where.not(status_id: 3)
     end
 
     books = Category.find_by name: "本・音楽・ゲーム"
     if books
       @books_ids = Category.descendants_of books
-      @products_books = Product.where(category_id: @books_ids)
+      @products_books = Product.where(category_id: @books_ids).where.not(status_id: 3)
     end
 
     toys = Category.find_by name: "おもちゃ・ホビー・グッズ"
     if toys
       @toys_ids = Category.descendants_of toys
-      @products_toys = Product.where(category_id: @toys_ids)
+      @products_toys = Product.where(category_id: @toys_ids).where.not(status_id: 3)
     end
     
     beauties = Category.find_by name: "コスメ・香水・美容"
     if beauties
       @beauties_ids = Category.descendants_of beauties
-      @products_beauties = Product.where(category_id: @beauties_ids)
+      @products_beauties = Product.where(category_id: @beauties_ids).where.not(status_id: 3)
     end
    
     electronics = Category.find_by name: "家電・スマホ・カメラ"
     if electronics
       @electronics_ids = Category.descendants_of electronics
-      @products_electronics = Product.where(category_id: @electronics_ids)
+      @products_electronics = Product.where(category_id: @electronics_ids).where.not(status_id: 3)
     end
 
     sports = Category.find_by name: "スポーツ・レジャー"
     if sports
       @sports_ids = Category.descendants_of sports
-      @products_sports = Product.where(category_id: @sports_ids)
+      @products_sports = Product.where(category_id: @sports_ids).where.not(status_id: 3)
     end
 
     handmade = Category.find_by name: "ハンドメイド"
     if handmade
       @handmade_ids = Category.descendants_of handmade
-      @products_handmade = Product.where(category_id: @handmade_ids)
+      @products_handmade = Product.where(category_id: @handmade_ids).where.not(status_id: 3)
     end
 
     tickets = Category.find_by name: "チケット"
     if tickets
       @tickets_ids = Category.descendants_of tickets
-      @products_tickets = Product.where(category_id: @tickets_ids)
+      @products_tickets = Product.where(category_id: @tickets_ids).where.not(status_id: 3)
     end
 
     bicycles = Category.find_by name: "自転車・オートバイ"
     if bicycles
       @bicycles_ids = Category.descendants_of bicycles
-      @products_bicycles = Product.where(category_id: @bicycles_ids)
+      @products_bicycles = Product.where(category_id: @bicycles_ids).where.not(status_id: 3)
     end
     
     others = Category.find_by name: "その他"
     if others
       @others_ids = Category.descendants_of others
-      @products_others = Product.where(category_id: @others_ids)
+      @products_others = Product.where(category_id: @others_ids).where.not(status_id: 3)
     end
   end
 

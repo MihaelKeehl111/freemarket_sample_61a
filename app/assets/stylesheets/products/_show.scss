@@ -253,6 +253,10 @@ button {
         font-size: 14px;
         transition: all ease-out .3s;
         cursor: pointer;
+        color: #fff;
+        text-align: center;
+        width: 100%;
+        border: none;
         &:focus {
           border: 1px solid #0099e8;
           outline: 0;
