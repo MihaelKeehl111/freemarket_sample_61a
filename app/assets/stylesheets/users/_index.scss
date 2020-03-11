@@ -11,13 +11,17 @@
       font-size: 14px;
       line-height: 1.2;
       display: inline;
-      &--mypage {
-        font-weight: bold;
-      }
       a {
         display: inline-block;
         position: relative;
         color: #333;
+        &:hover {
+          text-decoration: underline;
+          color: #888;
+        }
+      }
+      span {
+        font-weight: bold;
       }
       &--icon {
         margin: 0 8px;
