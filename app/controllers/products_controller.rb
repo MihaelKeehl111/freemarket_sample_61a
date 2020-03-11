@@ -6,10 +6,6 @@ class ProductsController < ApplicationController
 
   def index
     @products = Product.order('created_at DESC').where.not(status_id: 3)
-    @products_ladies_index = @products_ladies.order('created_at DESC').limit(10)
-    @products_mens_index = @products_mens.order('created_at DESC').limit(10)
-    @products_electronics_index = @products_electronics.order('created_at DESC').limit(10)
-    @products_toys_index = @products_toys.order('created_at DESC').limit(10)
   end
 
   def show
@@ -110,10 +106,6 @@ class ProductsController < ApplicationController
 
   def set_current_user_products
     @products = current_user.products
-  end
-
-  def set_product
-    @product = Product.find(params[:id])
   end
 
   def set_product_information

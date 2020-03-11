@@ -6,9 +6,6 @@ Rails.application.routes.draw do
     sessions: 'users/sessions'
   }
   
-
-  
-  
   root "products#index"
 
   devise_scope :user do
