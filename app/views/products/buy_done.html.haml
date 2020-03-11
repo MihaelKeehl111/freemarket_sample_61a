@@ -1,0 +1,40 @@
+.sell-container
+  .sell-header
+    %h1
+      =link_to root_path do
+        = image_tag "fmarket_logo_red.svg"
+
+  .soldout-main
+    .soldout-main__attention
+      %h3
+        = icon 'far', 'clock', class: 'soldout-clock'
+        %span 発送をお待ちください
+      %p 出品者からの発送通知をお待ちください
+    .sodlout-main__complete
+    %h2 購入が完了しました
+    .soldout-main__product
+      = image_tag 'b4a4c8519d3ea7260ffd0e656353d073_t.jpg' ,class: 'soldout_product_img'
+      .soldout-main__product__detail
+        %p.product__name コアラさん
+        .product__pricebox
+          %span.product__pricebox__price ¥3,600 
+          %span.product__pricebox__tax（税込）送料込み
+      
+
+  .sell-footer
+    %nav
+      %ul.clearfix
+        %li
+          = link_to '' do
+            プライバシーポリシー
+        %li
+          = link_to '' do
+            メルカリ利用規約
+        %li
+          = link_to '' do
+            特定商取引に関する表記
+    = link_to 'products#index', class: 'sell-footer__logo' do
+      = image_tag 'logo_gray.svg', alt: 'mercari', height: '65', width: '80'
+    %p
+      %small
+        © Fmarket, Inc.

@@ -30,6 +30,7 @@ Rails.application.routes.draw do
       get :sold
       get :purchase
       get :purchased
+      get :buy_done
     end
     member do
       put :stop_selling
