@@ -15,6 +15,6 @@ class Product < ApplicationRecord
 
   def self.search(search)
     return Product.all unless search
-    Product.where(['content LIKE ?', "%#{search}%"])
+    Product.where(['name LIKE ?', "%#{search}%"]).where.not(status_id: 3).order('created_at DESC')
   end
 end

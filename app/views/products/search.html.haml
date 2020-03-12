@@ -1,0 +1,23 @@
+= render 'shared/header'
+
+.search-result
+  .main
+    .main__right
+      .main__right__title
+        %span.bold
+          = @keyword
+        %span の検索結果
+      .main__right__number
+        = page_entries_info @products, entry_name: '商品'
+      .main__right__contents
+        %ul.main__right__contents__products
+          = render partial: "products/product", collection: @products
+        = paginate(@products)
+
+    .main__left
+
+= render 'shared/sellbutton'
+
+= render 'shared/appbanner'
+  
+= render 'shared/footer'
