@@ -21,11 +21,12 @@ class ProductsController < ApplicationController
   end
 
   def create
+    # binding.pry
     @product = Product.new(product_params)
     if @product.save
-        # params[:image].each do |image|
-        #   @product.images.create(image: image, product_id: @product.id)
-        # end  
+        params[:images][:image].each do |image|
+          @product.images.create(image: image, product_id: @product.id)
+        end  
       redirect_to completion_products_path, {controller: "products", action: "index", name: "completion"} do
     else
       flash.now[:alert] = '必須事項を入力して下さい'
@@ -36,6 +37,6 @@ class ProductsController < ApplicationController
 
   private
   def product_params
-    params.require(:product).permit(:name, :description, :category_id, :size, :state_id, :delivery_charge_id, :delivery_method_id, :delivery_area_id, :delivery_date_id, :price, images_attributes: [:image, :id]).merge(user_id: current_user.id)
+    params.require(:product).permit(:name, :description, :category_id, :size, :state_id, :delivery_charge_id, :delivery_method_id, :delivery_area_id, :delivery_date_id, :price, images_attributes: [:image, :_destroy, :id]).merge(user_id: current_user.id)
   end
 end

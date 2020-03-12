@@ -9,5 +9,5 @@ class Product < ApplicationRecord
 
   accepts_nested_attributes_for :images, allow_destroy: true
 
-  validates :image, :name, :description, :category_id, :state_id, :delivery_charge_id, :delivery_method_id, :delivery_area_id, :delivery_date_id, :price, presence: true
+  validates :name, :description, :category_id, :state_id, :delivery_charge_id, :delivery_method_id, :delivery_area_id, :delivery_date_id, :price, presence: true
 end
