@@ -1,3 +1,4 @@
+
 crumb :root do
   link "メルカリ", root_path
 end
@@ -78,6 +79,19 @@ crumb :logout do
   link "ログアウト", logout_users_path
   parent :users
 end
+
+# カテゴリー一覧
+crumb :categories do
+  link "カテゴリー一覧", categories_path
+end
+
+# 各カテゴリー表記
+crumb :each_category do |category|
+  category = Category.find(params[:id])
+  link category.name
+  parent :categories
+end
+
 
 
 
