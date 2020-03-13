@@ -13,6 +13,10 @@ $(function(){
       if (num == 5){
         $('#image-box__container1').css('display', 'none')  
         $('#image-box__container2').css('display', 'block') 
+      } else if (num >=5 && num <= 9){
+        $('#image-box__container2').css('display', 'block') 
+      } else {
+        $('#image-box__container2').css('display', 'none')   
       }
       fileReader.onloadend = function() {
         var src = fileReader.result
@@ -22,9 +26,9 @@ $(function(){
                         <img src=${src} width="114" height="100" >
                       </div>
                     </div>
-                    <div class='item-image__operetion'>
-                      <div class='item-image__operetion--update'>編集</div>
-                      <div class='item-image__operetion--delete'>削除</div>
+                    <div class='item-image__operation'>
+                      <div class='item-image__operation--update'>編集</div>
+                      <div class='item-image__operation--delete'>削除</div>
                     </div>
                   </div>`
         if (num <=5){          
@@ -38,7 +42,7 @@ $(function(){
     });  
   });
   // 削除機能
-  $(document).on("click", '.item-image__operetion--delete', function(){
+  $(document).on("click", '.item-image__operation--delete', function(){
     var target_image = $(this).parent().parent()
     var target_name = $(target_image).data('image')
     if(file_field.files.length==1){
@@ -59,6 +63,9 @@ $(function(){
       $('#image-box__container1').css('display', 'block')  
       $('#image-box__container2').css('display', 'none') 
     }
+    if (num >=5 && num <= 9){
+      $('#image-box__container2').css('display', 'block') 
+    }  
     $('#image-box__container').show()
     $('#image-box__container').attr('class', `item-num-${num}`)
   })
