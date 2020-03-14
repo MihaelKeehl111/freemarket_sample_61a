@@ -71,7 +71,7 @@ class ProductsController < ApplicationController
   def create
     @product = Product.new(product_params)
     if @product.save
-      redirect_to completion_products_path, {controller: "products", action: "completion", name: "index"}
+      redirect_to completion_products_path
     else
       flash.now[:alert] = '必須事項を入力して下さい'
       render :new
