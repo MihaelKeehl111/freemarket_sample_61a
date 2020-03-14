@@ -32,6 +32,21 @@
       width: 280px;
       margin: 0 40px 0 0;
       position: relative;
+      &__sort {
+        select {
+          background: #fff;
+          text-align: left;
+          top: 50%;
+          z-index: 2;
+          height: 48px;
+          width: 100%;
+          padding: 0 16px;
+          margin-top: 8px;
+          border: 1px solid #ccc;
+          border-radius: 4px;
+          font-size: 16px;
+        }
+      }
       .selectbox {
         background: #fff;
         text-align: left;
@@ -40,13 +55,13 @@
         height: 48px;
         width: 100%;
         padding: 0 16px;
-        padding-top: 10px;
+        padding-top: 5px;
         margin-top: 8px;
         border: 1px solid #ccc;
         border-radius: 4px;
         font-size: 16px;
         position: relative
-        i {
+        icon {
           position: absolute;
           right: 0;
         }

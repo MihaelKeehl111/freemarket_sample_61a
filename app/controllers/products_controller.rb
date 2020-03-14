@@ -91,7 +91,7 @@ class ProductsController < ApplicationController
   end
 
   def search
-    @products = Product.search(params[:search]).page(params[:page]).per(1)
+    @products = Product.search(params[:search]).page(params[:page]).per(100)
     @keyword = params[:search]
   end
 

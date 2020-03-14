@@ -15,9 +15,9 @@
         = paginate(@products)
 
     .main__left
-      .main__left__sort.selectbox
-        並べ替え
-        = icon 'fas', 'chevron-down'
+      .main__left__sort
+        = form_tag('', method: :get) do
+          = select_tag('', options_for_select([["価格の安い順","1"], ["価格の高い順","2"], ["出品の新しい順","3"], ["いいね！の多い順","4"]]), prompt: '並び替え')
       .main__left__search
         = form_tag('', method: :get) do
           %h3.main__left__search__title
@@ -31,8 +31,7 @@
             .main__left__search__box__label
               = icon 'fas', 'list-ul'
               %span カテゴリーを選択する
-            = collection_select(:category_id, :name, @categories, :id, :name, {include_blank: true, prompt: 'すべて'}) do
-              = icon 'fas', 'chevron-down'
+            = collection_select(:category_id, :name, @categories, :id, :name, {include_blank: true, prompt: 'すべて'})
           .main__left__search__box
             .main__left__search__box__label
               = icon 'fas', 'tag'
@@ -42,13 +41,11 @@
             .main__left__search__box__label
               = icon 'fas', 'expand'
               %span サイズを指定する
-              = icon 'fas', 'chevron-down'
             = text_field_tag 'size', '', class: 'selectbox'
           .main__left__search__box
             .main__left__search__box__label
               = icon 'fas', 'coins'
               %span 価格
-              = icon 'fas', 'chevron-down'
             = select_tag('price', options_for_select([["300〜1000","1"], ["1000〜5000","2"], ["5000〜10000","3"], ["10000〜30000","4"], ["30000〜50000","5"], ["50000〜","6"]]), prompt: '')
             = text_field_tag 'low_price', '', class: 'selectbox price', placeholder: '¥ Min'
             %span 〜
