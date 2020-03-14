@@ -3,7 +3,7 @@
 .nav
   %ul.nav__lists
     %li.nav__lists__list
-      - breadcrumb :each_category
+      - breadcrumb :category
       = breadcrumbs separator: " #{content_tag(:i, '', class: 'fas fa-chevron-right nav__lists__list--icon ' )} "
 
 

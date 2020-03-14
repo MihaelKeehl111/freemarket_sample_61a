@@ -85,13 +85,12 @@ crumb :categories do
   link "カテゴリー一覧", categories_path
 end
 
-# 各カテゴリー表記
-crumb :each_category do |category|
+# 各カテゴリー表記 
+crumb :category do |category|
   category = Category.find(params[:id])
   link category.name
   parent :categories
 end
-
 
 
 
