@@ -2,7 +2,7 @@ class ProductsController < ApplicationController
   before_action :set_category, :category_ranking, only: :index
   before_action :set_current_user_products, only: [:exhibiting, :trading, :sold, :purchase, :purchased]
   before_action :set_product, only: [:show, :edit, :update, :destroy]
-  before_action :set_product_information, only: [:new, :edit, :update]
+  before_action :set_product_information, only: [:new, :edit, :update, :search]
 
   def index
     @products = Product.order('created_at DESC').where.not(status_id: 3)
@@ -90,6 +90,11 @@ class ProductsController < ApplicationController
     end
   end
 
+  def search
+    @products = Product.search(params[:search]).page(params[:page]).per(100)
+    @keyword = params[:search]
+  end
+
   private
 
   def product_params
@@ -111,6 +116,7 @@ class ProductsController < ApplicationController
     @delivery_methods = DeliveryMethod.all
     @delivery_areas = DeliveryArea.all
     @delivery_dates = DeliveryDate.all
+    @status = Status.all
   end
 
   def set_category

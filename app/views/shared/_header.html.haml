@@ -3,10 +3,12 @@
     %h1.top__logo
       =link_to root_path do
         = image_tag "fmarket_logo_red.svg", alt: "mercari", width: 134, height: 36
-    %form.top__search
-      %input{placeholder: "何かお探しですか？"}
-      %button{type: 'submit', class: 'top__search--icon'}
+
+    = form_tag(search_products_path, method: :get, class: 'top__search') do
+      = text_field_tag :search, '', placeholder: "何かお探しですか？", class: 'top__search__form'
+      = button_tag '', type: 'submit', class: 'top__search--icon' do
         = icon 'fas', 'search'
+        
   .bottom.clearfix
     %ul.bottom__left
       %li.bottom__left__lists
