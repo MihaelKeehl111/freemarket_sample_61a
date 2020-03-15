@@ -2,7 +2,7 @@
   .registration_user_info__header
     %ul.registration_user_info__header__logo
       =link_to root_path do
-        =image_tag "fmarket_logo_red", height: 52
+        =image_tag "fmarket_logo_red.svg", height: 52
     %ul.registration_user_info__header__bar
       %ol.clearfix
         %li.active
@@ -54,7 +54,7 @@
           .form--box
             = f.label :password_confirmation, "パスワード（確認）", autocomplete: "new-password"
             %span.form-require 必須
-            = f.password_field :password_confirmation, class: 'information__main--form', placeholder: '英数字混在7文字以上'
+            = f.password_field :password_confirmation, class: 'information__main--form', placeholder: '英数字混在7文字以上', autocomplete: "new-password"
             = render partial: 'error_messages', locals: {user: @user, column: 'password_confirmation'}
         = f.submit "次へ進む", class: 'information__main--form--button'
 
@@ -68,4 +68,4 @@
       特定商取引に関する表記
       .registration_user_info__footer__logo
         =link_to '' do
-          =image_tag "logo_gray", height: 80
+          =image_tag "logo_gray.svg", height: 80

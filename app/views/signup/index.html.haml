@@ -3,7 +3,7 @@
     .registration_index__header__logo
 
       =link_to '' do
-        =image_tag "fmarket_logo_red", height: 49
+        =image_tag "fmarket_logo_red.svg", height: 49
   .registration_index__main
     .registration
       .registration__head
@@ -15,7 +15,7 @@
         = link_to user_facebook_omniauth_authorize_path, method: "post", class: 'registration__btn registration__btn--facebook' do
           = icon 'fab', 'facebook-square', class: 'registration__btn--facebook--icon'
           Facebookで登録する
-        = link_to "https://www.google.com/", class: 'registration__btn registration__btn--google' do
+        = link_to user_google_oauth2_omniauth_authorize_path, method: "post", class: 'registration__btn registration__btn--google' do
           = icon 'fab', 'google', class: 'registration__btn--google--icon'
           Googleで登録する
   .registration_index__footer
@@ -27,4 +27,4 @@
       特定商取引に関する表記
       .registration_index__footer__logo
         =link_to '' do
-          =image_tag "logo_gray", height: 80
+          =image_tag "logo_gray.svg", height: 80

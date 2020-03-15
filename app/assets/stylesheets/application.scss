@@ -29,6 +29,7 @@
 @import "products/show";
 @import "products/exhibiting";
 @import "products/purchased";
+@import "products/search";
 @import "categories/index";
 @import "categories/show";
 @import "users/index";
@@ -48,4 +49,7 @@
 @import "users/change-address";
 @import "font-awesome-sprockets";
 @import "font-awesome";
-@import "products/buy_done"
+@import "products/buy_done";
+@import "users/nav";
+
+

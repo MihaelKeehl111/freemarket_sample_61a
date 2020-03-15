@@ -2,7 +2,7 @@ class ProductsController < ApplicationController
   before_action :set_category, :category_ranking, only: :index
   before_action :set_current_user_products, only: [:exhibiting, :trading, :sold, :purchase, :purchased]
   before_action :set_product, only: [:show, :edit, :update, :destroy]
-  before_action :set_product_information, only: [:new, :edit, :update]
+  before_action :set_product_information, only: [:new, :edit, :update, :search]
 
   def index
     @products = Product.order('created_at DESC').where.not(status_id: 3)
@@ -71,7 +71,7 @@ class ProductsController < ApplicationController
   def create
     @product = Product.new(product_params)
     if @product.save
-      redirect_to completion_products_path, {controller: "products", action: "index", name: "completion"}
+      redirect_to completion_products_path
     else
       flash.now[:alert] = '必須事項を入力して下さい'
       render :new
@@ -88,6 +88,11 @@ class ProductsController < ApplicationController
       flash.now[:alert] = '必須事項を入力して下さい'
       render :edit
     end
+  end
+
+  def search
+    @products = Product.search(params[:search]).page(params[:page]).per(100)
+    @keyword = params[:search]
   end
 
   private
@@ -111,6 +116,7 @@ class ProductsController < ApplicationController
     @delivery_methods = DeliveryMethod.all
     @delivery_areas = DeliveryArea.all
     @delivery_dates = DeliveryDate.all
+    @status = Status.all
   end
 
   def set_category

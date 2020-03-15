@@ -20,11 +20,10 @@ class SignupController < ApplicationController
   
   def validates_register_user_info
     if params[:sns_auth] == 'true'
-      pass = Devise.friendly_token(length = 30)
+      pass = Devise.friendly_token
       params[:user][:password] = pass
       params[:user][:password_confirmation] = pass
     end
-    # binding.pry
     session[:nickname] = user_params[:nickname] #register_user_infoで入力した値をsessionに保存
     session[:email] = user_params[:email]
     session[:password] = user_params[:password]

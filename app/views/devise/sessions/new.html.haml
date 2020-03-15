@@ -15,7 +15,7 @@
         = link_to user_facebook_omniauth_authorize_path, method: "post", class: 'login__btn login__btn--facebook' do
           = icon 'fab', 'facebook-square', class: 'login__btn--facebook--icon'
           Facebookでログイン
-        = link_to '', class: 'login__btn login__btn--google' do
+        = link_to user_google_oauth2_omniauth_authorize_path, method: "post", class: 'login__btn login__btn--google' do
           = icon 'fab', 'google', class: 'login__btn--google--icon'
           Googleでログイン
 

@@ -20,21 +20,7 @@
     background: #ea352d;
   }
 
-  .next {
-    display: inline-block;
-    width: 90px;
-    height: 44px;
-    border-radius: 4px;
-    background: #fff;
-    border: 1px solid #ccc;
-    font-size: 14px;
-    line-height: 42px;
-    a {
-      color: black;
-    }
-  }
-
-  .last {
+  .next, .first, .prev, .last {
     display: inline-block;
     width: 90px;
     height: 44px;

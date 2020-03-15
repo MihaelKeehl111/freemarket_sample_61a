@@ -72,9 +72,10 @@ gem 'devise'
 gem 'pry-rails'
 gem 'erb2haml'
 gem 'omniauth-facebook'
+gem 'omniauth-google-oauth2'
 gem "omniauth-rails_csrf_protection"
 gem 'rails-i18n'
 gem 'carrierwave'
 gem 'mini_magick'
 gem 'faker'
-
+gem "gretel"
