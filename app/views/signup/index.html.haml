@@ -15,7 +15,7 @@
         = link_to user_facebook_omniauth_authorize_path, method: "post", class: 'registration__btn registration__btn--facebook' do
           = icon 'fab', 'facebook-square', class: 'registration__btn--facebook--icon'
           Facebookで登録する
-        = link_to "https://www.google.com/", class: 'registration__btn registration__btn--google' do
+        = link_to user_google_oauth2_omniauth_authorize_path, method: "post", class: 'registration__btn registration__btn--google' do
           = icon 'fab', 'google', class: 'registration__btn--google--icon'
           Googleで登録する
   .registration_index__footer

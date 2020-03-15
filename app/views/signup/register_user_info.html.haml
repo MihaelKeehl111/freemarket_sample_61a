@@ -54,7 +54,7 @@
           .form--box
             = f.label :password_confirmation, "パスワード（確認）", autocomplete: "new-password"
             %span.form-require 必須
-            = f.password_field :password_confirmation, class: 'information__main--form', placeholder: '英数字混在7文字以上'
+            = f.password_field :password_confirmation, class: 'information__main--form', placeholder: '英数字混在7文字以上', autocomplete: "new-password"
             = render partial: 'error_messages', locals: {user: @user, column: 'password_confirmation'}
         = f.submit "次へ進む", class: 'information__main--form--button'
 
