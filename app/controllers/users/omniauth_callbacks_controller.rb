@@ -20,12 +20,13 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     @user = sns_info[:user]
 
     if @user.persisted?
-      sign_in_and_redirect @user, event: :authentication #this will throw if @user is not activated
+      sign_in_and_redirect @user, event: :authentication
     else
       @sns_id = sns_info[:sns].id
       render template: 'signup/register_user_info'
     end
   end
+
   # You should configure your model like this:
   # devise :omniauthable, omniauth_providers: [:twitter]
 

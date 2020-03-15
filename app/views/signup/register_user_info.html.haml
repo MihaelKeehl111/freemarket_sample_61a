@@ -31,21 +31,30 @@
             = f.label :nickname, "ニックネーム"
             %span.form-require 必須
             = f.text_field :nickname, class: 'information__main--form', placeholder: "例)  メルカリ太郎"
+          - if @sns_id.present?
+            = hidden_field_tag :sns_auth, true
+          - else
             = render partial: 'error_messages', locals: {user: @user, column: 'nickname'}
           .form--box
             = f.label :email, "メールアドレス"
             %span.form-require 必須
             = f.email_field :email, class: 'information__main--form', placeholder: "PC・携帯どちらでも可"
+          - if @sns_id.present?
+            = hidden_field_tag :sns_auth, true
+          - else
             = render partial: 'error_messages', locals: {user: @user, column: 'email'}
+          - if @sns_id.present?
+            = hidden_field_tag :sns_auth, true
+          - else
           .form--box
             = f.label :password, "パスワード"
             %span.form-require 必須
-            = f.password_field :password, class: 'information__main--form', placeholder: '英数字混在7文字以上'
+            = f.password_field :password, class: 'information__main--form', placeholder: '英数字混在7文字以上', autocomplete: "new-password"
             = render partial: 'error_messages', locals: {user: @user, column: 'password'}
           .form--box
             = f.label :password_confirmation, "パスワード（確認）"
             %span.form-require 必須
-            = f.password_field :password_confirmation, class: 'information__main--form', placeholder: '英数字混在7文字以上'
+            = f.password_field :password_confirmation, class: 'information__main--form', placeholder: '英数字混在7文字以上', autocomplete: "new-password"
             = render partial: 'error_messages', locals: {user: @user, column: 'password_confirmation'}
           = f.submit "次へ進む", class: 'information__main--form--button'
 
