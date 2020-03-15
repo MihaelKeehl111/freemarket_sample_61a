@@ -1,8 +1,11 @@
 Rails.application.routes.draw do
+  # devise_for :users 
   devise_for :users, controllers: {
     omniauth_callbacks: 'users/omniauth_callbacks',
-    registrations: 'users/registrations'
+    registrations: 'users/registrations',
+    sessions: 'users/sessions'
   }
+  
   root "products#index"
 
   devise_scope :user do
@@ -19,7 +22,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :products, only: [:index, :new, :create, :show] do
+  resources :products, only: [:index, :new, :create, :show, :edit, :update, :destroy] do
     collection do
       get :completion
       get :exhibiting
@@ -27,6 +30,11 @@ Rails.application.routes.draw do
       get :sold
       get :purchase
       get :purchased
+      get :search
+    end
+    member do
+      put :stop_selling
+      put :reselling
     end
   end
 

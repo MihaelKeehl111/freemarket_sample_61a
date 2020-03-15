@@ -1,0 +1,36 @@
+= render 'shared/header'
+.nav
+  %ul.nav__lists
+    %li.nav__lists__list
+      = link_to root_path do
+        %span メルカリ
+      = icon 'fas', 'chevron-right', class: 'nav__lists__list--icon'
+    %li.nav__lists__list.nav__lists__list--mypage
+      = link_to categories_path do
+        %span カテゴリー一覧
+      = icon 'fas', 'chevron-right', class: 'nav__lists__list--icon'
+    %li.nav__lists__list.nav__lists__list--mypage
+      = link_to category_path do
+        %span
+          = @category.name
+
+.categories-main
+  - if @category.has_children?
+    %ul
+      - @category.children.each do |category|
+        %li.categories-main__lists
+          = link_to category_path(category) do
+            = category.name
+  .categories-main__index
+    .categories-main__index--title
+      = @category.name + 'の商品一覧'
+    .categories-main__index--items
+      %ul.categories-main__index__contents
+        = render partial: "categories/product", collection: @products
+      = paginate(@products)
+
+= render 'shared/sellbutton'
+
+= render 'shared/appbanner'
+  
+= render 'shared/footer'

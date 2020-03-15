@@ -29,23 +29,24 @@
             %h3
               過去の取引
       .purchase-content__lists
-        - if @products.any?
+        - if @products.present?
           %ul.content__lists
             %li.content__lists--list
               - @products.each do |product|
                 - if product.status.id == 2
-                  .list
-                    .list__image
-                      = image_tag product.image
-                    .list__text
-                      .list__text--name
-                        = product.name
-                      - if product.status.id == 2
-                        .list__text--status
-                          .status-trading
-                            %span
-                            = product.status.name
-                    = icon 'fas', 'chevron-right'
+                  = link_to product_path(product) do
+                    .list
+                      .list__image
+                        = image_tag product.image
+                      .list__text
+                        .list__text--name
+                          = product.name
+                        - if product.status.id == 2
+                          .list__text--status
+                            .status-trading
+                              %span
+                              = product.status.name
+                      = icon 'fas', 'chevron-right'
             %li.content__lists--all
               = link_to '', {class: 'mypage__lists'} do
                 一覧をみる

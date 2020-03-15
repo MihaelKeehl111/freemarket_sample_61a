@@ -8,14 +8,18 @@
     人気のカテゴリー
     %ul.toppage-main__list
       %li.toppage-main__menu
-        .toppage-main__logo
-          レディース
-        .toppage-main__logo
-          メンズ
-        .toppage-main__logo
-          家電・スマホ・カメラ
-        .toppage-main__logo
-          おもちゃ・ホビー・グッズ
+        - if @ranking[0][0]
+          .toppage-main__logo
+            = @first_category.root.name
+        - if @ranking[1][0]
+          .toppage-main__logo
+            = @second_category.root.name
+        - if @ranking[2][0]
+          .toppage-main__logo
+            = @third_category.root.name
+        - if @ranking[3][0]
+          .toppage-main__logo
+            = @fourth_category.root.name
 
   .toppage-main__category-bottom
     - if @ranking[0][0]
@@ -23,7 +27,7 @@
         .toppage-main__text
           = @first_category.root.name + '新着アイテム'
           .toppage-main__item-more
-            = link_to 'もっと見る >', '#'
+            = link_to 'もっと見る >', category_path(@first_category)
         .toppage-main__item
           %ul.toppage-main__contents
             = render partial: "products/product", collection: @ranking[0]
@@ -32,7 +36,7 @@
         .toppage-main__text
           = @second_category.root.name + '新着アイテム'
           .toppage-main__item-more
-            = link_to 'もっと見る >', '#'
+            = link_to 'もっと見る >', category_path(@second_category)
         .toppage-main__item
           %ul.toppage-main__contents
             = render partial: "products/product", collection: @ranking[1]
@@ -41,7 +45,7 @@
         .toppage-main__text
           = @third_category.root.name + '新着アイテム'
           .toppage-main__item-more
-            = link_to 'もっと見る >', '#'
+            = link_to 'もっと見る >', category_path(@third_category)
         .toppage-main__item
           %ul.toppage-main__contents
             = render partial: "products/product", collection: @ranking[2]
@@ -50,7 +54,7 @@
         .toppage-main__text
           = @fourth_category.root.name + '新着アイテム'
           .toppage-main__item-more
-            = link_to 'もっと見る >', '#'
+            = link_to 'もっと見る >', category_path(@fourth_category)
         .toppage-main__item
           .toppage-main__contents
             = render partial: "products/product", collection: @ranking[3]

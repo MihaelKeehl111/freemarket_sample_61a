@@ -22,11 +22,16 @@
 @import "modules/footer";
 @import "modules/sellbutton";
 @import "modules/appbanner";
+@import "modules/kaminari";
 @import "products/index";
 @import "products/new";
 @import "products/completion";
 @import "products/show";
 @import "products/exhibiting";
+@import "products/purchased";
+@import "products/search";
+@import "categories/index";
+@import "categories/show";
 @import "users/index";
 @import "users/edit";
 @import "users/logout";

@@ -2,9 +2,10 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable, :omniauthable, omniauth_providers: [:facebook, :google_oauth2]
+         :recoverable, :rememberable, :validatable,
+         :omniauthable, omniauth_providers: [:facebook, :google_oauth2]
 
-  has_many :sns_credentials
+has_many :sns_credentials
 
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
 
@@ -27,6 +28,7 @@ class User < ApplicationRecord
   accepts_nested_attributes_for :address
   has_one :card
   accepts_nested_attributes_for :card
+
   has_many :products
   
   def password_complexity

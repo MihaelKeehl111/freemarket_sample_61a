@@ -4,10 +4,20 @@ class SignupController < ApplicationController
   before_action :validates_register_address, only: :register_card
   require "date"
 
+  def create
+    if params[:sns_auth] == 'true'
+      pass = Devise.friendly_token(length = 30)
+      params[:user][:password] = pass
+      params[:user][:password_confirmation] = pass
+    end
+    super
+  end
+
   def register_user_info
     @user = User.new # 新規インスタンス作成
   end
 
+  
   def validates_register_user_info
     if params[:sns_auth] == 'true'
       pass = Devise.friendly_token
@@ -30,10 +40,13 @@ class SignupController < ApplicationController
       firstname_kana: "メイ",
       birthday: "2001-01-01"
     )
+
     unless @user.valid?
+      # binding.pry
       flash.now[:alert] = @user.errors.full_messages
       render '/signup/register_user_info'
     end
+   
   end
 
   def register_cellphone
@@ -54,6 +67,7 @@ class SignupController < ApplicationController
       firstname_kana: "メイ",
       birthday: "2001-01-01"
     )
+
     unless @user.valid?
       flash.now[:alert] = @user.errors.full_messages
       render '/signup/register_cellphone'
