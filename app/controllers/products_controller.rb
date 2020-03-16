@@ -95,6 +95,9 @@ class ProductsController < ApplicationController
     @keyword = params[:search]
   end
 
+  def purchase_confirmation
+  end
+
   private
 
   def product_params

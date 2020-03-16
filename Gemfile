@@ -78,4 +78,6 @@ gem 'carrierwave'
 gem 'mini_magick'
 gem 'faker'
 gem 'payjp'
+gem 'dotenv-rails'
+gem 'better_errors'
 

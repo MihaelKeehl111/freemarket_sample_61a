@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'card/new'
+
+  get 'card/show'
+
   # devise_for :users 
   devise_for :users, controllers: {
     omniauth_callbacks: 'users/omniauth_callbacks',
@@ -31,6 +35,7 @@ Rails.application.routes.draw do
       get :purchase
       get :purchased
       get :search
+      get :purchase_confirmation
     end
     member do
       put :stop_selling
