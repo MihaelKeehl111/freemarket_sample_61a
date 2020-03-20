@@ -24,6 +24,9 @@ RSpec.describe PurchaseController, type: :controller do
   end
 
   describe "GET #purchased" do
+    before do
+      login user
+    end
     it "returns http success" do
       get :purchased
       expect(response).to have_http_status(:success)
