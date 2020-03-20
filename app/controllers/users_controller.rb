@@ -1,6 +1,5 @@
 class UsersController < ApplicationController
   before_action :set_user
-  before_action :set_card, only: [:card, :delete_card]
   require "payjp"
 
   # ユーザー情報変更に関するアクション
@@ -49,7 +48,6 @@ class UsersController < ApplicationController
 
   def create_card
     Payjp.api_key = ENV["PAYJP_SECRET_KEY"]
-
     if params['payjpToken'].blank?
       return
     else
@@ -59,7 +57,6 @@ class UsersController < ApplicationController
         card: params['payjpToken']
       )
     end
-
     @card = Card.new(user_id: current_user.id, customer_id: customer.id, card_id: customer.default_card)
     if @card.save
       redirect_to card_users_path
@@ -100,10 +97,6 @@ class UsersController < ApplicationController
       address_attributes: [:id, :postcode, :prefecture, :municipality, :address, :building],
       card_attributes: [:id, :card_number, :expiration_month, :expiration_year, :security_code]
     )
-  end
-
-  def set_card
-    @card = Card.find_by(user_id: current_user.id)
   end
 
   def set_user

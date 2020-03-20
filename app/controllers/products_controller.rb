@@ -1,6 +1,7 @@
 class ProductsController < ApplicationController
   before_action :set_category, :category_ranking, only: :index
-  before_action :set_current_user_products, only: [:exhibiting, :trading, :sold, :purchase, :purchased]
+  before_action :set_purchased_products, only: [:purchase, :purchased]
+  before_action :set_current_user_products, only: [:exhibiting, :trading, :sold]
   before_action :set_product, only: [:show, :edit, :update, :destroy]
   before_action :set_product_information, only: [:new, :edit, :update, :search]
 
@@ -35,9 +36,11 @@ class ProductsController < ApplicationController
   end
 
   def purchase
+    @purchase_products = @products.where.not(status_id: 4)
   end
 
   def purchased
+    @purchased_products = @products.where(status_id: 4)
   end
 
   def stop_selling
@@ -106,6 +109,10 @@ class ProductsController < ApplicationController
 
   def set_product
     @product = Product.find(params[:id])
+  end
+
+  def set_purchased_products
+    @products = Product.where(buyer_id: current_user.id)
   end
 
   def set_current_user_products

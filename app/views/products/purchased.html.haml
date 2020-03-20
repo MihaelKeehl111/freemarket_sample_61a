@@ -29,7 +29,7 @@
           %h3
             過去の取引
       .purchased-content__lists
-        - if @products.present?
+        - if @purchased_products.present?
           %ul.content__lists
             %li.content__lists--list
               - @products.each do |product|

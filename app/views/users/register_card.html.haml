@@ -13,7 +13,6 @@
     %li.nav__lists__list.nav__lists__list--payment
       %span 支払い方法
 
--# scss未記述
 .main
   .main__right_contents
     .registration_card
@@ -42,10 +41,7 @@
                 = icon 'fas', 'question-circle'
                 カード裏面の番号とは？
             #card_token
-            = submit_tag '登録する', class: 'information__main--form--button', id: "token_submit"
-        .footer__logo
-          = link_to root_path do
-            = image_tag "logo_gray.svg", height: 80
+            = submit_tag '登録する', class: 'information__main--button', id: "token_submit"
 
   = render 'sidebar'
 
