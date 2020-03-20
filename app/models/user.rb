@@ -36,9 +36,6 @@ has_many :sns_credentials
     errors.add :password, "７文字以上の英数混在で入力してください。"
   end
 
-  # SNS認証で以降追記
-
-  # ファーストトライ
   def self.from_omniauth(auth)
     sns = SnsCredential.where(provider: auth.provider, uid: auth.uid).first_or_create
     # sns認証したことがあればアソシエーションで取得
@@ -52,7 +49,6 @@ has_many :sns_credentials
       sns.user = user
       sns.save
     end
-    # user
     { user: user, sns: sns }
   end
 

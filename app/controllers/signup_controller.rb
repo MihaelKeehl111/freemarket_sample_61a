@@ -21,7 +21,7 @@ class SignupController < ApplicationController
   
   def validates_register_user_info
     if params[:sns_auth] == 'true'
-      pass = Devise.friendly_token(length = 30)
+      pass = Devise.friendly_token
       params[:user][:password] = pass
       params[:user][:password_confirmation] = pass
     end
