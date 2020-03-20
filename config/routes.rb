@@ -1,7 +1,4 @@
 Rails.application.routes.draw do
-  get 'purchase/index'
-
-  get 'purchase/done'
 
   get 'card/new'
 
@@ -47,7 +44,8 @@ Rails.application.routes.draw do
     end
     resources :purchase, only: [:index] do
       collection do
-        get :done
+        post :purchase
+        get :purchased
       end
     end
   end

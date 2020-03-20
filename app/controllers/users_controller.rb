@@ -79,12 +79,6 @@ class UsersController < ApplicationController
       card.delete
       redirect_to card_users_path
     end
-    # @card.destroy if @card.user_id == current_user.id
-    # if @card.destroy
-    #   render :user, notice: 'クレジットカードを削除しました'
-    # else
-    #   return
-    # end
   end
 
   private

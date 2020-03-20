@@ -1,3 +1,5 @@
+-# Viewとscssは仮置き
+
 %h2 購入を確定しますか？
 %p
   = @product.name
@@ -7,10 +9,9 @@
 %br
 %h3 支払い方法
 - if @card.blank?
-  = link_to "クレジットカードを登録する", register_card_users_path
+  = link_to "クレジットカードを登録する", register_card_users_path, target: :_blank 
 - else
   = "**** **** **** " + @card.last4
   = @exp_month + " / " + @exp_year
-  
-  = form_tag(action: :purchase, method: :post) do
-    %button 購入する
+  = button_to '購入する', action: :purchase
+  = link_to "戻る", product_path(params[:product_id])
