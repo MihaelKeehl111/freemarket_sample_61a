@@ -1,8 +1,36 @@
 class PurchaseController < ApplicationController
   require 'payjp'
+  before_action :set_product, only: [:index, :purchase, :purchased]
+  before_action :set_card, only: [:index, :purchased]
 
   def index
-    @product = Product.find(params[:product_id])
+  end
+
+  def purchase
+    if @product.status_id == 1
+      card = Card.where(user_id: current_user.id).first
+      Payjp.api_key= ENV["PAYJP_SECRET_KEY"]
+      charge = Payjp::Charge.create(
+        amount: @product.price,
+        customer: Payjp::Customer.retrieve(card.customer_id),
+        currency: 'jpy'
+      )
+      @product.update( buyer_id: current_user.id )
+      @product.update( status_id: 2)
+      redirect_to purchased_product_purchase_index_path
+    else
+      render product_path
+    end
+  end
+
+  def purchased
+    @address = current_user.address
+    @postcode = @address.postcode.to_s
+  end
+
+  private
+
+  def set_card
     card = Card.where(user_id: current_user.id).first
     if card
       Payjp.api_key = ENV["PAYJP_SECRET_KEY"]
@@ -13,25 +41,7 @@ class PurchaseController < ApplicationController
     end
   end
 
-  def purchase
-    @card = Card.where(user_id: current_user.id).first
+  def set_product
     @product = Product.find(params[:product_id])
-    if @product.status_id == 1
-      Payjp.api_key= ENV["PAYJP_SECRET_KEY"]
-      charge = Payjp::Charge.create(
-        amount: @product.price,
-        customer: Payjp::Customer.retrieve(@card.customer_id),
-        currency: 'jpy'
-      )
-
-      @product.update( buyer_id: current_user.id )
-      @product.update( status_id: 2)
-      redirect_to purchased_product_purchase_index_path
-    else
-      render product_path
-    end
-  end
-
-  def purchased
   end
 end
