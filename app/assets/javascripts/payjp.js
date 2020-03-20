@@ -24,9 +24,8 @@ $(function() {
         let token = response.id;
         $("#card_token").append(
           $('<input type="hidden" name="payjpToken">').val(response.id)
-        ); 
-        $("#form").get(0).submit();
-        alert("登録が完了しました");
+        );
+        $("#card_form").get(0).submit();
       }
     });
   });

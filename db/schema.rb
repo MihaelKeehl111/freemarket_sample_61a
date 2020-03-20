@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200314075413) do
+ActiveRecord::Schema.define(version: 20200317142112) do
 
   create_table "addresses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "postcode",     null: false
@@ -25,15 +25,15 @@ ActiveRecord::Schema.define(version: 20200314075413) do
   end
 
   create_table "cards", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string   "card_number",      null: false
-    t.string   "expiration_month", null: false
-    t.string   "expiration_year",  null: false
-    t.string   "security_code",    null: false
     t.integer  "user_id"
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
     t.string   "customer_id"
     t.string   "card_id"
+    t.string   "card_number"
+    t.string   "expiration_month"
+    t.string   "expiration_year"
+    t.string   "security_code"
     t.index ["user_id"], name: "index_cards_on_user_id", using: :btree
   end
 
