@@ -14,7 +14,6 @@ $(function() {
     Payjp.createToken(card, function(status, response) {
       if (response.error) {
         $("#token_submit").prop('disabled', false);
-        console.log(card)
         alert("カード情報が正しくありません。");
       }
       else {
@@ -26,8 +25,6 @@ $(function() {
         $("#card_token").append(
           $('<input type="hidden" name="payjpToken">').val(response.id)
         );
-        // console.log(token)
-        // console.log(card)
         $("#card_form").get(0).submit();
       }
     });
