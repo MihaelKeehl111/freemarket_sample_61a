@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  # devise_for :users 
+
   devise_for :users, controllers: {
     omniauth_callbacks: 'users/omniauth_callbacks',
     registrations: 'users/registrations',
@@ -17,7 +17,8 @@ Rails.application.routes.draw do
       get 'register_user_info'
       post 'register_cellphone'
       post 'register_address'
-      post 'register_card'
+      post 'register_card', to: "signup#register_card"
+      post 'signup', to: 'signup#create'
       get 'complete_registration'
     end
   end
@@ -30,13 +31,18 @@ Rails.application.routes.draw do
       get :sold
       get :purchase
       get :purchased
-      get :buy_done
       get :search
-
     end
+
     member do
       put :stop_selling
       put :reselling
+    end
+    resources :purchase, only: [:index] do
+      collection do
+        post :purchase
+        get :purchased
+      end
     end
   end
 
@@ -50,6 +56,9 @@ Rails.application.routes.draw do
       get :change_address
       get :logout
       get :card 
+      get :register_card
+      post :create_card
+      delete :delete_card
     end
   end
 

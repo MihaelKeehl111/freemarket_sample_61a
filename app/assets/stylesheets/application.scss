@@ -30,11 +30,14 @@
 @import "products/exhibiting";
 @import "products/purchased";
 @import "products/search";
+@import "purchase/index";
+@import "purchase/purchased";
 @import "categories/index";
 @import "categories/show";
 @import "users/index";
 @import "users/edit";
 @import "users/logout";
+@import "users/register_card";
 @import "signin/signin";
 @import "signup/complete_registration";
 @import "signup/index";
@@ -49,7 +52,6 @@
 @import "users/change-address";
 @import "font-awesome-sprockets";
 @import "font-awesome";
-@import "products/buy_done";
 @import "users/nav";
 
 

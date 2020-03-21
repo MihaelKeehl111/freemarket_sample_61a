@@ -32,7 +32,6 @@
         }
       }
       &__list {
-        padding: 24px 0 0;
         &__box {
           position: relative;
           padding-bottom: 24px;
@@ -58,6 +57,19 @@
               border-radius: 3px;
               padding: 4px 6px;
             }
+            .delete_btn {
+              background: #ea352d;
+              border: 1px solid #ea352d;
+              color: #fff;
+              display: block;
+              width: 100%;
+              line-height: 48px;
+              font-size: 14px;
+              transition: all ease-out .3s;
+              cursor: pointer;
+              text-align: center;
+              margin: 0 0 80px;
+            }
           }
         }
         &--button {
@@ -67,6 +79,19 @@
           background-color: red;
           cursor: pointer;
           margin: 40px 0 0 0; 
+          .register_btn {
+            background: #ea352d;
+            border: 1px solid #ea352d;
+            color: #fff;
+            display: block;
+            width: 100%;
+            line-height: 48px;
+            font-size: 14px;
+            transition: all ease-out .3s;
+            cursor: pointer;
+            text-align: center;
+            margin: 0 0 80px;
+          }
         }
       }
       &--bottom {

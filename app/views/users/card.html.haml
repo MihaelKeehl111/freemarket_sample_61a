@@ -20,23 +20,21 @@
             = icon 'far', 'credit-card'
             .main__right_contents__inner__list__box--pay_num
               %p 
-                = '************' + @last_4_number
+                = "**** **** **** " + @card_information.last4
             .main__right_contents__inner__list__box--pay_num
               %p
-                = @card.expiration_month + '/' + @card.expiration_year
+                = @exp_month + '/' + @exp_year
             .main__right_contents__inner__list__box--button
-              = link_to '', class: 'button' do
+              = button_to delete_card_users_path, method: :delete, class: 'delete_btn' do
                 削除する
       - else
-        .main__rights__contents__inner__list.container
-          .main__rights__contents__inner__list--button
-            = icon 'far', 'credit-card', class: 'button--icon'
-            %span クレジットカードを追加する
-      
-      .main__right_contents__inner--bottom
-        = link_to '' do
-          支払い方法について 
-          = icon 'fas', 'angle-right', class: 'icon'
+        .main__right_contents__inner__list.container
+          .main__right_contents__inner__list--button
+            = link_to 'クレジットカードを追加する', register_card_users_path, class: 'register_btn'
+        .main__right_contents__inner--bottom
+          = link_to '' do
+            支払い方法について 
+            = icon 'fas', 'angle-right', class: 'icon'
           
   = render 'sidebar'
 

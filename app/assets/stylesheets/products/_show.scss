@@ -170,9 +170,14 @@ button {
       color: #fff;
       line-height: 60px;
       font-weight: bold;
+      cursor: pointer;
+      a {
+        color: white;
+      }
       &:focus {
         border: 1px solid #0099e8;
         outline: 0;
+
       }
     }
     &--pc_error_text {
@@ -235,6 +240,7 @@ button {
       &--edit {
         margin: 16px 0 16px 0;
         background: #ea352d;
+        color: #fff;
         display: block;
         line-height: 48px;
         font-size: 14px;
