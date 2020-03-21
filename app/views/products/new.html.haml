@@ -38,20 +38,22 @@
         %h3.sell-main__sub-head
           商品の詳細
         .sell-main__form-box
-          .sell-main__form-group
+          .sell-main__form-group.sell-main__form-category
             = f.label :category_id do
               カテゴリー
               %span.sell-main__form-require
                 必須
-            %div
-              = f.collection_select(:category_id, @categories, :id, :name, { prompt: '---' }, class: 'sell-main__select-default')
+            .sell-main__category-select
+              .sell-main__category-select--box
+                %div
+                  = f.select :category, @category_parent, {}, {class: 'sell-main__select-default', id: 'parent_category', name: ''}
           .sell-main__form-group
             = f.label :size do
               サイズ
               %span.sell-main__form-require
                 必須
             %div
-              = f.text_field :size, {class: 'sell-main__select-default', placeholder:"---"}
+              = f.text_field :size, {class: 'sell-main__select-default', placeholder:"---", id: 'size_wrapper'}
           .sell-main__form-group
             = f.label :state do
               商品の状態
