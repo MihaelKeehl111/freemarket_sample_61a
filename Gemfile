@@ -79,3 +79,4 @@ gem 'carrierwave'
 gem 'mini_magick'
 gem 'faker'
 gem "gretel"
+gem 'jquery-rails'
