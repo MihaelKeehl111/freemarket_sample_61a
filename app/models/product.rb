@@ -8,6 +8,7 @@ class Product < ApplicationRecord
   belongs_to :delivery_date
   belongs_to :user
   belongs_to :status
+  has_many :comments
 
   mount_uploader :image, ImageUploader
 

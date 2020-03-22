@@ -21,6 +21,8 @@ class ProductsController < ApplicationController
     if Product.find_by(id: (params[:id].to_i + 1).to_s) != nil
       @next_product = Product.find_by(id: (params[:id].to_i + 1).to_s)
     end
+    @comment = Comment.new
+    @comments = @product.comments.includes(:user)
   end
 
   def completion
