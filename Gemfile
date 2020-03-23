@@ -82,3 +82,4 @@ gem 'payjp'
 gem 'dotenv-rails'
 gem 'better_errors'
 gem "gretel"
+gem 'jquery-rails'
