@@ -44,6 +44,8 @@ Rails.application.routes.draw do
         get :purchased
       end
     end
+
+    resources :comments, only: [:create, :destroy]
   end
 
   resources :categories, only: [:index, :show]

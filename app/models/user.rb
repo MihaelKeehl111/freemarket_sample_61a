@@ -30,6 +30,7 @@ has_many :sns_credentials
   accepts_nested_attributes_for :card
 
   has_many :products
+  has_many :comments
   
   def password_complexity
     return if password.blank? || password =~ /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]{7,70}+\z/i
