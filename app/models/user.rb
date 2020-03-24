@@ -29,7 +29,9 @@ has_many :sns_credentials
   has_one :card
   accepts_nested_attributes_for :card
 
-  has_many :products
+  has_many :products, dependent: :destroy
+  has_many :likes, dependent: :destroy
+  has_many :liked_products, through: :likes, source: :product
   
   def password_complexity
     return if password.blank? || password =~ /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]{7,70}+\z/i
@@ -50,6 +52,11 @@ has_many :sns_credentials
       sns.save
     end
     { user: user, sns: sns }
+  end
+
+
+  def already_liked?(product)
+    self.likes.exists?(product_id: product.id)
   end
 
 end

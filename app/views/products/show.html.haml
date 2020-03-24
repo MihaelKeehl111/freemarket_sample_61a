@@ -113,10 +113,18 @@
 
     .item_detail_container__main__bottom
       .item_detail_container__main__bottom__left
-        .item_detail_container__main__bottom__left--like_button
-          = icon 'far', 'heart'
-          %span いいね!
-          %span.like_num 10
+        .item_detail_container__main__bottom__left--like_button.like-link{id: "like-link"}
+          = render partial: 'like'
+          -# - if current_user.already_liked?(@product)
+          -#   = link_to product_like_path(@product), method: :delete do
+          -#     = icon 'fas', 'heart'
+          -#     %span いいね!
+          -# - else 
+          -#   = link_to product_likes_path(@product), method: :create do
+          -#     = icon 'far', 'heart'
+          -#     %span いいね!
+          %span.like_num 
+            = @product.likes.count
         .item_detail_container__main__bottom__left--report
           = icon 'far', 'flag'
           不適切な商品の報告
@@ -124,6 +132,15 @@
         =link_to '' ,class: '' do
           = icon 'fas', 'lock'
           あんしん・あんぜんへの取り組み
+
+
+
+
+
+
+
+
+
 
   - if user_signed_in?
     - if @product.user_id == current_user.id && (@product.status_id == 1 || @product.status_id == 3)

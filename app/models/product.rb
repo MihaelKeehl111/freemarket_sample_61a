@@ -9,6 +9,9 @@ class Product < ApplicationRecord
   belongs_to :user
   belongs_to :status
 
+  has_many :likes, dependent: :destroy
+  has_many :liked_users, through: :likes, source: :user
+
   mount_uploader :image, ImageUploader
 
   validates :image, :name, :description, :category_id, :state_id, :delivery_charge_id, :delivery_method_id, :delivery_area_id, :delivery_date_id, :price, presence: true
@@ -17,4 +20,6 @@ class Product < ApplicationRecord
     return Product.all unless search
     Product.where(['name LIKE ?', "%#{search}%"]).where.not(status_id: 3).order('created_at DESC')
   end
+
+
 end

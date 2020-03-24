@@ -24,6 +24,7 @@ Rails.application.routes.draw do
   end
 
   resources :products, only: [:index, :new, :create, :show, :edit, :update, :destroy] do
+    resources :likes, only: [:create, :destroy] 
     collection do
       get :completion
       get :exhibiting
