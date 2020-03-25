@@ -88,6 +88,7 @@ class ProductsController < ApplicationController
         @product.images.create(image: image, product_id: @product.id)
       end  
       redirect_to completion_products_path, {controller: "products", action: "index", name: "completion"} do
+      end  
     else
       flash.now[:alert] = '必須事項を入力して下さい'
       render :new
@@ -228,7 +229,6 @@ class ProductsController < ApplicationController
     @ranking = [@products_ladies, @products_mens, @products_kids, @products_interia, @products_books, @products_toys, @products_beauties, @products_electronics, @products_sports, @products_handmade, @products_tickets, @products_bicycles, @products_others]
     @ranking = @ranking.compact
     @ranking.sort_by {|array| array.length}
-
     @first_category = Category.find_by(id: @ranking[0][0].category_id) unless @ranking[0][0].nil?
     @second_category = Category.find_by(id: @ranking[1][0].category_id) unless @ranking[1][0].nil?
     @third_category = Category.find_by(id: @ranking[2][0].category_id) unless @ranking[2][0].nil?
