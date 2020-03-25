@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200308123603) do
+ActiveRecord::Schema.define(version: 20200321125220) do
 
   create_table "addresses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "postcode",     null: false
@@ -25,13 +25,15 @@ ActiveRecord::Schema.define(version: 20200308123603) do
   end
 
   create_table "cards", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string   "card_number",      null: false
-    t.string   "expiration_month", null: false
-    t.string   "expiration_year",  null: false
-    t.string   "security_code",    null: false
     t.integer  "user_id"
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
+    t.string   "customer_id"
+    t.string   "card_id"
+    t.string   "card_number"
+    t.string   "expiration_month"
+    t.string   "expiration_year"
+    t.string   "security_code"
     t.index ["user_id"], name: "index_cards_on_user_id", using: :btree
   end
 
@@ -41,6 +43,16 @@ ActiveRecord::Schema.define(version: 20200308123603) do
     t.datetime "updated_at", null: false
     t.string   "ancestry"
     t.index ["ancestry"], name: "index_categories_on_ancestry", using: :btree
+  end
+
+  create_table "comments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.text     "comment",    limit: 65535, null: false
+    t.integer  "user_id"
+    t.integer  "product_id"
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+    t.index ["product_id"], name: "index_comments_on_product_id", using: :btree
+    t.index ["user_id"], name: "index_comments_on_user_id", using: :btree
   end
 
   create_table "delivery_areas", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -92,6 +104,7 @@ ActiveRecord::Schema.define(version: 20200308123603) do
     t.datetime "created_at",                       null: false
     t.datetime "updated_at",                       null: false
     t.integer  "status_id"
+    t.integer  "buyer_id"
     t.index ["category_id"], name: "index_products_on_category_id", using: :btree
     t.index ["delivery_area_id"], name: "index_products_on_delivery_area_id", using: :btree
     t.index ["delivery_charge_id"], name: "index_products_on_delivery_charge_id", using: :btree
@@ -144,6 +157,8 @@ ActiveRecord::Schema.define(version: 20200308123603) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
+  add_foreign_key "comments", "products"
+  add_foreign_key "comments", "users"
   add_foreign_key "delivery_methods", "delivery_charges"
   add_foreign_key "images", "products"
   add_foreign_key "products", "categories"

@@ -3,12 +3,28 @@ class SignupController < ApplicationController
   before_action :validates_register_cellphone, only: :register_address
   before_action :validates_register_address, only: :register_card
   require "date"
+  require "payjp"
 
-  def register_user_info
-    @user = User.new # 新規インスタンス作成
+  def create
+    if params[:sns_auth] == 'true'
+      pass = Devise.friendly_token(length = 30)
+      params[:user][:password] = pass
+      params[:user][:password_confirmation] = pass
+    end
+    super
   end
 
+  def register_user_info
+    @user = User.new
+  end
+
+  
   def validates_register_user_info
+    if params[:sns_auth] == 'true'
+      pass = Devise.friendly_token
+      params[:user][:password] = pass
+      params[:user][:password_confirmation] = pass
+    end
     session[:nickname] = user_params[:nickname] #register_user_infoで入力した値をsessionに保存
     session[:email] = user_params[:email]
     session[:password] = user_params[:password]
@@ -32,7 +48,7 @@ class SignupController < ApplicationController
   end
 
   def register_cellphone
-    @user = User.new # 新規インスタンス作成
+    @user = User.new
   end
 
   def validates_register_cellphone
@@ -43,12 +59,13 @@ class SignupController < ApplicationController
       password: session[:password],
       password_confirmation: session[:password_confirmation],
       cellphone: session[:cellphone],
-      familyname: "sei",
-      firstname: "mei",
+      familyname: "姓",
+      firstname: "名",
       familyname_kana: "セイ",
       firstname_kana: "メイ",
       birthday: "2001-01-01"
     )
+
     unless @user.valid?
       flash.now[:alert] = @user.errors.full_messages
       render '/signup/register_cellphone'
@@ -56,7 +73,7 @@ class SignupController < ApplicationController
   end
 
   def register_address
-    @user = User.new #新規インスタンス作成
+    @user = User.new
     @user.build_address #addressの入力を記述したビューを呼び出すアクションに記述
   end
 
@@ -89,13 +106,13 @@ class SignupController < ApplicationController
   end
 
   def register_card
-    @user = User.new #新規インスタンス作成
+    @user = User.new
     @user.build_card #cardの入力を記述したビューを呼び出すアクションに記述
   end
 
   def create
     @user = User.new(
-      email: session[:email], #sessionに保存された値をインスタンスに渡す
+      email: session[:email],
       password: session[:password],
       password_confirmation: session[:password_confirmation],
       nickname: session[:nickname],
@@ -108,9 +125,22 @@ class SignupController < ApplicationController
       phone: session[:phone]
     )
     @user.build_address(session[:address_attributes])
-    @user.build_card(user_params[:card_attributes])
+
+    Payjp.api_key = ENV["PAYJP_SECRET_KEY"]
+    if params['payjpToken'].blank?
+      render '/signup/register_card'
+    else
+      customer = Payjp::Customer.create(
+        description: 'test',
+        email: @user.email,
+        card: params['payjpToken']
+      )
+    end
+    @card = Card.new(customer_id: customer.id, card_id: customer.default_card)
     if @user.save
       session[:id] = @user.id
+      @card[:user_id] = session[:id]
+      @card.save
       redirect_to complete_registration_signup_index_path
     else
       flash.now[:alert] = @user.errors.full_messages
@@ -138,7 +168,7 @@ class SignupController < ApplicationController
       :birthday,
       :phone,
       address_attributes: [:id, :postcode, :prefecture, :municipality, :address, :building],
-      card_attributes: [:id, :card_number, :expiration_month, :expiration_year, :security_code]
+      card_attributes: [:id, :card_number, :expiration_month, :expiration_year, :security_code, :customer_id, :card_id]
     )
   end
 end

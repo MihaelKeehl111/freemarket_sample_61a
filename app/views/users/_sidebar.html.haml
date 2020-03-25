@@ -1,7 +1,7 @@
 .main__side
   %ul
     %li.main__side__lists
-      =link_to '' do
+      =link_to users_path do
         マイページ
         = icon 'fas', 'chevron-right'
     %li.main__side__lists
@@ -21,24 +21,24 @@
         出品する
         = icon 'fas', 'chevron-right'
     %li.main__side__lists
-      =link_to '' do
+      =link_to exhibiting_products_path do
         出品した商品 - 出品中
         = icon 'fas', 'chevron-right'
     %li.main__side__lists
-      =link_to '' do
+      =link_to trading_products_path do
         出品した商品 - 取引中
         = icon 'fas', 'chevron-right'
     %li.main__side__lists
-      =link_to '' do
+      =link_to sold_products_path do
         出品した商品 - 売却済み
         = icon 'fas', 'chevron-right'
     %li.main__side__lists
-      =link_to '' do
-        出品した商品 - 取引中
+      =link_to purchase_products_path do
+        購入した商品 - 取引中
         = icon 'fas', 'chevron-right'
     %li.main__side__lists
-      =link_to '' do
-        出品した商品 - 過去の取引
+      =link_to purchased_products_path do
+        購入した商品 - 過去の取引
         = icon 'fas', 'chevron-right'
     %li.main__side__lists
       =link_to '' do
