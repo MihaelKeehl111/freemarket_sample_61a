@@ -1,5 +1,4 @@
 class Product < ApplicationRecord
-  belongs_to :user
   belongs_to :category
   belongs_to :state
   belongs_to :delivery_charge
@@ -9,10 +8,11 @@ class Product < ApplicationRecord
   belongs_to :user
   belongs_to :status
   has_many :comments
+  has_many :images, dependent: :destroy
 
-  mount_uploader :image, ImageUploader
+  accepts_nested_attributes_for :images, allow_destroy: true
 
-  validates :image, :name, :description, :category_id, :state_id, :delivery_charge_id, :delivery_method_id, :delivery_area_id, :delivery_date_id, :price, presence: true
+  validates :name, :description, :category_id, :state_id, :delivery_charge_id, :delivery_method_id, :delivery_area_id, :delivery_date_id, :price, presence: true
 
   def self.search(search)
     return Product.all unless search
