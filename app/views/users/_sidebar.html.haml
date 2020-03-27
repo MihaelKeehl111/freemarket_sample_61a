@@ -1,7 +1,7 @@
 .main__side
   %ul
     %li.main__side__lists
-      =link_to '' do
+      =link_to users_path do
         マイページ
         = icon 'fas', 'chevron-right'
     %li.main__side__lists
@@ -17,28 +17,28 @@
         いいね！一覧
         = icon 'fas', 'chevron-right'
     %li.main__side__lists
-      =link_to '' do
+      =link_to new_product_path do
         出品する
         = icon 'fas', 'chevron-right'
     %li.main__side__lists
-      =link_to '' do
+      =link_to exhibiting_products_path do
         出品した商品 - 出品中
         = icon 'fas', 'chevron-right'
     %li.main__side__lists
-      =link_to '' do
+      =link_to trading_products_path do
         出品した商品 - 取引中
         = icon 'fas', 'chevron-right'
     %li.main__side__lists
-      =link_to '' do
+      =link_to sold_products_path do
         出品した商品 - 売却済み
         = icon 'fas', 'chevron-right'
     %li.main__side__lists
-      =link_to '' do
-        出品した商品 - 取引中
+      =link_to purchase_products_path do
+        購入した商品 - 取引中
         = icon 'fas', 'chevron-right'
     %li.main__side__lists
-      =link_to '' do
-        出品した商品 - 過去の取引
+      =link_to purchased_products_path do
+        購入した商品 - 過去の取引
         = icon 'fas', 'chevron-right'
     %li.main__side__lists
       =link_to '' do
@@ -69,12 +69,11 @@
   %h3 設定
   %ul.main__side__lists--middle
     %li.main__side__lists
-      //  TO DO:プロフィールパスの仮置き user_id取得でき次第、edit_user_path(current_user)へ変更予定
-      =link_to edit_user_path(:id) do
+      =link_to edit_user_path(current_user) do
         プロフィール
         = icon 'fas', 'chevron-right'
     %li.main__side__lists
-      =link_to '' do
+      =link_to change_address_users_path(current_user) do
         発送元・お届け先住所変更
         = icon 'fas', 'chevron-right'
     %li.main__side__lists
@@ -83,19 +82,18 @@
         支払い方法
         = icon 'fas', 'chevron-right'
     %li.main__side__lists
-      =link_to '' do
+      =link_to change_password_users_path do
         メール/パスワード
         = icon 'fas', 'chevron-right'
     %li.main__side__lists
-      =link_to '' do
+      =link_to identification_users_path(:id), {controller: "users", action: "index", name: "identification"} do
         本人情報
         = icon 'fas', 'chevron-right'
     %li.main__side__lists
-      =link_to '' do
+      =link_to check_cellphone_users_path do
         電話番号の確認
         = icon 'fas', 'chevron-right'
     %li.main__side__lists.main__side__lists--logout
-      //  TO DO:プロフィールパスの仮置き 
-      =link_to logout_users_path(:id), {controller: "users", action: "index", name: "logout"} do
+      =link_to logout_users_path(current_user), {controller: "users", action: "index", name: "logout"} do
         ログアウト
         = icon 'fas', 'chevron-right'

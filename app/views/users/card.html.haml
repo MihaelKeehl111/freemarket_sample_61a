@@ -4,36 +4,37 @@
 .nav
   %ul.nav__lists
     %li.nav__lists__list
-      = link_to root_path do
-        %span メルカリ
-      = icon 'fas', 'chevron-right', class: 'nav__lists__list--icon'
-    %li.nav__lists__list.nav__lists__list--mypage
-      %span マイページ
-      = icon 'fas', 'chevron-right', class: 'nav__lists__list--icon'
-    %li.nav__lists__list.nav__lists__list--payment
-      %span 支払い方法
+      - breadcrumb :card
+      = breadcrumbs separator: " #{content_tag(:i, '', class: 'fas fa-chevron-right nav__lists__list--icon ' )} "
 
 .main
-  .main--right_contents
-    .main--right_contents__title
+  .main__right_contents
+    .main__right_contents--title
       %h1 支払い方法
-    .main--right_contents--inner
-      .main--right_contents--inner__title.container
+    .main__right_contents__inner
+      .main__right_contents__inner--title.container
         %h3 クレジットカード一覧
-      .main--right_contents--inner--list.container
-        .main--right_contents--inner--list--box
-          = image_tag 'card.svg', alt: '', class: ''
-          .main--right_contents--inner--list--box__pay_num
-            %p ************0000
-          .main--right_contents--inner--list--box__pay_num
-            %p 01/20
-          .main--right_contents--inner--list--box__button
-            = link_to '', {class: 'button'} do
-              削除する
-      .main--right_contents--inner__bottom
-        = link_to '', {class: 'button'} do
-          支払い方法について 
-          = icon 'fas', 'angle-right', class: 'icon'
+      - if @card
+        .main__right_contents__inner__list.container
+          .main__right_contents__inner__list__box
+            = icon 'far', 'credit-card'
+            .main__right_contents__inner__list__box--pay_num
+              %p 
+                = "**** **** **** " + @card_information.last4
+            .main__right_contents__inner__list__box--pay_num
+              %p
+                = @exp_month + '/' + @exp_year
+            .main__right_contents__inner__list__box--button
+              = button_to delete_card_users_path, method: :delete, class: 'delete_btn' do
+                削除する
+      - else
+        .main__right_contents__inner__list.container
+          .main__right_contents__inner__list--button
+            = link_to 'クレジットカードを追加する', register_card_users_path, class: 'register_btn'
+        .main__right_contents__inner--bottom
+          = link_to '' do
+            支払い方法について 
+            = icon 'fas', 'angle-right', class: 'icon'
           
   = render 'sidebar'
 

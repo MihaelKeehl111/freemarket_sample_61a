@@ -25,3 +25,13 @@ $(function(){
 
   tabs.click(tabSwitch); 
 });
+
+
+// slick
+$(function(){
+  $(".toppage-slider").slick({
+    autoplay: true,
+    dots: true,
+  });
+});
+

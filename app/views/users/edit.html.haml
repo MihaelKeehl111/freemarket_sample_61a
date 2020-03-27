@@ -4,26 +4,20 @@
 .nav
   %ul.nav__lists
     %li.nav__lists__list
-      = link_to root_path do
-        %span メルカリ
-      = icon 'fas', 'chevron-right', class: 'nav__lists__list--icon'
-    %li.nav__lists__list.nav__lists__list--mypage
-      %span マイページ
-      = icon 'fas', 'chevron-right', class: 'nav__lists__list--icon'
-    %li.nav__lists__list.nav__lists__list--plofile
-      %span プロフィール
+      - breadcrumb :profile
+      = breadcrumbs separator: " #{content_tag(:i, '', class: 'fas fa-chevron-right nav__lists__list--icon ' )} "
 
 .main
   .main--profile_contents
-    .main--profile_contents__title
-      %h1 プロフィール
-    .main--profile_contents__user_name
-      = image_tag 'human.svg', alt: '', class: 'user_img'
-      %input.user_name{value: "user name" }
-    .main--profile_contents__user_message
-      %textarea#profile_message{name: "profile_message", placeholder: "例）こんにちは☆ ご覧いただきありがとうございます！かわいいものやきれいめオフィスカジュアル中心に出品しています。服のサイズは主に9号です。気持ちよくお取引できるよう心がけていますので、商品や発送方法などご質問がありましたらお気軽にどうぞ♪"}
-      = link_to '', {class: 'button'} do
-        変更する
+    = form_for(current_user) do |f|
+      .main--profile_contents__title
+        %h1 プロフィール
+      .main--profile_contents__user_name
+        = image_tag 'human.svg', alt: '', class: 'user_img'
+        = f.text_field :nickname, value: current_user.nickname, class: 'user_name'
+      .main--profile_contents__user_message
+        = f.text_area :profile, rows: '9', wrap: 'soft', class: 'profile_message', placeholder: "例）こんにちは☆ ご覧いただきありがとうございます！かわいいものやきれいめオフィスカジュアル中心に出品しています。服のサイズは主に9号です。気持ちよくお取引できるよう心がけていますので、商品や発送方法などご質問がありましたらお気軽にどうぞ♪"
+        = f.submit '変更する', class: 'button'
 
   = render 'sidebar'
 
