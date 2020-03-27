@@ -25,6 +25,9 @@ class ProductsController < ApplicationController
     @comments = @product.comments.includes(:user)
   end
 
+  def buy
+  end
+
   def completion
   end
 
@@ -234,4 +237,6 @@ class ProductsController < ApplicationController
     @third_category = Category.find_by(id: @ranking[2][0].category_id) unless @ranking[2][0].nil?
     @fourth_category = Category.find_by(id: @ranking[3][0].category_id) unless @ranking[3][0].nil?
   end
+
 end
+

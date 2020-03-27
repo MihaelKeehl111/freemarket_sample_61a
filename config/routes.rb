@@ -32,6 +32,7 @@ Rails.application.routes.draw do
       get :purchase
       get :purchased
       get :search
+      get :buy
     end
 
     member do
