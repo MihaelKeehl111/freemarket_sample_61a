@@ -355,13 +355,14 @@ button {
       ul {
         li {
           position: relative;
-          margin-bottom: 90px;
+          margin-bottom: 100px;
           .message_list__user {
             display: flex;
             img {
               width: 40px;
               height: 40px;
               border-radius: 50%;
+              
             } 
             &--name {
               width: 600px;
@@ -369,6 +370,11 @@ button {
               height: 1.2rem;
               margin-left: auto;
               font-weight: bold;
+            }
+            &--name.current_user {
+              color: #ea352d;
+              text-align: right;
+              padding-right: 15px;
             }
           }
           .message_list__box {
@@ -389,6 +395,7 @@ button {
             }
             &--date {
               margin-top: 8px;
+              float: left;
               i {
                 font-size: 16px;
                 color: #aaa;
@@ -397,6 +404,29 @@ button {
                 color: #aaa;
                 font-size: 14px;
               }
+            }
+            &--trash {
+              margin-top: 9px;
+              float: right;
+              button {
+                background: none;
+                border: none;
+                cursor: pointer;
+                i {
+                  font-size: 14px;
+                  color: #aaa;
+                }
+              }
+            }
+          }
+          .message_list__box.current_user {
+            background: #fbf0e6;
+            left: 0;
+            right: 100px;
+            .icon_bubble {
+              color: #fbf0e6;
+              right: -6px;
+              left: 600px;
             }
           }
         }

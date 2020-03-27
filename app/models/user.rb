@@ -29,9 +29,14 @@ has_many :sns_credentials
   has_one :card
   accepts_nested_attributes_for :card
 
+
   has_many :products, dependent: :destroy
   has_many :likes, dependent: :destroy
   has_many :liked_products, through: :likes, source: :product
+
+  # has_many :products
+  has_many :comments
+
   
   def password_complexity
     return if password.blank? || password =~ /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]{7,70}+\z/i

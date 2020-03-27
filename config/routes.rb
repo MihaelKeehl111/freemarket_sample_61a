@@ -33,6 +33,7 @@ Rails.application.routes.draw do
       get :purchase
       get :purchased
       get :search
+      get :buy
     end
 
     member do
@@ -45,6 +46,8 @@ Rails.application.routes.draw do
         get :purchased
       end
     end
+
+    resources :comments, only: [:create, :destroy]
   end
 
   resources :categories, only: [:index, :show]

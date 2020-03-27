@@ -9,7 +9,7 @@ class PurchaseController < ApplicationController
   def purchase
     if @product.status_id == 1
       card = Card.where(user_id: current_user.id).first
-      Payjp.api_key= ENV["PAYJP_SECRET_KEY"]
+      Payjp.api_key= 'sk_test_13c8abc03b509ed5108985cf'
       charge = Payjp::Charge.create(
         amount: @product.price,
         customer: Payjp::Customer.retrieve(card.customer_id),
