@@ -66,13 +66,13 @@
                   必須
             %div
               = f.text_field :size, {class: 'sell-main__select-default'}
-          .sell-main__form-group
-            = f.label :state do
-              商品の状態
-              %span.sell-main__form-require
-                必須
-            %div
-              = f.collection_select(:state_id, @states, :id, :name, { prompt: '---' }, class: 'sell-main__select-default')
+              .sell-main__form-group
+                = f.label :state do
+                  商品の状態
+                  %span.sell-main__form-require
+                    必須
+                %div
+                = f.collection_select(:state_id, @states, :id, :name, { prompt: '---' }, class: 'sell-main__select-default')
         .sell-main__content.clearfix
           %h3.sell-main__sub-head
             配送について
