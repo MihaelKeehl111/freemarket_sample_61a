@@ -1,7 +1,7 @@
 %li.toppage-main__content
   = link_to "/products/#{product.id}" do
     .toppage-main__image
-      = image_tag product.image.url, height: '188px', width: '188px', class: 'toppage-main__icon'
+      = image_tag 'image', height: '188px', width: '188px', class: 'toppage-main__icon'
       .toppage-main__image--price
         = number_to_currency(product.price, unit: "￥", format: "%u%n")
     .toppage-main__item-name
