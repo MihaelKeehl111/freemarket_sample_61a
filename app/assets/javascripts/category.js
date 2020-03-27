@@ -21,7 +21,7 @@ $(function(){
     var grandchildSelectHtml = '';
     grandchildSelectHtml = `<div class='sell-main__category-select--added' id= 'grandchildren_wrapper'>
                               <div class='sell-main__category-select__box'>
-                                <select class="sell-main__select-default" id="grandchild_category" name="category_id">
+                                <select class="sell-main__select-default" id="grandchild_category" name="product[category_id]">
                                   <option value="---" data-category="---">---</option>
                                   ${insertHTML}
                                 </select>
