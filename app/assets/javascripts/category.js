@@ -42,7 +42,6 @@ $(function(){
       .done(function(children){
         $('#children_wrapper').remove();
         $('#grandchildren_wrapper').remove();
-        // $('#size_wrapper').remove();
         var insertHTML = '';
         children.forEach(function(child){
           insertHTML += appendOption(child);
@@ -55,7 +54,6 @@ $(function(){
     }else{
       $('#children_wrapper').remove();
       $('#grandchildren_wrapper').remove();
-      // $('#size_wrapper').remove();
     }
   });
 
@@ -71,7 +69,6 @@ $(function(){
       .done(function(grandchildren){
         if (grandchildren.length != 0) {
           $('#grandchildren_wrapper').remove();
-          // $('#size_wrapper').remove();
           var insertHTML = '';
           grandchildren.forEach(function(grandchild){
             insertHTML += appendOption(grandchild);
@@ -84,7 +81,6 @@ $(function(){
       })
     }else{
       $('#grandchildren_wrapper').remove();
-      // $('#size_wrapper').remove();
     }
   });
 });
