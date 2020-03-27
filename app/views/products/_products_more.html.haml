@@ -11,4 +11,7 @@
         .items_box_body--num__like_icon
           = link_to '' do
             = icon 'far', 'heart',class:'items_box_body--num__like_icon--heart'
-            %span 10
+            %span
+              = @product.likes.count
+
+

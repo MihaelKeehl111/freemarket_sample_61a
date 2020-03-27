@@ -1,9 +1,0 @@
-- if current_user.already_liked?(@product)
-  = link_to product_like_path(@product), method: :delete do
-    = icon 'fas', 'heart'
-    %span いいね!
-- else 
-  = link_to product_likes_path(@product), method: :create do
-    = icon 'far', 'heart'
-    %span いいね!
--# = javascript_include_tag('like')

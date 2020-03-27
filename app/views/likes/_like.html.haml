@@ -1,0 +1,30 @@
+.item_detail_container__main__bottom__left--like_button.like-link{id: "#like-link-#{@product.id}"}
+  - if current_user.already_liked?(@product)
+    = link_to product_like_path(@product), method: :delete do
+      = icon 'fas', 'heart'
+      %span いいね!
+      %span.like_num 
+        = @product.likes.count
+  - else 
+    = link_to product_likes_path(@product), method: :post do
+      = icon 'far', 'heart'
+      %span いいね!
+      %span.like_num 
+        = @product.likes.count
+
+
+-# セカンドトライ
+-# .item_detail_container__main__bottom__left--like_button.like-link{id: "#like-link-#{@product.id}"}
+-#   - if current_user.already_liked?(@product)
+-#     = button_to product_like_path(@product), method: :delete, remote: true do
+-#       -# = image_tag("icon_red_heart.svg")
+-#       = icon 'fas', 'heart'
+-#       %span
+-#         = @product.likes.count
+-#   - else
+-#     = button_to product_likes_path(@product), method: :post, remote: true do
+-#       -# = image_tag("icon_heart.svg")
+-#       = icon 'far', 'heart'
+-#       %span
+-#         = @product.likes.count
+        

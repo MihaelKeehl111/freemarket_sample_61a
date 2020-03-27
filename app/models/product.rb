@@ -21,5 +21,8 @@ class Product < ApplicationRecord
     Product.where(['name LIKE ?', "%#{search}%"]).where.not(status_id: 3).order('created_at DESC')
   end
 
+  def like_user(user_id)
+    likes.find_by(user_id: user_id)
+  end
 
 end

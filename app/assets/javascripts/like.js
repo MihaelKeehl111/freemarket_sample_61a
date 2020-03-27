@@ -1,14 +1,15 @@
-// $("<%= @id_name %>").html('<%= escape_javascript(render("javascripts/like", product: @product  )) %>');
+// // $("<%= @id_name %>").html('<%= escape_javascript(render("javascripts/like", product: @product  )) %>');
 
 
 // $(function(){
 //   // id="link-mark"の箇所(いいねボタン)をクリックしたら
-//   $('#like-link').on('click', function(){
+//   $('#like-link-').on('click', function(){
 //     // 非同期でlikes#createに処理を送信＋その時に店舗情報(shop_id)を渡す
 //     $.ajax({
 //       url: '',
 //       type: 'POST',
-//       data: {product_id: $(this).data('product_id')}
+//       data: {product_id: $(this).data('product_id')},
+//       dataType: 'json' 
 //     })
 //     // 処理が上手く行ったらボタンを切り替えて
 //     .done((data) => {
@@ -24,3 +25,4 @@
 //     })
 //   });
 // });
+
