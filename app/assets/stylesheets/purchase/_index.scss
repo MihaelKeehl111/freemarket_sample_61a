@@ -69,14 +69,17 @@
           font-weight: 600;
           display: flex;
           justify-content: space-between;
+          padding-bottom: 20px;
           &__left {
             text-align: left;
             font-size: 18px;
+            line-height: 25px;
           }
           &__right {
             text-align: right;
             font-weight: 600;
             font-size: 25px;
+            line-height: 25px;
           }  
         }
         &__point {
@@ -112,7 +115,7 @@
               font-size: 14px;
               font-weight: bold;
             }
-            &__right a {
+            &__right {
               color: #0099e8;
             }
             &__right a:hover {
@@ -167,13 +170,15 @@
             font-size: 14px;
           }
           &__button {
-            background: red;
-            width: 100%;
-            line-height: 48px;
-            font-size: 14px;
-            text-align: center;
-            a{  
+            .purchase__button {
+              background: red;
               color: #fff;
+              width: 100%;
+              line-height: 48px;
+              font-size: 14px;
+              text-align: center;
+              margin-bottom: 10px;
+              cursor: pointer;
             }
           }
           &__bottom {

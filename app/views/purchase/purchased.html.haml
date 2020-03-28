@@ -13,7 +13,7 @@
     .soldout-main__complete
     %h2 購入が完了しました
     .soldout-main__product
-      = image_tag @product.image.url ,class: 'soldout_product_img'
+      = image_tag "image" ,class: 'soldout_product_img'
       .soldout-main__product__detail
         %p.product__name
           = @product.name

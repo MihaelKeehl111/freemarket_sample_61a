@@ -1,22 +1,3 @@
--# Viewとscssは仮置き
-
--# %h2 購入を確定しますか？
--# %p
--#   = @product.name
--# %p
--#   = number_to_currency(@product.price, unit: "￥", format: "%u%n")
--# %span (送料込み)
--# %br
--# %h3 支払い方法
--# - if @card.blank?
--#   = link_to "クレジットカードを登録する", register_card_users_path, target: :_blank 
--# - else
--#   = "**** **** **** " + @card.last4
--#   = @exp_month + " / " + @exp_year
--#   = button_to '購入する', action: :purchase
--#   = link_to "戻る", product_path(params[:product_id])
-
-
 .header__purchase
   =link_to root_path do
     = image_tag "fmarket_logo_red.svg", class: "header--icon", width: 185, height:49
@@ -27,7 +8,7 @@
     .main-buy__box__products
       .main-buy__box__products__form
         = link_to '' do
-          = image_tag "https://cdn-ak.f.st-hatena.com/images/fotolife/h/hobiwo/20200202/20200202171125.png", width:80 ,height:80
+          = image_tag "image", width:80 ,height:80
         .main-buy__box__products__form__text
           .main-buy__box__products__form__text__name
             = @product.name
@@ -41,10 +22,11 @@
             支払い金額
           .main-buy__box__pay__form__price__right
             = number_to_currency(@product.price, unit: "￥", format: "%u%n")
-        .main-buy__box__pay__form__point
-          %input{type: "checkbox"}
-          .main-buy__box__pay__form__point__text
-            ポイントを使用 (所持ポイント: P0)
+        -# ポイント機能は未実装のためコメントアウト
+        -# .main-buy__box__pay__form__point
+        -#   %input{type: "checkbox"}
+        -#   .main-buy__box__pay__form__point__text
+        -#     ポイントを使用 (所持ポイント: P0)
         .main-buy__box__pay__form__card
           .main-buy__box__pay__form__card__title
             .main-buy__box__pay__form__card__title__left
@@ -68,8 +50,7 @@
             .main-buy__box__pay__form__user__title__left
               配送先
             .main-buy__box__pay__form__user__title__right 
-              = link_to '' do
-                変更する
+              = link_to '変更する', change_address_users_path, target: :_blank
           .main-buy__box__pay__form__user__text
             %p
               = '〒' + @postcode
@@ -81,12 +62,10 @@
             %p
               = current_user.familyname + current_user.firstname
         .main-buy__box__pay__form__note
-          .main-buy__box__pay__form__note__top
-            %p この商品はゆうゆうメルカリ便を利用しているため、アプリからのみ購入できます。
           .main-buy__box__pay__form__note__button
-            = button_to '購入する', action: :purchase
+            = button_to '購入する', {action: :purchase}, class: 'purchase__button'
           .main-buy__box__pay__form__note__button
-            = link_to "戻る", product_path(params[:product_id])
+            = button_to "戻る", product_path(params[:product_id]), class: 'purchase__button'
           .main-buy__box__pay__form__note__bottom
             %p アプリをお持ちでない方は以下よりインストールして、ご利用いただけます。
           .main-buy__box__pay__form__note__logos
