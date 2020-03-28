@@ -2,6 +2,7 @@
   = link_to product_path(products_more) do
     .items_box
       = image_tag products_more.image.url
+      -# = image_tag products_more.image.url unless @product.image.blank?
     .items_box_body
       %h3.items_box_body--name
         = products_more.name
