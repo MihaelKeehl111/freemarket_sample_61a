@@ -1,6 +1,6 @@
 .header__purchase
   =link_to root_path do
-    = image_tag "fmarket_logo_red.svg", class: "header--icon", width: 185, height:49
+    = image_tag "fmarket_logo_red.svg", class: "header--icon", size: "185x49"
 .main-buy
   .main-buy__box
     .main-buy__box__title
@@ -10,7 +10,7 @@
         = link_to '' do
           - images = Image.where(product_id: @product.id)
           - product_image = images.first
-          = image_tag product_image.image.to_s, height: '80px', width: '80px'
+          = image_tag product_image.image.to_s, size: "80x80"
         .main-buy__box__products__form__text
           .main-buy__box__products__form__text__name
             = @product.name
@@ -45,8 +45,6 @@
                 = "**** **** **** " + @card.last4
               %p 
                 = "有効期限" + @exp_month + " / " + @exp_year
-            .main-buy__box__pay__form__card__image
-              = image_tag "//www-mercari-jp.akamaized.net/assets/img/card/visa.svg?73731125", width: 49, height: 15
         .main-buy__box__pay__form__user
           .main-buy__box__pay__form__user__title
             .main-buy__box__pay__form__user__title__left
@@ -84,7 +82,7 @@
             プライバシーポリシー
         %li 
           = link_to '' do
-            メルカリ利用規約
+            フリマ利用規約
         %li 
           = link_to '' do
             特定商取引に関する表記

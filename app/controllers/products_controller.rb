@@ -90,8 +90,7 @@ class ProductsController < ApplicationController
       params[:images][:image].each do |image|
         @product.images.create(image: image, product_id: @product.id)
       end
-      redirect_to completion_products_path, {controller: "products", action: "index", name: "completion"} do
-      end
+      redirect_to completion_products_path, {controller: "products", action: "index", name: "completion"}
     else
       flash.now[:alert] = '必須事項を入力して下さい'
       render :new

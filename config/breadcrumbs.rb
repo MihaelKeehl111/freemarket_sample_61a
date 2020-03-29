@@ -1,6 +1,6 @@
 
 crumb :root do
-  link "メルカリ", root_path
+  link "フリマ", root_path
 end
 
 # マイページ

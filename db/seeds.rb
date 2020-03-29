@@ -343,7 +343,7 @@ DeliveryCharge.create(name: "着払い(購入者負担)", id: 2)
 # 配送の方法
 # 送料込み(出品者負担)
 DeliveryMethod.create(name: "未定", delivery_charge_id: 1)
-DeliveryMethod.create(name: "らくらくメルカリ便", delivery_charge_id: 1)
+DeliveryMethod.create(name: "らくらくフリマ便", delivery_charge_id: 1)
 DeliveryMethod.create(name: "ゆうメール", delivery_charge_id: 1)
 DeliveryMethod.create(name: "レターパック", delivery_charge_id: 1)
 DeliveryMethod.create(name: "普通郵便(定形、定形外)", delivery_charge_id: 1)
