@@ -2,7 +2,7 @@
   = link_to product_path(products_more) do
     .items_box
       -# = image_tag products_more.image.url
-      - images = Image.where(product_id: products_mote.id)
+      - images = Image.where(product_id: products_more.id)
       - product_image = images.first
       = image_tag product_image.image.to_s
     .items_box_body
