@@ -8,7 +8,9 @@
     .main-buy__box__products
       .main-buy__box__products__form
         = link_to '' do
-          = image_tag "image", width:80 ,height:80
+          - images = Image.where(product_id: @product.id)
+          - product_image = images.first
+          = image_tag product_image.image.to_s, height: '80px', width: '80px'
         .main-buy__box__products__form__text
           .main-buy__box__products__form__text__name
             = @product.name

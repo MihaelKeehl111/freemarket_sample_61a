@@ -75,7 +75,7 @@ class ProductsController < ApplicationController
     redirect_to new_user_session_path unless user_signed_in?
     @product = Product.new
 
-    @product.images.new
+    @product.images.build
     @categories = Category.all
     @states = State.all
     @delivery_charges = DeliveryCharge.all
@@ -89,9 +89,9 @@ class ProductsController < ApplicationController
     if @product.save
       params[:images][:image].each do |image|
         @product.images.create(image: image, product_id: @product.id)
-      end  
+      end
       redirect_to completion_products_path, {controller: "products", action: "index", name: "completion"} do
-      end  
+      end
     else
       flash.now[:alert] = '必須事項を入力して下さい'
       render :new

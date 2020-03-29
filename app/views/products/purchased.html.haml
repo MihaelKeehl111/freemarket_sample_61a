@@ -31,7 +31,9 @@
                   = link_to product_path(product) do
                     .list
                       .list__image
-                        = image_tag product.image
+                        - images = Image.where(product_id: product.id)
+                        - product_image = images.first
+                        = image_tag product_image.image.to_s
                       .list__text
                         .list__text--name
                           = product.name

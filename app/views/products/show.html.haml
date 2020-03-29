@@ -9,7 +9,14 @@
       .item_detail_container__main__item_detail__left
         .item_detail_container__main__item_detail__left--top
           .bg_photo
-            = image_tag 'image'
+            - images = Image.where(product_id: @product.id)
+            - product_image = images.first
+            = image_tag product_image.image.to_s, height: '300px', width: '300px'
+        .item_detail_container__main__item_detail__left--bottom
+          - @product.images.each do |b|
+            .sm_photos
+              = image_tag b.image.to_s, height: '60px', width: '60px'
+
         .item_detail_container__main__item_detail__left--bottom
 
       .item_detail_container__main__item_detail--right
