@@ -1,9 +1,7 @@
 .item_detail_container__user_anoter_items__container--box
   = link_to product_path(products_more) do
     .items_box
-      - images = Image.where(product_id: products_more.id)
-      - product_image = images.first
-      = image_tag product_image.image.to_s
+      = image_tag first_image(products_more).image.to_s
     .items_box_body
       %h3.items_box_body--name
         = products_more.name

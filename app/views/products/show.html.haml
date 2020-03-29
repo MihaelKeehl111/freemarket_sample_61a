@@ -9,9 +9,7 @@
       .item_detail_container__main__item_detail__left
         .item_detail_container__main__item_detail__left--top
           .bg_photo
-            - images = Image.where(product_id: @product.id)
-            - product_image = images.first
-            = image_tag product_image.image.to_s, size: "300x300"
+            = image_tag first_image(@product).image.to_s, size: "300x300"
         .item_detail_container__main__item_detail__left--bottom
           - @product.images.each do |b|
             .sm_photos

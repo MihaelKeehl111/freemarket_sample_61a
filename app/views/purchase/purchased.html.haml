@@ -13,9 +13,7 @@
     .soldout-main__complete
     %h2 購入が完了しました
     .soldout-main__product
-      - images = Image.where(product_id: @product.id)
-      - product_image = images.first
-      = image_tag product_image.image.to_s, class: 'soldout_product_img'
+      = image_tag first_image(@product).image.to_s, class: 'soldout_product_img'
       .soldout-main__product__detail
         %p.product__name
           = @product.name
