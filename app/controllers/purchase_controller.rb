@@ -2,6 +2,7 @@ class PurchaseController < ApplicationController
   require 'payjp'
   before_action :set_product, only: [:index, :purchase, :purchased]
   before_action :set_card, only: [:index, :purchased]
+  before_action :set_address, only: [:index, :purchased]
 
   def index
   end
@@ -24,8 +25,6 @@ class PurchaseController < ApplicationController
   end
 
   def purchased
-    @address = current_user.address
-    @postcode = @address.postcode.to_s
   end
 
   private
@@ -39,6 +38,11 @@ class PurchaseController < ApplicationController
       @exp_month = @card.exp_month.to_s
       @exp_year = @card.exp_year.to_s.slice(2,3)
     end
+  end
+
+  def set_address
+    @address = current_user.address
+    @postcode = @address.postcode.to_s
   end
 
   def set_product

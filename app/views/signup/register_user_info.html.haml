@@ -30,7 +30,7 @@
         .form--box
           = f.label :nickname, "ニックネーム"
           %span.form-require 必須
-          = f.text_field :nickname, class: 'information__main--form', placeholder: "例)  メルカリ太郎"
+          = f.text_field :nickname, class: 'information__main--form', placeholder: "例)  フリマ太郎"
         - if @sns_id.present?
           = hidden_field_tag :sns_auth, true
         - else
@@ -63,7 +63,7 @@
     = link_to "https://www.google.com/", class: 'footer__link' do
       プライバシーポリシー  
     = link_to "https://www.google.com/", class: 'footer__link' do
-      メルカリ利用規約  
+      フリマ利用規約  
     = link_to "https://www.google.com/", class: 'footer__link' do
       特定商取引に関する表記
       .registration_user_info__footer__logo
