@@ -13,7 +13,7 @@ CarrierWave.configure do |config|
       region: 'ap-northeast-1'
     }
     config.fog_directory  = 'freemarket-sample61-a' 
-    config.asset_host = 'https://s3-your_region.amazonaws.com/your_bucket_name'
+    config.asset_host = 'https://s3-ap-northeast-1.amazonaws.com/freemarket-sample61-a'
   else
     config.storage :file 
     config.enable_processing = false if Rails.env.test? 
