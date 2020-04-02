@@ -1,7 +1,7 @@
 %li.content
   = link_to "/products/#{product.id}" do
     .content__image
-      = image_tag 'image', height: '188px', width: '188px', class: 'content__icon'
+      = image_tag first_image(product).image.to_s, size: "188x188", class: 'content__icon'
       .content__image--price
         = number_to_currency(product.price, unit: "￥", format: "%u%n")
     .content__item-name
