@@ -11,6 +11,7 @@ class PurchaseController < ApplicationController
     if @product.status_id == 1
       card = Card.where(user_id: current_user.id).first
       Payjp.api_key= Rails.application.secrets.payjp_secret_key
+      # Payjp.api_key = ENV["PAYJP_SECRET_KEY"]
       charge = Payjp::Charge.create(
         amount: @product.price,
         customer: Payjp::Customer.retrieve(card.customer_id),
@@ -33,6 +34,7 @@ class PurchaseController < ApplicationController
     card = Card.where(user_id: current_user.id).first
     if card
       Payjp.api_key = Rails.application.secrets.payjp_secret_key
+      # Payjp.api_key = ENV["PAYJP_SECRET_KEY"]
       customer = Payjp::Customer.retrieve(card.customer_id)
       @card = customer.cards.retrieve(card.card_id)
       @exp_month = @card.exp_month.to_s

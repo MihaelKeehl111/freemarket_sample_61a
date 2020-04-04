@@ -47,7 +47,8 @@ class UsersController < ApplicationController
   end
 
   def create_card
-    Payjp.api_key = ENV["PAYJP_SECRET_KEY"]
+    Payjp.api_key= Rails.application.secrets.payjp_secret_key
+    # Payjp.api_key = ENV["PAYJP_SECRET_KEY"]
     if params['payjpToken'].blank?
       return
     else
@@ -69,7 +70,8 @@ class UsersController < ApplicationController
   def delete_card
     card = Card.where(user_id: current_user.id).first
     if card.present?
-      Payjp.api_key = ENV["PAYJP_SECRET_KEY"]
+      Payjp.api_key= Rails.application.secrets.payjp_secret_key
+      # Payjp.api_key = ENV["PAYJP_SECRET_KEY"]
       customer = Payjp::Customer.retrieve(card.customer_id)
       customer.delete
       card.delete
