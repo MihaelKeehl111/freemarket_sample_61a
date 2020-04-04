@@ -86,14 +86,32 @@ class ProductsController < ApplicationController
 
   def create
     @product = Product.new(product_params)
-    if @product.save
-      params[:images][:image].each do |image|
-        @product.images.create(image: image, product_id: @product.id)
+    if params[:images].present?
+      if @product.save
+        params[:images][:image].each do |image|
+          @product.images.create(image: image, product_id: @product.id)
+        end
+        # binding.pry
+        redirect_to completion_products_path, {controller: "products", action: "index", name: "completion"}
+      else
+        @categories = Category.all
+        @states = State.all
+        @delivery_charges = DeliveryCharge.all
+        @delivery_methods = DeliveryMethod.all
+        @delivery_areas = DeliveryArea.all
+        @delivery_dates = DeliveryDate.all
+        render :new
       end
-      redirect_to completion_products_path, {controller: "products", action: "index", name: "completion"}
     else
+      @product.images.build
+      @categories = Category.all
+      @states = State.all
+      @delivery_charges = DeliveryCharge.all
+      @delivery_methods = DeliveryMethod.all
+      @delivery_areas = DeliveryArea.all
+      @delivery_dates = DeliveryDate.all
       flash.now[:alert] = '必須事項を入力して下さい'
-      render :new
+      return
     end
   end
 
