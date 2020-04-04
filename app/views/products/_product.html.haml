@@ -3,7 +3,7 @@
     = link_to "/products/#{product.id}" do
       .toppage-main__image
         = image_tag first_image(product).image.to_s, size: "188x188", class: 'toppage-main__icon'
-        -if product.status_id == 5
+        -if product.status_id == 2 || product.status_id == 4 || product.status_id == 5
           .toppage-main__image--red
           .toppage-main__image--sold
             sold
