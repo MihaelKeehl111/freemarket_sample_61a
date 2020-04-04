@@ -110,4 +110,3 @@
 |user|refarence|null: false, foreign_key: true|
 ### association
 - belongs_to :user
--
