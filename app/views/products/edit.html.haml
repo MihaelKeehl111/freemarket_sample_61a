@@ -7,20 +7,33 @@
   .sell-edit
     %h2.sell-edit__head
       商品の情報を入力
-    =form_for @product do |f|
-      .sell-edit__upload-box
-        %h3.sell-edit__upload-head
-          出品画像
-          %span.sell-edit__form-require
-            必須
-        %p 最大10枚までアップロードできます
-        .sell-edit__dropbox-container.clearfix.state-image-number-10
-          .sell-edit__upload-items-container
-            .sell-edit__upload-drop-box.have-item-0
-              = f.file_field :image, {id: 'sell-edit__upload-drop-box'}
-              %pre.sell-edit__visible-pc
-                ドラッグアンドドロップ
-                またはクリックしてファイルをアップロード
+    = form_for @product do |f|
+      .sell-main__container__sell-form
+        .sell-main__container__sell-form__upload-box
+          .sell-main__container__sell-form__upload-box__head
+            出品画像
+            .sell-main__container__sell-form__upload-box__require
+              .sell-main__form-require
+                必須
+          .sell-main__container__sell-form__upload-box__bottom
+            最大10枚までアップロードできます
+        .image-box  
+          #image-box1
+            .item-num-0#image-box__container1
+              = f.fields_for :images do |i|
+                .input-area
+                  = i.file_field :image, multiple: true, type: 'file', name: "images[image][]", value:"", style: "display:none", id:"img-file"
+                  %label{for: "img-file"}
+                    .image-box__icon
+                      %i.fas.fa-camera
+          #image-box2          
+            .item-num-0#image-box__container2
+              = f.fields_for :images do |i|
+                .input-area
+                  = i.file_field :image, multiple: true, type: 'file', name: "images[image][]", value:"", style: "display:none", id:"img-file"
+                  %label{for: "img-file"}
+                    .image-box__icon
+                      %i.fas.fa-camera
       .sell-edit__content
         .sell-edit__form-group
           = f.label :name do

@@ -87,6 +87,7 @@ class ProductsController < ApplicationController
   def create
     @product = Product.new(product_params)
     if @product.save
+
       params[:images][:image].each do |image|
         @product.images.create(image: image, product_id: @product.id)
       end
@@ -102,6 +103,22 @@ class ProductsController < ApplicationController
 
   def update
     if @product.update(product_params)
+      if params[:images].present?
+        images = Image.where(product_id: @product.id)
+        images.each do |image|
+          image.destroy
+        end
+        params[:images][:image].each do |image|
+          @product.images.create(image: image, product_id: @product.id)
+        end
+      end
+      
+      # if params[:images_attributes].present?
+      #   binding.pry
+      #   images = Image.where(product_id: @product.id)
+      #   images.destroy
+      # end
+      # binding.pry
       redirect_to root_path
     else
       flash.now[:alert] = '必須事項を入力して下さい'
