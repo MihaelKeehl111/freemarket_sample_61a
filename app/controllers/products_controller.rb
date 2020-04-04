@@ -102,6 +102,19 @@ class ProductsController < ApplicationController
 
   def update
     if @product.update(product_params)
+      # params[:images]とは新しくアップロードした画像のこと。
+      if params[:images].present?
+        # params[:images]がある場合は、既存の画像をimagesとして、それらを削除する。
+        # まとめて削除はできなかったためeachを使って一つずつ削除。
+        images = Image.where(product_id: @product.id)
+        images.each do |image|
+          image.destroy
+        end
+        # 新しくアップロードしたparams[:images][:image]を新しいデータとして格納。
+        params[:images][:image].each do |image|
+          @product.images.create(image: image, product_id: @product.id)
+        end
+      end
       redirect_to root_path
     else
       flash.now[:alert] = '必須事項を入力して下さい'
