@@ -31,10 +31,10 @@
 |description|text|null: false|
 |state|reference||null: false, foreign_key: true|
 |price|string|null: false|
-|delivery-charge|reference||null: false, foreign_key: true|
-|delivery-method|reference||null: false, foreign_key: true|
-|delivery-area|reference||null: false, foreign_key: true|
-|delivery-date|reference||null: false, foreign_key: true|
+|delivery-charge|reference|null: false, foreign_key: true|
+|delivery-method|reference|null: false, foreign_key: true|
+|delivery-area|reference|null: false, foreign_key: true|
+|delivery-date|reference|null: false, foreign_key: true|
 |category|reference|null: false, foreign_key: true|
 |user|reference|null: false, foreign_key: true|
 |brand|reference|null: false, foreign_key: true|
@@ -49,7 +49,7 @@
 ## likes
 |Column|Type|Options|
 |------|----|-------|
-|user|reference||null: false, foreign_key: true|
+|user|reference|null: false, foreign_key: true|
 |product|reference|null: false, foreign_key: true|
 ### assosiation 
 - belongs_to :user
