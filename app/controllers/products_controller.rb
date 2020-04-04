@@ -91,7 +91,6 @@ class ProductsController < ApplicationController
         params[:images][:image].each do |image|
           @product.images.create(image: image, product_id: @product.id)
         end
-        # binding.pry
         redirect_to completion_products_path, {controller: "products", action: "index", name: "completion"}
       else
         @categories = Category.all
