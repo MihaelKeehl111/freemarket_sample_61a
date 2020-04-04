@@ -8,6 +8,7 @@
     %h2.sell-edit__head
       商品の情報を入力
     = form_for @product do |f|
+      // ビューは修正する必要あり。newアクションのビューからのコピペ状態。
       .sell-main__container__sell-form
         .sell-main__container__sell-form__upload-box
           .sell-main__container__sell-form__upload-box__head
@@ -34,6 +35,7 @@
                   %label{for: "img-file"}
                     .image-box__icon
                       %i.fas.fa-camera
+      // ここまでコピペ。
       .sell-edit__content
         .sell-edit__form-group
           = f.label :name do
