@@ -29,12 +29,12 @@
 |name|string|null: false|
 |size|string|null: false|
 |description|text|null: false|
-|state|string|null: false|
+|state|reference||null: false, foreign_key: true|
 |price|string|null: false|
-|delivery-charge|string|null: false|
-|delivery-method|string|null: false|
-|delivery-area|string|null: false|
-|delivery-date|string|null: false|
+|delivery-charge|reference||null: false, foreign_key: true|
+|delivery-method|reference||null: false, foreign_key: true|
+|delivery-area|reference||null: false, foreign_key: true|
+|delivery-date|reference||null: false, foreign_key: true|
 |category|reference|null: false, foreign_key: true|
 |user|reference|null: false, foreign_key: true|
 |brand|reference|null: false, foreign_key: true|
@@ -110,3 +110,57 @@
 |user|refarence|null: false, foreign_key: true|
 ### association
 - belongs_to :user
+
+## delivery_areas
+|Column|Type|Options|
+|------|----|-------|
+|name|string|null: false|
+### association
+- has_many :products
+
+## delivery_charges
+|Column|Type|Options|
+|------|----|-------|
+|name|string|null: false|
+### association
+- has_many :delivery_methods
+- has_many :products
+
+## delivery_dates
+|Column|Type|Options|
+|------|----|-------|
+|name|string|null: false|
+### association
+- has_many :products
+
+## delivery_methods
+|Column|Type|Options|
+|------|----|-------|
+|name|string|null: false|
+|delivery_charge|refarence|null: false, foreign_key: true|
+### association
+- has_many :delivery_charge
+- has_many :products
+
+## states
+|Column|Type|Options|
+|------|----|-------|
+|name|string|null: false|
+### association
+- has_many :products
+
+## statuses
+|Column|Type|Options|
+|------|----|-------|
+|name|string|null: false|
+### association
+- has_many :products
+
+## sns_credentials
+|Column|Type|Options|
+|------|----|-------|
+|provider|string|null: false|
+|uid|string|null: false|
+|user|refarence|null: false, foreign_key: true|
+### association
+- belongs_to :user, optional: true
