@@ -140,17 +140,17 @@
     .item_detail_container__message_contents--message_list
       %ul
         = render partial: "comments/comment", collection: @comments
-
-    .item_detail_container__message_contents--textarea
-      %p 相手のことを考え丁寧なコメントを心がけましょう。不快な言葉遣いなどは利用制限や退会処分となることがあります。
-      - if @product.status_id == 1
-        = form_tag product_comments_path(@product) do |f|
-          = text_area_tag :comment, '', class: 'product_detail_textarea'
-          = submit_tag 'コメントする', class: 'product_detail_textarea__btn'
-      - else
-        .product_detail_textarea
-        = link_to '', class: 'product_detail_textarea__btn' do
-          売り切れのためコメントできません
+    - if user_signed_in?
+      .item_detail_container__message_contents--textarea
+        %p 相手のことを考え丁寧なコメントを心がけましょう。不快な言葉遣いなどは利用制限や退会処分となることがあります。
+        - if @product.status_id == 1
+          = form_tag product_comments_path(@product) do |f|
+            = text_area_tag :comment, '', class: 'product_detail_textarea'
+            = submit_tag 'コメントする', class: 'product_detail_textarea__btn'
+        - else
+          .product_detail_textarea
+          = link_to '', class: 'product_detail_textarea__btn' do
+            売り切れのためコメントできません
 
     %ul.item_detail_container__next_item
       - if @previous_product

@@ -7,6 +7,7 @@ class ProductsController < ApplicationController
 
   def index
     @products = Product.order('created_at DESC').where.not(status_id: 3)
+    # binding.pry
   end
 
   def show
@@ -260,12 +261,11 @@ class ProductsController < ApplicationController
   def category_ranking
     @ranking = [@products_ladies, @products_mens, @products_kids, @products_interia, @products_books, @products_toys, @products_beauties, @products_electronics, @products_sports, @products_handmade, @products_tickets, @products_bicycles, @products_others]
     @ranking = @ranking.compact
-    @ranking.sort_by {|array| array.length}
-    @first_category = Category.find_by(id: @ranking[0][0].category_id) unless @ranking[0][0].nil?
-    @second_category = Category.find_by(id: @ranking[1][0].category_id) unless @ranking[1][0].nil?
-    @third_category = Category.find_by(id: @ranking[2][0].category_id) unless @ranking[2][0].nil?
-    @fourth_category = Category.find_by(id: @ranking[3][0].category_id) unless @ranking[3][0].nil?
+    @ranking_sort = @ranking.sort_by(&:length).reverse
+    @first_category = Category.find_by(id: @ranking_sort[0][0].category_id) unless @ranking_sort[0][0].nil?
+    @second_category = Category.find_by(id: @ranking_sort[1][0].category_id) unless @ranking_sort[1][0].nil?
+    @third_category = Category.find_by(id: @ranking_sort[2][0].category_id) unless @ranking_sort[2][0].nil?
+    @fourth_category = Category.find_by(id: @ranking_sort[3][0].category_id) unless @ranking_sort[3][0].nil?
   end
-
 end
 
