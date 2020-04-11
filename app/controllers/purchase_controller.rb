@@ -11,6 +11,7 @@ class PurchaseController < ApplicationController
     if @product.status_id == 1
       card = Card.where(user_id: current_user.id).first
       # Payjp.api_key = Rails.application.secrets.payjp_secret_key
+      Payjp.api_key = ENV["PAYJP_SECRET_KEY"]
       charge = Payjp::Charge.create(
         amount: @product.price,
         customer: Payjp::Customer.retrieve(card.customer_id),
