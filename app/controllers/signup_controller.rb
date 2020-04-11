@@ -126,7 +126,8 @@ class SignupController < ApplicationController
     )
     @user.build_address(session[:address_attributes])
 
-    Payjp.api_key = Rails.application.secrets.payjp_secret_key
+    # Payjp.api_key = Rails.application.secrets.payjp_secret_key
+    Payjp.api_key = ENV["PAYJP_SECRET_KEY"]
     if params['payjpToken'].blank?
       render '/signup/register_card'
     else
